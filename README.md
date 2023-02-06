@@ -1,2 +1,7 @@
-# snes-emulator
-CEN4090L Group 4 SNES emulator
+# sneslite
+
+## Compile
+todo
+
+## Documentation
+todo
