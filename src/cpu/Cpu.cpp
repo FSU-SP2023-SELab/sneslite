@@ -1,5 +1,11 @@
+/**
+ * @file Cpu.cpp
+ * @brief CPU definitions
+ */
+
 #include "Cpu.h"
 #include "System.h"
+
 
 Cpu::Cpu()
 {
