@@ -1,3 +1,10 @@
+/**
+ * @file Cpu.h
+ * @brief CPU header
+ * 
+ * Write longer description here
+ */
+
 #include <cstdint>
 #include <string>
 #include <vector>
