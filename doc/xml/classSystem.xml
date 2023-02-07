@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classSystem" kind="class" language="C++" prot="public">
+    <compoundname>System</compoundname>
+    <includes refid="System_8h" local="no">System.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classSystem_1ada155fce116e1738a703bf955d94a1b7" prot="public" static="no" mutable="no">
+        <type><ref refid="classCpu" kindref="compound">Cpu</ref></type>
+        <definition>Cpu System::cpu</definition>
+        <argsstring></argsstring>
+        <name>cpu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" line="19" column="9" bodyfile="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSystem_1a820cdefcbc08706aeb3d191053bf3fa1" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t System::ram[128 *1024]</definition>
+        <argsstring>[128 *1024]</argsstring>
+        <name>ram</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" line="20" column="13" bodyfile="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSystem_1ae317936c9bcf1374d61745572e0f2f8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>System::System</definition>
+        <argsstring>()</argsstring>
+        <name>System</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" line="15" column="5" bodyfile="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.cpp" bodystart="8" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classSystem_1a3be70bb338e3f062f821173fd15680d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>System::~System</definition>
+        <argsstring>()</argsstring>
+        <name>~System</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" line="16" column="5" bodyfile="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.cpp" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classSystem_1ad5193a1def96c0614cfa4b786338eded" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t System::read_ram</definition>
+        <argsstring>(uint32_t addr)</argsstring>
+        <name>read_ram</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" line="23" column="13" bodyfile="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.cpp" bodystart="17" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classSystem_1a1d2787d0eb3863635270d43dee00e999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void System::write_ram</definition>
+        <argsstring>(uint32_t addr, uint8_t data)</argsstring>
+        <name>write_ram</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" line="24" column="10" bodyfile="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.cpp" bodystart="25" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>System</label>
+        <link refid="classSystem"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>cpu</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Cpu</label>
+        <link refid="classCpu"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" line="12" column="1" bodyfile="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h" bodystart="13" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classSystem_1ada155fce116e1738a703bf955d94a1b7" prot="public" virt="non-virtual"><scope>System</scope><name>cpu</name></member>
+      <member refid="classSystem_1a820cdefcbc08706aeb3d191053bf3fa1" prot="public" virt="non-virtual"><scope>System</scope><name>ram</name></member>
+      <member refid="classSystem_1ad5193a1def96c0614cfa4b786338eded" prot="public" virt="non-virtual"><scope>System</scope><name>read_ram</name></member>
+      <member refid="classSystem_1ae317936c9bcf1374d61745572e0f2f8a" prot="public" virt="non-virtual"><scope>System</scope><name>System</name></member>
+      <member refid="classSystem_1a1d2787d0eb3863635270d43dee00e999" prot="public" virt="non-virtual"><scope>System</scope><name>write_ram</name></member>
+      <member refid="classSystem_1a3be70bb338e3f062f821173fd15680d0" prot="public" virt="non-virtual"><scope>System</scope><name>~System</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

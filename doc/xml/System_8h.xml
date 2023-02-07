@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="System_8h" kind="file" language="C++">
+    <compoundname>System.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes refid="Cpu_8h" local="yes">Cpu.h</includes>
+    <includedby refid="Cpu_8cpp" local="yes">/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/Cpu.cpp</includedby>
+    <includedby refid="System_8cpp" local="yes">/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+      <node id="1">
+        <label>/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h</label>
+        <link refid="System_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Cpu.h</label>
+        <link refid="Cpu_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.cpp</label>
+        <link refid="System_8cpp"/>
+      </node>
+      <node id="1">
+        <label>/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h</label>
+        <link refid="System_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/Cpu.cpp</label>
+        <link refid="Cpu_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classSystem" prot="public">System</innerclass>
+    <briefdescription>
+<para>Emulated system functions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Write longer description here </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Cpu_8h" kindref="compound">Cpu.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classSystem" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSystem" kindref="compound">System</ref></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSystem_1ae317936c9bcf1374d61745572e0f2f8a" kindref="member">System</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSystem_1a3be70bb338e3f062f821173fd15680d0" kindref="member">~System</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Devices<sp/>in<sp/>system</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classSystem_1ada155fce116e1738a703bf955d94a1b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCpu" kindref="compound">Cpu</ref><sp/><ref refid="classSystem_1ada155fce116e1738a703bf955d94a1b7" kindref="member">cpu</ref>;</highlight></codeline>
+<codeline lineno="20" refid="classSystem_1a820cdefcbc08706aeb3d191053bf3fa1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classSystem_1a820cdefcbc08706aeb3d191053bf3fa1" kindref="member">ram</ref>[128<sp/>*<sp/>1024];</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//WRAM<sp/>Access</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classSystem_1ad5193a1def96c0614cfa4b786338eded" kindref="member">read_ram</ref>(uint32_t<sp/>addr);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSystem_1a1d2787d0eb3863635270d43dee00e999" kindref="member">write_ram</ref>(uint32_t<sp/>addr,<sp/>uint8_t<sp/>data);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h"/>
+  </compounddef>
+</doxygen>
