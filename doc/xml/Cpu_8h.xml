@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Cpu_8h" kind="file" language="C++">
+    <compoundname>Cpu.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="Cpu_8cpp" local="yes">/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/Cpu.cpp</includedby>
+    <includedby refid="System_8h" local="yes">/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+      <node id="1">
+        <label>/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/Cpu.h</label>
+        <link refid="Cpu_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.cpp</label>
+        <link refid="System_8cpp"/>
+      </node>
+      <node id="3">
+        <label>/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/System.h</label>
+        <link refid="System_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/Cpu.h</label>
+        <link refid="Cpu_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/Cpu.cpp</label>
+        <link refid="Cpu_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classCpu" prot="public">Cpu</innerclass>
+    <innerclass refid="structCpu_1_1Instruction" prot="private">Cpu::Instruction</innerclass>
+    <briefdescription>
+<para>CPU header. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Write longer description here </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSystem" kindref="compound">System</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classCpu" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCpu" kindref="compound">Cpu</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCpu_1aee3f1f0f2f4d85e2681af1e225c8712e" kindref="member">Cpu</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCpu_1aa0a06d3ac0fce5c86a5c61d90d936389" kindref="member">~Cpu</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCpu_1aaa4385272cf616b4d32cd4e85d7ac727" kindref="member">clock</ref>();<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Main<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCpu_1a292315477f0de503b761cfe60e217cd9" kindref="member">ConnectSystem</ref>(<ref refid="classSystem" kindref="compound">System</ref><sp/>*<ref refid="classCpu_1ac037752688c77746c2e5b5e3f466ef06" kindref="member">s</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classCpu_1a4a6597d828fd3da62f00938f2b1bb363" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classCpu_1a4a6597d828fd3da62f00938f2b1bb363" kindref="member">a</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//Accumulator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classCpu_1a7e4660b351277736b9b234a49fcd6ee6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classCpu_1a7e4660b351277736b9b234a49fcd6ee6" kindref="member">d</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//Direct<sp/>Page</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classCpu_1ac037752688c77746c2e5b5e3f466ef06" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classCpu_1ac037752688c77746c2e5b5e3f466ef06" kindref="member">s</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//Stack</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classCpu_1a547168f6d1920c84f77c209c4b667bad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classCpu_1a547168f6d1920c84f77c209c4b667bad" kindref="member">pc</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//Program<sp/>counter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classCpu_1aa9ceb367d040cc56899caaa57bd649c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classCpu_1aa9ceb367d040cc56899caaa57bd649c4" kindref="member">x</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//Index</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classCpu_1a782e3a196088b9a001060e7c97cadb2e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classCpu_1a782e3a196088b9a001060e7c97cadb2e" kindref="member">y</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//Index</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classCpu_1a0e6b27147b4a272a1f8f91238774aaf4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classCpu_1a0e6b27147b4a272a1f8f91238774aaf4" kindref="member">db</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//Data<sp/>bank</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classCpu_1ae9b1616a1c25fbbbbe9c85e3d94b0290" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classCpu_1ae9b1616a1c25fbbbbe9c85e3d94b0290" kindref="member">pb</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//Program<sp/>bank</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classCpu_1a42e0b805b26da042ec9d58e238984e37" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37" kindref="member">FLAGS</ref><sp/>{</highlight></codeline>
+<codeline lineno="36" refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a2b135ff847da42d7ff661b268ef8a14f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a2b135ff847da42d7ff661b268ef8a14f" kindref="member">C</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>0),<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Carry<sp/>Bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classCpu_1a42e0b805b26da042ec9d58e238984e37ade7d478f5dd040a7e9ed0dcf2b575fd4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37ade7d478f5dd040a7e9ed0dcf2b575fd4" kindref="member">Z</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>1),<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classCpu_1a42e0b805b26da042ec9d58e238984e37af0745628e32f250df40addfa672f0ddf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37af0745628e32f250df40addfa672f0ddf" kindref="member">I</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>2),<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>IRQ<sp/>Interrupts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a0849675b727aa0ee73950f914f6088b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a0849675b727aa0ee73950f914f6088b4" kindref="member">D</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>3),<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Decimal<sp/>Mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a453add17e5289c7c73031baed87bf0e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a453add17e5289c7c73031baed87bf0e3" kindref="member">X</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>4),<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Index<sp/>register<sp/>size<sp/>(0=16-bit,<sp/>1=8-bit)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a0f6c6294d89febdee5fd8feff66f768a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a0f6c6294d89febdee5fd8feff66f768a" kindref="member">M</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>5),<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Accumulator<sp/>register<sp/>size<sp/>(0=16-bit,<sp/>1=8-bit)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a83836762d1afca435bbb9f6d3017c48e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a83836762d1afca435bbb9f6d3017c48e" kindref="member">V</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>6),<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Overflow</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a7e844599ce7cb9e92c3e544c1c797698" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37a7e844599ce7cb9e92c3e544c1c797698" kindref="member">N</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>7),<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Negative</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSystem" kindref="compound">System</ref><sp/>*system<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>read(uint32_t<sp/>addr);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>write(uint32_t<sp/>addr,<sp/>uint8_t<sp/>data);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>opcode<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>cycles<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>fetched<sp/>=<sp/>0;<sp/><sp/><sp/></highlight><highlight class="comment">//Input<sp/>value<sp/>for<sp/>ALU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>addr_abs<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>addr_rel<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>temp<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Instruction<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>name;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>(<ref refid="classCpu" kindref="compound">Cpu</ref>::*operate)(void)<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>(<ref refid="classCpu" kindref="compound">Cpu</ref>::*addrmode)(void)<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>cycles<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>arguments<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Instruction&gt;<sp/>instructions;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>fetch();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Flag<sp/>Operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>GetFlag(<ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37" kindref="member">FLAGS</ref><sp/>f);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>SetFlag(<ref refid="classCpu_1a42e0b805b26da042ec9d58e238984e37" kindref="member">FLAGS</ref><sp/>f,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>v);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Addressing<sp/>Modes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ABS();<sp/></highlight><highlight class="comment">//Absolute<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>AII();<sp/></highlight><highlight class="comment">//Absolute<sp/>Indexed<sp/>Indirect<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(a,x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>AIX();<sp/></highlight><highlight class="comment">//Absolute<sp/>Indexed<sp/>with<sp/>X<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a,x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>AIY();<sp/></highlight><highlight class="comment">//Absolute<sp/>Indexed<sp/>with<sp/>Y<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a,y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ABI();<sp/></highlight><highlight class="comment">//Absolute<sp/>Indirect<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(a)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ALX();<sp/></highlight><highlight class="comment">//Absolute<sp/>Long<sp/>Indexed<sp/>with<sp/>X<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al,x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ABL();<sp/></highlight><highlight class="comment">//Absolute<sp/>Long<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ACC();<sp/></highlight><highlight class="comment">//Accumulator<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BLK();<sp/></highlight><highlight class="comment">//Block<sp/>Move<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xyc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DIN();<sp/></highlight><highlight class="comment">//Direct<sp/>Indexed<sp/>Indirect<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(d,x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DIX();<sp/></highlight><highlight class="comment">//Direct<sp/>Indexed<sp/>with<sp/>X<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d,x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DIY();<sp/></highlight><highlight class="comment">//Direct<sp/>Indexed<sp/>with<sp/>y<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d,y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DNI();<sp/></highlight><highlight class="comment">//Direct<sp/>Indirect<sp/>Indexed<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(d),y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DLI();<sp/></highlight><highlight class="comment">//Direct<sp/>Indirect<sp/>Long<sp/>Indexed<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[d],Y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DNL();<sp/></highlight><highlight class="comment">//Direct<sp/>Indirect<sp/>Long<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[d]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DRN();<sp/></highlight><highlight class="comment">//Direct<sp/>Indirect<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(d)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DIR();<sp/></highlight><highlight class="comment">//Direct<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>IMM();<sp/></highlight><highlight class="comment">//Immediate<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>IMP();<sp/></highlight><highlight class="comment">//Implied<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PCL();<sp/></highlight><highlight class="comment">//Program<sp/>Counter<sp/>Relative<sp/>Long<sp/><sp/><sp/><sp/><sp/><sp/><sp/>rl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PCR();<sp/></highlight><highlight class="comment">//Program<sp/>Counter<sp/>Relative<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>STK();<sp/></highlight><highlight class="comment">//Stack<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>SKR();<sp/></highlight><highlight class="comment">//Stack<sp/>Relative<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d,s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>SNI();<sp/></highlight><highlight class="comment">//Stack<sp/>Relative<sp/>Indirect<sp/>Indexed<sp/><sp/><sp/><sp/><sp/>(d,s),y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Opcodes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BRK();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BPL();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>JSR();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BMI();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RTI();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BVC();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RTS();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BVS();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BRA();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BCC();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>LDY();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BCS();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>CPY();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BNE();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>CPX();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BEQ();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ORA();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>AND();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>EOR();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ADC();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>STA();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>LDA();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>CMP();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>SBC();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>COP();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>WDM();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PER();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PRL();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BRL();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>LDX();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>REP();</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>SEP();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TSB();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TRB();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>BIT();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>MVP();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>MVN();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>STZ();</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>STY();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PEI();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PEA();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ASL();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ROL();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>LSR();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ROR();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>STX();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DEC();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>INC();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PHP();</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>CLC();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PLP();</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>SEC();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PHA();</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>CLI();</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PLA();</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>SEI();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DEY();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TYA();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TAY();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>CLV();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>INY();</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>CLD();</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>INX();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>SED();</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PHY();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PLY();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TXA();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TXS();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TAX();</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TSX();</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>DEX();</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PHX();</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>NOP();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PLX();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PHD();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TCS();</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PLD();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TSC();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PHK();</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TCD();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RTL();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TDC();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PHB();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TXY();</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>PLB();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>TYX();</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>WAI();</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>STP();</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>XBA();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>XCE();</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>JMP();</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>JML();</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>XXX();<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Default<sp/>value<sp/>for<sp/>unimplemented<sp/>opcodes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cpu/Cpu.h"/>
+  </compounddef>
+</doxygen>

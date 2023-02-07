@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacesneslite" kind="namespace" language="C++">
+    <compoundname>sneslite</compoundname>
+    <innernamespace refid="namespacesneslite_1_1cartridge">sneslite::cartridge</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/jack/doc/Spring2023/SWELab/sneslite/src/cartridge/interrupt_vectors.hpp" line="17" column="1"/>
+  </compounddef>
+</doxygen>
