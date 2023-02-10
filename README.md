@@ -1,7 +1,15 @@
 # sneslite
 
-## Compile
+## Compiling
 todo
 
 ## Documentation
-todo
+Insert link here
+
+### Compiling documentation
+Compiling documentation requires Doxygen.
+
+After installing Doxygen, run:
+```
+doxygen ./doc/doxygen.conf
+```
