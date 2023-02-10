@@ -1,21 +1,19 @@
-/**
- * @file interrupt_vectors.hpp
- * @brief Interrupt vector table
- * 
- * The SNES stores the interrupt vector table on the first bank of ROM. 
- * After execution of an interrupt, the DBR (Data Bank Register) and PBR
- * (Program Bank Register) are set to 0.
- * 
- * Reference:
- * https://en.wikibooks.org/wiki/Super_NES_Programming/SNES_memory_map#Interrupt_vectors
- */
-
 #pragma once
 
 #include<cstdint>
 
 namespace sneslite::cartridge
 {
+	/**
+ 	* Interrupt vector table.
+ 	* 
+ 	* The SNES stores the interrupt vector table on the first bank of ROM. 
+ 	* After execution of an interrupt, the DBR (Data Bank Register) and PBR
+ 	* (Program Bank Register) are set to 0.
+ 	* 
+ 	* Reference:
+ 	* https://en.wikibooks.org/wiki/Super_NES_Programming/SNES_memory_map#Interrupt_vectors
+ 	*/
 	struct interrupt_table
 	{
 		/**
