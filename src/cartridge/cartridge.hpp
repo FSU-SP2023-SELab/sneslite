@@ -47,15 +47,52 @@ namespace sneslite
              */
             const std::vector<uint8_t>& get_char_rom();
 
+            /**
+             * @brief Get mapper number
+             * 
+             * @return uint8_t MAPPER_NUMBER
+             */
+            const uint8_t get_mapper_number();
+
+            /**
+             * @brief Get mirror type
+             * 
+             * @return const uint8_t MIRROR_TYPE
+             */
+            const uint8_t get_mirror_type();
+
         private:
             /**
              * @brief Holds program ROM data.
              */
-            const std::vector<uint8_t>& PRG_ROM;
+            std::vector<uint8_t> PRG_ROM;
 
             /**
              * @brief Holds character ROM data.
              */
-            const std::vector<uint8_t> CHAR_ROM;
+            std::vector<uint8_t> CHAR_ROM;
+
+            /**
+             * @brief Holds mapper type.
+             */
+            uint8_t MAPPER_NUMBER;
+
+            /**
+             * @brief Three options for NES mirroring.
+             * 
+             * @warning Currently does not support single-screen mirroring, which is available
+             * on certain cartridge chipsets.
+             */
+            enum mirroring
+            {
+                FOUR_SCREEN = 0,
+                VERTICAL = 1,
+                HORIZONTAL = 2
+            };
+
+            /**
+             * @brief Holds mirror type.
+             */
+            mirroring MIRROR_TYPE;
     };
 }
