@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['load_5fdump_5ffile_4',['load_dump_file',['../classsneslite_1_1cartridge.html#a39cff45283223f581bb86ec6aebf6efc',1,'sneslite::cartridge']]]
+  ['d_9',['D',['../classCpu.html#a42e0b805b26da042ec9d58e238984e37a0849675b727aa0ee73950f914f6088b4',1,'Cpu']]]
 ];

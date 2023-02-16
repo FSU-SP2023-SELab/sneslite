@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cpu_66',['cpu',['../classSystem.html#ada155fce116e1738a703bf955d94a1b7',1,'System']]]
+  ['pc_39',['pc',['../classCpu.html#a058fe33dda4e4db9a817f0a80cfec301',1,'Cpu']]]
 ];

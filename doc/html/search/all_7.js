@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pb_23',['pb',['../classCpu.html#ae9b1616a1c25fbbbbe9c85e3d94b0290',1,'Cpu']]],
-  ['pc_24',['pc',['../classCpu.html#a547168f6d1920c84f77c209c4b667bad',1,'Cpu']]]
+  ['n_15',['N',['../classCpu.html#a42e0b805b26da042ec9d58e238984e37a7e844599ce7cb9e92c3e544c1c797698',1,'Cpu']]]
 ];

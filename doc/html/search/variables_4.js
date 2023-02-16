@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ram_71',['ram',['../classSystem.html#a820cdefcbc08706aeb3d191053bf3fa1',1,'System']]]
+  ['y_42',['y',['../classCpu.html#a39c073793e0b364a9db04359be71db0d',1,'Cpu']]]
 ];
