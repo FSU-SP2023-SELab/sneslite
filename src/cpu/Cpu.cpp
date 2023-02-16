@@ -48,6 +48,7 @@ namespace sneslite
 
 	// ADDRESSING MODES
 
+	// Absolute
 	uint8_t Cpu::ABS()
 	{
 		uint8_t lo = read(++pc);
@@ -56,6 +57,7 @@ namespace sneslite
 		return 0;
 	}
 
+	// Absolute indexed with X
 	uint8_t Cpu::ABX()
 	{
 		uint8_t lo = read(++pc);
@@ -64,6 +66,7 @@ namespace sneslite
 		return 0;
 	}
 
+	// Absolute indexed with Y
 	uint8_t Cpu::ABY()
 	{
 		uint8_t lo = read(++pc);
@@ -72,18 +75,21 @@ namespace sneslite
 		return 0;
 	}
 
+	// Immediate
 	uint8_t Cpu::IMM()
 	{
 		addr_abs = ++pc;
 		return 0;
 	}
 
+	// Implied
 	uint8_t Cpu::IMP()
 	{
 		addr_abs = a;
 		return 0;
 	}
 
+	// Indirect
 	uint8_t Cpu::IND()
 	{
 		uint8_t lo = read(++pc);
@@ -92,6 +98,7 @@ namespace sneslite
 		return 0;
 	}
 
+	// Indirect indexed with X
 	uint8_t Cpu::IZX()
 	{
 		uint8_t lo = read(++pc);
@@ -100,6 +107,7 @@ namespace sneslite
 		return 0;
 	}
 
+	// Indirect indexed with Y
 	uint8_t Cpu::IZY()
 	{
 		uint8_t lo = read(++pc);
@@ -108,23 +116,27 @@ namespace sneslite
 		return 0;
 	}
 
+	// Relative TODO
 	uint8_t Cpu::REL()
 	{
 		return 0;
 	}
 
+	// Zero paged indexed
 	uint8_t Cpu::ZP0()
 	{
 		addr_abs = read(++pc);
 		return 0;
 	}
 
+	// Zero page indexed with X
 	uint8_t Cpu::ZPX()
 	{
 		addr_abs = read(++pc + x);
 		return 0;
 	}
 
+	// Zero page indexed with Y
 	uint8_t Cpu::ZPY()
 	{
 		addr_abs = read(++pc + y);
