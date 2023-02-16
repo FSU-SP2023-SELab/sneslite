@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['system_61',['System',['../classSystem.html#ae317936c9bcf1374d61745572e0f2f8a',1,'System']]]
+  ['load_5fdump_5ffile_12',['load_dump_file',['../classsneslite_1_1cartridge.html#a39cff45283223f581bb86ec6aebf6efc',1,'sneslite::cartridge']]]
 ];

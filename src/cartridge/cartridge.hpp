@@ -28,22 +28,22 @@ namespace sneslite
              * @brief Attempt to load a cartridge dump given some path.
              * 
              * @param path 
-             * @return true 
-             * @return false 
+             * @return true, if file loaded 
+             * @return false, if unable to load file
              */
             bool load_dump_file(std::string path);
             
             /**
              * @brief Get program ROM
              * 
-             * @return const std::vector<uint8_t>& 
+             * @return vector<uint8_t> PRG_ROM
              */
             const std::vector<uint8_t>& get_prg_rom();
 
             /**
              * @brief Get character tileset ROM
              * 
-             * @return const std::vector<uint8_t>& 
+             * @return vector<uint8_t> CHAR_ROM
              */
             const std::vector<uint8_t>& get_char_rom();
 

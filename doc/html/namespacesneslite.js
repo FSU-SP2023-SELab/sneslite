@@ -1,4 +1,4 @@
 var namespacesneslite =
 [
-    [ "cartridge", "namespacesneslite_1_1cartridge.html", "namespacesneslite_1_1cartridge" ]
+    [ "cartridge", "classsneslite_1_1cartridge.html", "classsneslite_1_1cartridge" ]
 ];
