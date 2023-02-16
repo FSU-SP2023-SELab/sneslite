@@ -88,6 +88,8 @@ $(document).ready(function(){initNavTree('classCpu.html',''); initResizable(); }
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCpu-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Cpu Class Reference</div>  </div>
@@ -96,6 +98,11 @@ $(document).ready(function(){initNavTree('classCpu.html',''); initResizable(); }
 
 <p><code>#include &lt;<a class="el" href="Cpu_8h_source.html">Cpu.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCpu_1_1Instruction.html">Instruction</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a42e0b805b26da042ec9d58e238984e37"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a42e0b805b26da042ec9d58e238984e37">FLAGS</a> { <br />
@@ -133,6 +140,188 @@ Public Attributes</h2></td></tr>
 <tr class="separator:adfd3af443784dc88b9862043f16ef093"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a058fe33dda4e4db9a817f0a80cfec301"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a058fe33dda4e4db9a817f0a80cfec301">pc</a> = 0</td></tr>
 <tr class="separator:a058fe33dda4e4db9a817f0a80cfec301"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a9180eb0537e1003b6ec502f149b1b805"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a9180eb0537e1003b6ec502f149b1b805">read</a> (uint8_t addr)</td></tr>
+<tr class="separator:a9180eb0537e1003b6ec502f149b1b805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc622dbc765411499b1f73509002f4ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#adc622dbc765411499b1f73509002f4ae">write</a> (uint8_t addr, uint8_t data)</td></tr>
+<tr class="separator:adc622dbc765411499b1f73509002f4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafcd33ee57dccbf195e62fc4d4568dba"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#aafcd33ee57dccbf195e62fc4d4568dba">fetch</a> ()</td></tr>
+<tr class="separator:aafcd33ee57dccbf195e62fc4d4568dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c3a74cbed8d4c31dd40c3543fe638c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ac1c3a74cbed8d4c31dd40c3543fe638c">GetFlag</a> (<a class="el" href="classCpu.html#a42e0b805b26da042ec9d58e238984e37">FLAGS</a> f)</td></tr>
+<tr class="separator:ac1c3a74cbed8d4c31dd40c3543fe638c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bdd65ebb6a49808f88ca561140655e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a7bdd65ebb6a49808f88ca561140655e3">SetFlag</a> (<a class="el" href="classCpu.html#a42e0b805b26da042ec9d58e238984e37">FLAGS</a> f, bool v)</td></tr>
+<tr class="separator:a7bdd65ebb6a49808f88ca561140655e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac03452f23d9aad922c24d646fa03f2b8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ac03452f23d9aad922c24d646fa03f2b8">ABS</a> ()</td></tr>
+<tr class="memdesc:ac03452f23d9aad922c24d646fa03f2b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Absolute.  <a href="classCpu.html#ac03452f23d9aad922c24d646fa03f2b8">More...</a><br /></td></tr>
+<tr class="separator:ac03452f23d9aad922c24d646fa03f2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71a3543ea14054d2d102ee0edd15aa21"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a71a3543ea14054d2d102ee0edd15aa21">ABX</a> ()</td></tr>
+<tr class="memdesc:a71a3543ea14054d2d102ee0edd15aa21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Absolute Indexed with X.  <a href="classCpu.html#a71a3543ea14054d2d102ee0edd15aa21">More...</a><br /></td></tr>
+<tr class="separator:a71a3543ea14054d2d102ee0edd15aa21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a968af20535b54bcb95304d7405e6db"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a4a968af20535b54bcb95304d7405e6db">ABY</a> ()</td></tr>
+<tr class="memdesc:a4a968af20535b54bcb95304d7405e6db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Absolute Indexed with Y.  <a href="classCpu.html#a4a968af20535b54bcb95304d7405e6db">More...</a><br /></td></tr>
+<tr class="separator:a4a968af20535b54bcb95304d7405e6db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6671e36497f8ecbadf7e8045f68bbf2f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a6671e36497f8ecbadf7e8045f68bbf2f">IMM</a> ()</td></tr>
+<tr class="memdesc:a6671e36497f8ecbadf7e8045f68bbf2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Immediate.  <a href="classCpu.html#a6671e36497f8ecbadf7e8045f68bbf2f">More...</a><br /></td></tr>
+<tr class="separator:a6671e36497f8ecbadf7e8045f68bbf2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ca4faad1ab01449ec3d1861ba1e9087"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a0ca4faad1ab01449ec3d1861ba1e9087">IMP</a> ()</td></tr>
+<tr class="memdesc:a0ca4faad1ab01449ec3d1861ba1e9087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implied.  <a href="classCpu.html#a0ca4faad1ab01449ec3d1861ba1e9087">More...</a><br /></td></tr>
+<tr class="separator:a0ca4faad1ab01449ec3d1861ba1e9087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af22dc229ce9d88098302e1eee3d230c0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#af22dc229ce9d88098302e1eee3d230c0">IND</a> ()</td></tr>
+<tr class="memdesc:af22dc229ce9d88098302e1eee3d230c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indirect.  <a href="classCpu.html#af22dc229ce9d88098302e1eee3d230c0">More...</a><br /></td></tr>
+<tr class="separator:af22dc229ce9d88098302e1eee3d230c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1bf56e6034c1208ce61f2454578199b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ad1bf56e6034c1208ce61f2454578199b">IZX</a> ()</td></tr>
+<tr class="memdesc:ad1bf56e6034c1208ce61f2454578199b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indirect Indexed with X.  <a href="classCpu.html#ad1bf56e6034c1208ce61f2454578199b">More...</a><br /></td></tr>
+<tr class="separator:ad1bf56e6034c1208ce61f2454578199b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a378bef86b5129893e5f7d4dda85b05b9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a378bef86b5129893e5f7d4dda85b05b9">IZY</a> ()</td></tr>
+<tr class="memdesc:a378bef86b5129893e5f7d4dda85b05b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indirect Indexed with Y.  <a href="classCpu.html#a378bef86b5129893e5f7d4dda85b05b9">More...</a><br /></td></tr>
+<tr class="separator:a378bef86b5129893e5f7d4dda85b05b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dd7ca6098af21da4855b92005b9a846"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a0dd7ca6098af21da4855b92005b9a846">REL</a> ()</td></tr>
+<tr class="memdesc:a0dd7ca6098af21da4855b92005b9a846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relative TODO.  <a href="classCpu.html#a0dd7ca6098af21da4855b92005b9a846">More...</a><br /></td></tr>
+<tr class="separator:a0dd7ca6098af21da4855b92005b9a846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee5fa3d771054b366eaee51c7c522a97"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#aee5fa3d771054b366eaee51c7c522a97">ZP0</a> ()</td></tr>
+<tr class="memdesc:aee5fa3d771054b366eaee51c7c522a97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zero Page Indexed.  <a href="classCpu.html#aee5fa3d771054b366eaee51c7c522a97">More...</a><br /></td></tr>
+<tr class="separator:aee5fa3d771054b366eaee51c7c522a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925d852a826c07e086881d9fd5ca180f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a925d852a826c07e086881d9fd5ca180f">ZPX</a> ()</td></tr>
+<tr class="memdesc:a925d852a826c07e086881d9fd5ca180f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zero Page Indexed with X.  <a href="classCpu.html#a925d852a826c07e086881d9fd5ca180f">More...</a><br /></td></tr>
+<tr class="separator:a925d852a826c07e086881d9fd5ca180f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff799ddd0ca640b9a515c13d58f97f26"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#aff799ddd0ca640b9a515c13d58f97f26">ZPY</a> ()</td></tr>
+<tr class="memdesc:aff799ddd0ca640b9a515c13d58f97f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zero Page Indexed with Y.  <a href="classCpu.html#aff799ddd0ca640b9a515c13d58f97f26">More...</a><br /></td></tr>
+<tr class="separator:aff799ddd0ca640b9a515c13d58f97f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41bcdb280b116340396804f7555e2c0e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a41bcdb280b116340396804f7555e2c0e">ADC</a> ()</td></tr>
+<tr class="separator:a41bcdb280b116340396804f7555e2c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d0c07b9f99d6586823321f519aa8940"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a8d0c07b9f99d6586823321f519aa8940">AND</a> ()</td></tr>
+<tr class="separator:a8d0c07b9f99d6586823321f519aa8940"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406f5fa454f1676d965f9bf0a53b6b0e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a406f5fa454f1676d965f9bf0a53b6b0e">ASL</a> ()</td></tr>
+<tr class="separator:a406f5fa454f1676d965f9bf0a53b6b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2331f8c43eb96c309557647f84021a8b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a2331f8c43eb96c309557647f84021a8b">BIT</a> ()</td></tr>
+<tr class="separator:a2331f8c43eb96c309557647f84021a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5e80530f5faa649df5e01dd4e29dd36"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ae5e80530f5faa649df5e01dd4e29dd36">BRK</a> ()</td></tr>
+<tr class="separator:ae5e80530f5faa649df5e01dd4e29dd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee9daf69d6f684b19fd99dbf50173364"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#aee9daf69d6f684b19fd99dbf50173364">CMP</a> ()</td></tr>
+<tr class="separator:aee9daf69d6f684b19fd99dbf50173364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac34d411420e3aaf0ea165e494f9ee593"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ac34d411420e3aaf0ea165e494f9ee593">CPX</a> ()</td></tr>
+<tr class="separator:ac34d411420e3aaf0ea165e494f9ee593"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9407fc1c8de70a9266724980f382ba7a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a9407fc1c8de70a9266724980f382ba7a">CPY</a> ()</td></tr>
+<tr class="separator:a9407fc1c8de70a9266724980f382ba7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a14bde1582a85d35c89ce661821ce57"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a0a14bde1582a85d35c89ce661821ce57">DEC</a> ()</td></tr>
+<tr class="separator:a0a14bde1582a85d35c89ce661821ce57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e2bfa84c2a3451dd5b2c733fd3bd733"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a1e2bfa84c2a3451dd5b2c733fd3bd733">EOR</a> ()</td></tr>
+<tr class="separator:a1e2bfa84c2a3451dd5b2c733fd3bd733"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2c36aae90eefbb2d59e71e0d8d2fe35"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ad2c36aae90eefbb2d59e71e0d8d2fe35">INC</a> ()</td></tr>
+<tr class="separator:ad2c36aae90eefbb2d59e71e0d8d2fe35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a653cad53d96024ceb59b0c188e1cf8b1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a653cad53d96024ceb59b0c188e1cf8b1">JMP</a> ()</td></tr>
+<tr class="separator:a653cad53d96024ceb59b0c188e1cf8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b0d46c8cbaf822b493e89aa0926112"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ab6b0d46c8cbaf822b493e89aa0926112">JSR</a> ()</td></tr>
+<tr class="separator:ab6b0d46c8cbaf822b493e89aa0926112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f82e82a10b282a8d1e7dc3fe625ad03"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a6f82e82a10b282a8d1e7dc3fe625ad03">LDA</a> ()</td></tr>
+<tr class="separator:a6f82e82a10b282a8d1e7dc3fe625ad03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aa58066a0daa8a28464f96d66a7709b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a0aa58066a0daa8a28464f96d66a7709b">LDX</a> ()</td></tr>
+<tr class="separator:a0aa58066a0daa8a28464f96d66a7709b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b8d923860435d1d0d2772a7b9087c49"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a1b8d923860435d1d0d2772a7b9087c49">LDY</a> ()</td></tr>
+<tr class="separator:a1b8d923860435d1d0d2772a7b9087c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3035b656360eb6d772e79b637d526e4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#af3035b656360eb6d772e79b637d526e4">LSR</a> ()</td></tr>
+<tr class="separator:af3035b656360eb6d772e79b637d526e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fc02fc78868c9e86087d18833090f8f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a9fc02fc78868c9e86087d18833090f8f">NOP</a> ()</td></tr>
+<tr class="separator:a9fc02fc78868c9e86087d18833090f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3dc5b61cb88617ac447c100b22008f4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ae3dc5b61cb88617ac447c100b22008f4">ORA</a> ()</td></tr>
+<tr class="separator:ae3dc5b61cb88617ac447c100b22008f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a293acfe134309d7596715579a454f67c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a293acfe134309d7596715579a454f67c">ROL</a> ()</td></tr>
+<tr class="separator:a293acfe134309d7596715579a454f67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6c9759fbb7d99ca17aacc5b825159ee"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ad6c9759fbb7d99ca17aacc5b825159ee">ROR</a> ()</td></tr>
+<tr class="separator:ad6c9759fbb7d99ca17aacc5b825159ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98b42fdb2a2b19538b034f77270631b8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a98b42fdb2a2b19538b034f77270631b8">RTI</a> ()</td></tr>
+<tr class="separator:a98b42fdb2a2b19538b034f77270631b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06d5d411e5f791f5d47fcd8d668f62a9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a06d5d411e5f791f5d47fcd8d668f62a9">RTS</a> ()</td></tr>
+<tr class="separator:a06d5d411e5f791f5d47fcd8d668f62a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1918c5adb81edf57883632d37f14b259"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a1918c5adb81edf57883632d37f14b259">SBC</a> ()</td></tr>
+<tr class="separator:a1918c5adb81edf57883632d37f14b259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d8c30350a02bc1d152bfa455a993733"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a0d8c30350a02bc1d152bfa455a993733">STA</a> ()</td></tr>
+<tr class="separator:a0d8c30350a02bc1d152bfa455a993733"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3458f9a88e37db652c87fb7956be281"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ab3458f9a88e37db652c87fb7956be281">STX</a> ()</td></tr>
+<tr class="separator:ab3458f9a88e37db652c87fb7956be281"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a740b28288585c98dca79cba7601ad4fc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a740b28288585c98dca79cba7601ad4fc">STY</a> ()</td></tr>
+<tr class="separator:a740b28288585c98dca79cba7601ad4fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f7366faf07f8553c358a1f3155323b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a74f7366faf07f8553c358a1f3155323b">BPL</a> ()</td></tr>
+<tr class="separator:a74f7366faf07f8553c358a1f3155323b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c0202e1d82d663d4da8cf0da5e6db1c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a4c0202e1d82d663d4da8cf0da5e6db1c">BMI</a> ()</td></tr>
+<tr class="separator:a4c0202e1d82d663d4da8cf0da5e6db1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac46e567cbc21ea60696650b913dacde7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ac46e567cbc21ea60696650b913dacde7">BVC</a> ()</td></tr>
+<tr class="separator:ac46e567cbc21ea60696650b913dacde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8dd2e667e321df4ab71c951f7a54606"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#aa8dd2e667e321df4ab71c951f7a54606">BVS</a> ()</td></tr>
+<tr class="separator:aa8dd2e667e321df4ab71c951f7a54606"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a729467eb3a2ba7397b3a19f32d0a3e28"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a729467eb3a2ba7397b3a19f32d0a3e28">BCC</a> ()</td></tr>
+<tr class="separator:a729467eb3a2ba7397b3a19f32d0a3e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cf4d24510688037a5887edf4ccfe493"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a0cf4d24510688037a5887edf4ccfe493">BCS</a> ()</td></tr>
+<tr class="separator:a0cf4d24510688037a5887edf4ccfe493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe5ff7eae71263c9cf32956ebe5b754c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#afe5ff7eae71263c9cf32956ebe5b754c">BNE</a> ()</td></tr>
+<tr class="separator:afe5ff7eae71263c9cf32956ebe5b754c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca56759b5cc35fa2cd3440fca19ce18e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#aca56759b5cc35fa2cd3440fca19ce18e">BEQ</a> ()</td></tr>
+<tr class="separator:aca56759b5cc35fa2cd3440fca19ce18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad335ab4ce3c1d4ef2fc21254443e93a0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ad335ab4ce3c1d4ef2fc21254443e93a0">CLC</a> ()</td></tr>
+<tr class="separator:ad335ab4ce3c1d4ef2fc21254443e93a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af85505f81e39837226b122702a47030e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#af85505f81e39837226b122702a47030e">SEC</a> ()</td></tr>
+<tr class="separator:af85505f81e39837226b122702a47030e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ede848cf40cc0033373edee64445f7b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a3ede848cf40cc0033373edee64445f7b">CLI</a> ()</td></tr>
+<tr class="separator:a3ede848cf40cc0033373edee64445f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54ec8f1a2d6e6229e089605837e6db0b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a54ec8f1a2d6e6229e089605837e6db0b">SEI</a> ()</td></tr>
+<tr class="separator:a54ec8f1a2d6e6229e089605837e6db0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cc21c28d301402e53f2fc5bc0448969"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a1cc21c28d301402e53f2fc5bc0448969">CLV</a> ()</td></tr>
+<tr class="separator:a1cc21c28d301402e53f2fc5bc0448969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a0b91a7cb11f86ce9f993216aa51909"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a9a0b91a7cb11f86ce9f993216aa51909">CLD</a> ()</td></tr>
+<tr class="separator:a9a0b91a7cb11f86ce9f993216aa51909"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cd2b9d44bd01e97a298838241787037"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a5cd2b9d44bd01e97a298838241787037">SED</a> ()</td></tr>
+<tr class="separator:a5cd2b9d44bd01e97a298838241787037"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1f626f185d6b5b433f2cad08c05cff8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ad1f626f185d6b5b433f2cad08c05cff8">TAX</a> ()</td></tr>
+<tr class="separator:ad1f626f185d6b5b433f2cad08c05cff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1306a6209d3fc84395ce72389dd3e856"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a1306a6209d3fc84395ce72389dd3e856">TXA</a> ()</td></tr>
+<tr class="separator:a1306a6209d3fc84395ce72389dd3e856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad70f27d5fd8caf4c8e89f4066db84669"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ad70f27d5fd8caf4c8e89f4066db84669">DEX</a> ()</td></tr>
+<tr class="separator:ad70f27d5fd8caf4c8e89f4066db84669"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16566d7761da60b77f479530495b0376"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a16566d7761da60b77f479530495b0376">INX</a> ()</td></tr>
+<tr class="separator:a16566d7761da60b77f479530495b0376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b50ed5be71a5081d1ca174258cd5b58"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a7b50ed5be71a5081d1ca174258cd5b58">TAY</a> ()</td></tr>
+<tr class="separator:a7b50ed5be71a5081d1ca174258cd5b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac80284d07dbe514f9979146b2a1400bc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ac80284d07dbe514f9979146b2a1400bc">TYA</a> ()</td></tr>
+<tr class="separator:ac80284d07dbe514f9979146b2a1400bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2063c1a7e7382415fc8c4d261fbd7c91"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a2063c1a7e7382415fc8c4d261fbd7c91">DEY</a> ()</td></tr>
+<tr class="separator:a2063c1a7e7382415fc8c4d261fbd7c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82de4e28f0001f36bf66c3c84b95a9e0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a82de4e28f0001f36bf66c3c84b95a9e0">INY</a> ()</td></tr>
+<tr class="separator:a82de4e28f0001f36bf66c3c84b95a9e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8be84a0aeddf091b7df486994ad56d3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ab8be84a0aeddf091b7df486994ad56d3">TXS</a> ()</td></tr>
+<tr class="separator:ab8be84a0aeddf091b7df486994ad56d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f923792c079f4aee2fd540d970fff3b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a7f923792c079f4aee2fd540d970fff3b">TSX</a> ()</td></tr>
+<tr class="separator:a7f923792c079f4aee2fd540d970fff3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d754b7958c90225fc4a8ac291ee8e48"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a4d754b7958c90225fc4a8ac291ee8e48">PHA</a> ()</td></tr>
+<tr class="separator:a4d754b7958c90225fc4a8ac291ee8e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa22fd6792adfde82e0346f89e55827d7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#aa22fd6792adfde82e0346f89e55827d7">PLA</a> ()</td></tr>
+<tr class="separator:aa22fd6792adfde82e0346f89e55827d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1234a40cf994dda54a3a84c424e21659"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a1234a40cf994dda54a3a84c424e21659">PHP</a> ()</td></tr>
+<tr class="separator:a1234a40cf994dda54a3a84c424e21659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b266f31b533730abf3773ec9d9d012c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a8b266f31b533730abf3773ec9d9d012c">PLP</a> ()</td></tr>
+<tr class="separator:a8b266f31b533730abf3773ec9d9d012c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b18f6eb58d232e6c87871e6ad5c8152"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a0b18f6eb58d232e6c87871e6ad5c8152">XXX</a> ()</td></tr>
+<tr class="separator:a0b18f6eb58d232e6c87871e6ad5c8152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8214e49dbaa47f2bdf08b58488525447"><td class="memItemLeft" align="right" valign="top">System *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a8214e49dbaa47f2bdf08b58488525447">system</a> = nullptr</td></tr>
+<tr class="separator:a8214e49dbaa47f2bdf08b58488525447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca57fecf644b0fe46c11a0f39c3360e8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#aca57fecf644b0fe46c11a0f39c3360e8">opcode</a> = 0</td></tr>
+<tr class="separator:aca57fecf644b0fe46c11a0f39c3360e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8d260a47ac1ad47f54d8dc1e5692e0a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ae8d260a47ac1ad47f54d8dc1e5692e0a">cycles</a> = 0</td></tr>
+<tr class="separator:ae8d260a47ac1ad47f54d8dc1e5692e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96b8e3e88b0e2ea303563bb6a76d024a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a96b8e3e88b0e2ea303563bb6a76d024a">fetched</a> = 0</td></tr>
+<tr class="separator:a96b8e3e88b0e2ea303563bb6a76d024a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad12e3df407662b7aaf3c361b599a5064"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#ad12e3df407662b7aaf3c361b599a5064">addr_abs</a> = 0</td></tr>
+<tr class="separator:ad12e3df407662b7aaf3c361b599a5064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adac462d91565938fff2673e709e5fea4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#adac462d91565938fff2673e709e5fea4">addr_rel</a> = 0</td></tr>
+<tr class="separator:adac462d91565938fff2673e709e5fea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e5126a55e2ae388c9552f91cf73469d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a8e5126a55e2ae388c9552f91cf73469d">temp</a> = 0</td></tr>
+<tr class="separator:a8e5126a55e2ae388c9552f91cf73469d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93f3b4dbfd5f328f08372aaa1a4178d1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCpu_1_1Instruction.html">Instruction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCpu.html#a93f3b4dbfd5f328f08372aaa1a4178d1">instructions</a></td></tr>
+<tr class="separator:a93f3b4dbfd5f328f08372aaa1a4178d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a42e0b805b26da042ec9d58e238984e37"></a>
@@ -193,6 +382,490 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac03452f23d9aad922c24d646fa03f2b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac03452f23d9aad922c24d646fa03f2b8">&#9670;&nbsp;</a></span>ABS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ABS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Absolute. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 extra cycles </dd></dl>
+
+</div>
+</div>
+<a id="a71a3543ea14054d2d102ee0edd15aa21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71a3543ea14054d2d102ee0edd15aa21">&#9670;&nbsp;</a></span>ABX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ABX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Absolute Indexed with X. </p>
+<dl class="section return"><dt>Returns</dt><dd>TODO 1 extra if new page </dd></dl>
+
+</div>
+</div>
+<a id="a4a968af20535b54bcb95304d7405e6db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a968af20535b54bcb95304d7405e6db">&#9670;&nbsp;</a></span>ABY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ABY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Absolute Indexed with Y. </p>
+<dl class="section return"><dt>Returns</dt><dd>TODO 1 extra if new page </dd></dl>
+
+</div>
+</div>
+<a id="a41bcdb280b116340396804f7555e2c0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41bcdb280b116340396804f7555e2c0e">&#9670;&nbsp;</a></span>ADC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ADC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d0c07b9f99d6586823321f519aa8940"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d0c07b9f99d6586823321f519aa8940">&#9670;&nbsp;</a></span>AND()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::AND </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a406f5fa454f1676d965f9bf0a53b6b0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a406f5fa454f1676d965f9bf0a53b6b0e">&#9670;&nbsp;</a></span>ASL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ASL </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a729467eb3a2ba7397b3a19f32d0a3e28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a729467eb3a2ba7397b3a19f32d0a3e28">&#9670;&nbsp;</a></span>BCC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BCC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0cf4d24510688037a5887edf4ccfe493"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cf4d24510688037a5887edf4ccfe493">&#9670;&nbsp;</a></span>BCS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BCS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca56759b5cc35fa2cd3440fca19ce18e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca56759b5cc35fa2cd3440fca19ce18e">&#9670;&nbsp;</a></span>BEQ()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BEQ </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2331f8c43eb96c309557647f84021a8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2331f8c43eb96c309557647f84021a8b">&#9670;&nbsp;</a></span>BIT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BIT </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c0202e1d82d663d4da8cf0da5e6db1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c0202e1d82d663d4da8cf0da5e6db1c">&#9670;&nbsp;</a></span>BMI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BMI </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe5ff7eae71263c9cf32956ebe5b754c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe5ff7eae71263c9cf32956ebe5b754c">&#9670;&nbsp;</a></span>BNE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BNE </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74f7366faf07f8553c358a1f3155323b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74f7366faf07f8553c358a1f3155323b">&#9670;&nbsp;</a></span>BPL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BPL </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5e80530f5faa649df5e01dd4e29dd36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5e80530f5faa649df5e01dd4e29dd36">&#9670;&nbsp;</a></span>BRK()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BRK </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac46e567cbc21ea60696650b913dacde7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac46e567cbc21ea60696650b913dacde7">&#9670;&nbsp;</a></span>BVC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BVC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8dd2e667e321df4ab71c951f7a54606"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8dd2e667e321df4ab71c951f7a54606">&#9670;&nbsp;</a></span>BVS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::BVS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad335ab4ce3c1d4ef2fc21254443e93a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad335ab4ce3c1d4ef2fc21254443e93a0">&#9670;&nbsp;</a></span>CLC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::CLC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a0b91a7cb11f86ce9f993216aa51909"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a0b91a7cb11f86ce9f993216aa51909">&#9670;&nbsp;</a></span>CLD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::CLD </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ede848cf40cc0033373edee64445f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ede848cf40cc0033373edee64445f7b">&#9670;&nbsp;</a></span>CLI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::CLI </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aaa4385272cf616b4d32cd4e85d7ac727"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa4385272cf616b4d32cd4e85d7ac727">&#9670;&nbsp;</a></span>clock()</h2>
 
@@ -206,6 +879,56 @@ Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1cc21c28d301402e53f2fc5bc0448969"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cc21c28d301402e53f2fc5bc0448969">&#9670;&nbsp;</a></span>CLV()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::CLV </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee9daf69d6f684b19fd99dbf50173364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee9daf69d6f684b19fd99dbf50173364">&#9670;&nbsp;</a></span>CMP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::CMP </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -228,6 +951,1382 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac34d411420e3aaf0ea165e494f9ee593"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac34d411420e3aaf0ea165e494f9ee593">&#9670;&nbsp;</a></span>CPX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::CPX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9407fc1c8de70a9266724980f382ba7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9407fc1c8de70a9266724980f382ba7a">&#9670;&nbsp;</a></span>CPY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::CPY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0a14bde1582a85d35c89ce661821ce57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a14bde1582a85d35c89ce661821ce57">&#9670;&nbsp;</a></span>DEC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::DEC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad70f27d5fd8caf4c8e89f4066db84669"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70f27d5fd8caf4c8e89f4066db84669">&#9670;&nbsp;</a></span>DEX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::DEX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2063c1a7e7382415fc8c4d261fbd7c91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2063c1a7e7382415fc8c4d261fbd7c91">&#9670;&nbsp;</a></span>DEY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::DEY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e2bfa84c2a3451dd5b2c733fd3bd733"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e2bfa84c2a3451dd5b2c733fd3bd733">&#9670;&nbsp;</a></span>EOR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::EOR </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aafcd33ee57dccbf195e62fc4d4568dba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafcd33ee57dccbf195e62fc4d4568dba">&#9670;&nbsp;</a></span>fetch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::fetch </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1c3a74cbed8d4c31dd40c3543fe638c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1c3a74cbed8d4c31dd40c3543fe638c">&#9670;&nbsp;</a></span>GetFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::GetFlag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCpu.html#a42e0b805b26da042ec9d58e238984e37">FLAGS</a>&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6671e36497f8ecbadf7e8045f68bbf2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6671e36497f8ecbadf7e8045f68bbf2f">&#9670;&nbsp;</a></span>IMM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::IMM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Immediate. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 extra cycles </dd></dl>
+
+</div>
+</div>
+<a id="a0ca4faad1ab01449ec3d1861ba1e9087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ca4faad1ab01449ec3d1861ba1e9087">&#9670;&nbsp;</a></span>IMP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::IMP </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implied. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 extra cycles </dd></dl>
+
+</div>
+</div>
+<a id="ad2c36aae90eefbb2d59e71e0d8d2fe35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2c36aae90eefbb2d59e71e0d8d2fe35">&#9670;&nbsp;</a></span>INC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::INC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af22dc229ce9d88098302e1eee3d230c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af22dc229ce9d88098302e1eee3d230c0">&#9670;&nbsp;</a></span>IND()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::IND </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indirect. </p>
+<dl class="section return"><dt>Returns</dt><dd>TODO extra cycles if branch </dd></dl>
+
+</div>
+</div>
+<a id="a16566d7761da60b77f479530495b0376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16566d7761da60b77f479530495b0376">&#9670;&nbsp;</a></span>INX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::INX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82de4e28f0001f36bf66c3c84b95a9e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82de4e28f0001f36bf66c3c84b95a9e0">&#9670;&nbsp;</a></span>INY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::INY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1bf56e6034c1208ce61f2454578199b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1bf56e6034c1208ce61f2454578199b">&#9670;&nbsp;</a></span>IZX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::IZX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indirect Indexed with X. </p>
+<dl class="section return"><dt>Returns</dt><dd>TODO extra cycles if branch </dd></dl>
+
+</div>
+</div>
+<a id="a378bef86b5129893e5f7d4dda85b05b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a378bef86b5129893e5f7d4dda85b05b9">&#9670;&nbsp;</a></span>IZY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::IZY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indirect Indexed with Y. </p>
+<dl class="section return"><dt>Returns</dt><dd>TODO extra cycles if branch </dd></dl>
+
+</div>
+</div>
+<a id="a653cad53d96024ceb59b0c188e1cf8b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a653cad53d96024ceb59b0c188e1cf8b1">&#9670;&nbsp;</a></span>JMP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::JMP </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6b0d46c8cbaf822b493e89aa0926112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6b0d46c8cbaf822b493e89aa0926112">&#9670;&nbsp;</a></span>JSR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::JSR </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f82e82a10b282a8d1e7dc3fe625ad03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f82e82a10b282a8d1e7dc3fe625ad03">&#9670;&nbsp;</a></span>LDA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::LDA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0aa58066a0daa8a28464f96d66a7709b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aa58066a0daa8a28464f96d66a7709b">&#9670;&nbsp;</a></span>LDX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::LDX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b8d923860435d1d0d2772a7b9087c49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b8d923860435d1d0d2772a7b9087c49">&#9670;&nbsp;</a></span>LDY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::LDY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af3035b656360eb6d772e79b637d526e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3035b656360eb6d772e79b637d526e4">&#9670;&nbsp;</a></span>LSR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::LSR </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9fc02fc78868c9e86087d18833090f8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fc02fc78868c9e86087d18833090f8f">&#9670;&nbsp;</a></span>NOP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::NOP </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae3dc5b61cb88617ac447c100b22008f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3dc5b61cb88617ac447c100b22008f4">&#9670;&nbsp;</a></span>ORA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ORA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d754b7958c90225fc4a8ac291ee8e48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d754b7958c90225fc4a8ac291ee8e48">&#9670;&nbsp;</a></span>PHA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::PHA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1234a40cf994dda54a3a84c424e21659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1234a40cf994dda54a3a84c424e21659">&#9670;&nbsp;</a></span>PHP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::PHP </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa22fd6792adfde82e0346f89e55827d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa22fd6792adfde82e0346f89e55827d7">&#9670;&nbsp;</a></span>PLA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::PLA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b266f31b533730abf3773ec9d9d012c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b266f31b533730abf3773ec9d9d012c">&#9670;&nbsp;</a></span>PLP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::PLP </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9180eb0537e1003b6ec502f149b1b805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9180eb0537e1003b6ec502f149b1b805">&#9670;&nbsp;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::read </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0dd7ca6098af21da4855b92005b9a846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dd7ca6098af21da4855b92005b9a846">&#9670;&nbsp;</a></span>REL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::REL </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Relative TODO. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 extra cycles </dd></dl>
+
+</div>
+</div>
+<a id="a293acfe134309d7596715579a454f67c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a293acfe134309d7596715579a454f67c">&#9670;&nbsp;</a></span>ROL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ROL </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6c9759fbb7d99ca17aacc5b825159ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6c9759fbb7d99ca17aacc5b825159ee">&#9670;&nbsp;</a></span>ROR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ROR </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a98b42fdb2a2b19538b034f77270631b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98b42fdb2a2b19538b034f77270631b8">&#9670;&nbsp;</a></span>RTI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::RTI </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06d5d411e5f791f5d47fcd8d668f62a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06d5d411e5f791f5d47fcd8d668f62a9">&#9670;&nbsp;</a></span>RTS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::RTS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1918c5adb81edf57883632d37f14b259"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1918c5adb81edf57883632d37f14b259">&#9670;&nbsp;</a></span>SBC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::SBC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af85505f81e39837226b122702a47030e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af85505f81e39837226b122702a47030e">&#9670;&nbsp;</a></span>SEC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::SEC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5cd2b9d44bd01e97a298838241787037"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cd2b9d44bd01e97a298838241787037">&#9670;&nbsp;</a></span>SED()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::SED </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54ec8f1a2d6e6229e089605837e6db0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54ec8f1a2d6e6229e089605837e6db0b">&#9670;&nbsp;</a></span>SEI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::SEI </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7bdd65ebb6a49808f88ca561140655e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bdd65ebb6a49808f88ca561140655e3">&#9670;&nbsp;</a></span>SetFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Cpu::SetFlag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCpu.html#a42e0b805b26da042ec9d58e238984e37">FLAGS</a>&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d8c30350a02bc1d152bfa455a993733"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d8c30350a02bc1d152bfa455a993733">&#9670;&nbsp;</a></span>STA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::STA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3458f9a88e37db652c87fb7956be281"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3458f9a88e37db652c87fb7956be281">&#9670;&nbsp;</a></span>STX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::STX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a740b28288585c98dca79cba7601ad4fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a740b28288585c98dca79cba7601ad4fc">&#9670;&nbsp;</a></span>STY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::STY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1f626f185d6b5b433f2cad08c05cff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1f626f185d6b5b433f2cad08c05cff8">&#9670;&nbsp;</a></span>TAX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::TAX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b50ed5be71a5081d1ca174258cd5b58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b50ed5be71a5081d1ca174258cd5b58">&#9670;&nbsp;</a></span>TAY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::TAY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f923792c079f4aee2fd540d970fff3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f923792c079f4aee2fd540d970fff3b">&#9670;&nbsp;</a></span>TSX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::TSX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1306a6209d3fc84395ce72389dd3e856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1306a6209d3fc84395ce72389dd3e856">&#9670;&nbsp;</a></span>TXA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::TXA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8be84a0aeddf091b7df486994ad56d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8be84a0aeddf091b7df486994ad56d3">&#9670;&nbsp;</a></span>TXS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::TXS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac80284d07dbe514f9979146b2a1400bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac80284d07dbe514f9979146b2a1400bc">&#9670;&nbsp;</a></span>TYA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::TYA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc622dbc765411499b1f73509002f4ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc622dbc765411499b1f73509002f4ae">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Cpu::write </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b18f6eb58d232e6c87871e6ad5c8152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b18f6eb58d232e6c87871e6ad5c8152">&#9670;&nbsp;</a></span>XXX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::XXX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee5fa3d771054b366eaee51c7c522a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee5fa3d771054b366eaee51c7c522a97">&#9670;&nbsp;</a></span>ZP0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ZP0 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zero Page Indexed. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 extra cycles </dd></dl>
+
+</div>
+</div>
+<a id="a925d852a826c07e086881d9fd5ca180f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a925d852a826c07e086881d9fd5ca180f">&#9670;&nbsp;</a></span>ZPX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ZPX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zero Page Indexed with X. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 extra cycles </dd></dl>
+
+</div>
+</div>
+<a id="aff799ddd0ca640b9a515c13d58f97f26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff799ddd0ca640b9a515c13d58f97f26">&#9670;&nbsp;</a></span>ZPY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::ZPY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zero Page Indexed with Y. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 extra cycles </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="aa7c6f4f0b2c114fe671ef56f760a8ce6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa7c6f4f0b2c114fe671ef56f760a8ce6">&#9670;&nbsp;</a></span>a</h2>
@@ -239,6 +2338,138 @@ Public Attributes</h2></td></tr>
           <td class="memname">uint8_t Cpu::a = 0</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad12e3df407662b7aaf3c361b599a5064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad12e3df407662b7aaf3c361b599a5064">&#9670;&nbsp;</a></span>addr_abs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t Cpu::addr_abs = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adac462d91565938fff2673e709e5fea4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adac462d91565938fff2673e709e5fea4">&#9670;&nbsp;</a></span>addr_rel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t Cpu::addr_rel = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8d260a47ac1ad47f54d8dc1e5692e0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8d260a47ac1ad47f54d8dc1e5692e0a">&#9670;&nbsp;</a></span>cycles</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::cycles = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96b8e3e88b0e2ea303563bb6a76d024a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b8e3e88b0e2ea303563bb6a76d024a">&#9670;&nbsp;</a></span>fetched</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::fetched = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93f3b4dbfd5f328f08372aaa1a4178d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93f3b4dbfd5f328f08372aaa1a4178d1">&#9670;&nbsp;</a></span>instructions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structCpu_1_1Instruction.html">Instruction</a>&gt; Cpu::instructions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca57fecf644b0fe46c11a0f39c3360e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca57fecf644b0fe46c11a0f39c3360e8">&#9670;&nbsp;</a></span>opcode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::opcode = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -267,6 +2498,50 @@ Public Attributes</h2></td></tr>
           <td class="memname">uint8_t Cpu::s = 0</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8214e49dbaa47f2bdf08b58488525447"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8214e49dbaa47f2bdf08b58488525447">&#9670;&nbsp;</a></span>system</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">System* Cpu::system = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e5126a55e2ae388c9552f91cf73469d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e5126a55e2ae388c9552f91cf73469d">&#9670;&nbsp;</a></span>temp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Cpu::temp = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

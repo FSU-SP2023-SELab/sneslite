@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['s_40',['s',['../classCpu.html#adfd3af443784dc88b9862043f16ef093',1,'Cpu']]]
+  ['fetched_230',['fetched',['../classsneslite_1_1Cpu.html#afbb024ae960b9ab87bfe067f382bf757',1,'sneslite::Cpu']]]
 ];

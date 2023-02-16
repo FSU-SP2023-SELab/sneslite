@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['n_15',['N',['../classCpu.html#a42e0b805b26da042ec9d58e238984e37a7e844599ce7cb9e92c3e544c1c797698',1,'Cpu']]]
+  ['horizontal_53',['HORIZONTAL',['../classsneslite_1_1cartridge.html#a2255e78db7d20e87ce09f56e19b23164a58f032d2aa53c5692916a554ecb57ea3',1,'sneslite::cartridge']]]
 ];
