@@ -63,6 +63,11 @@ namespace sneslite
 
         private:
             /**
+             * @brief String representation of the iNES file header.
+             */
+            const std::string NES_HEADER = "NES\x1A";
+        
+            /**
              * @brief Holds program ROM data.
              */
             std::vector<uint8_t> PRG_ROM;

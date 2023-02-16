@@ -1,5 +1,4 @@
 #include "cartridge.hpp"
-#include "../debug/logger.hpp"
 
 #include<string>
 #include<fstream>
@@ -14,10 +13,24 @@ namespace sneslite
 
     bool cartridge::load_dump_file(std::string path)
     {
+        // Attempt to open file
         std::ifstream rom_dump(path, std::ios_base::binary | std::ios_base::in);
         if(!rom_dump)
         {
             std::cerr << "Unable to open ROM dump from path: " << path << std::endl;
+            return false;
+        }
+
+        // Check if dump has header
+        std::vector<uint8_t> header;
+        std::cout << "Reading ROM dump from path: " << path << std::endl;
+    
+        // Standard iNES file has a header of 16 bytes
+        header.resize(0x10);
+
+        if(std::string{&header[0], &header[4]} != NES_HEADER)
+        {
+            std::cerr << "File is not in a valid iNES format." << std::endl;
             return false;
         }
     }
