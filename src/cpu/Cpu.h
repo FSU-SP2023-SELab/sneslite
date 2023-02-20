@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-namespace sneslite
+namespace neslite
 {
     class System;
 
@@ -21,16 +21,19 @@ namespace sneslite
             uint8_t a = 0;
             uint8_t x = 0;
             uint8_t y = 0;
-            uint8_t s = 0;
+            uint8_t stack = 0;
+            uint8_t status = 0;
             uint8_t pc = 0;
 
             enum FLAGS {
                 C = (1 << 0),
-                Z = (2 << 0),
-                I = (3 << 0),
-                D = (4 << 0),
-                V = (5 << 0),
-                N = (6 << 0)
+                Z = (1 << 1),
+                I = (1 << 2),
+                D = (1 << 3),
+                B = (1 << 4),
+                U = (1 << 5),
+                V = (1 << 6),
+                N = (1 << 7)
             };
 
         private:
@@ -42,16 +45,15 @@ namespace sneslite
             uint8_t opcode = 0;
             uint8_t cycles = 0;
             uint8_t fetched = 0;
-            uint16_t addr_abs = 0;
+            uint16_t addr = 0;
             uint16_t addr_rel = 0;
-            uint8_t temp = 0;
+            uint16_t temp = 0;
 
             struct Instruction {
                 std::string name;
                 uint8_t (Cpu::*operate)(void) = nullptr;
                 uint8_t (Cpu::*addrmode)(void) = nullptr;
                 uint8_t cycles = 0;
-                uint8_t arguments = 0;
             };
             std::vector<Instruction> instructions;
 
@@ -62,56 +64,63 @@ namespace sneslite
 
             //ADDRESSING MODES
 
-            /// @brief Absolute
+            /// @brief Absolute :: $LL
             /// @return 0 extra cycles
-            uint8_t ABS(); 
+            uint8_t ABS();
 
-            /// @brief Absolute Indexed with X
+            /// @brief Absolute Indexed with X :: $LLHH, X
             /// @return TODO 1 extra if new page
             uint8_t ABX();
 
-            /// @brief Absolute Indexed with Y
+            /// @brief Absolute Indexed with Y :: $LLHH, Y
             /// @return TODO 1 extra if new page
             uint8_t ABY();
             
-            /// @brief Immediate
+            /// @brief Immediate :: #$BB
             /// @return 0 extra cycles
             uint8_t IMM();
             
-            /// @brief Implied
+            /// @brief Implied :: __
             /// @return 0 extra cycles
             uint8_t IMP();
 
-            /// @brief Indirect
+            /// @brief Indirect :: ($LLHH)
             /// @return TODO extra cycles if branch
             uint8_t IND();
 
-            /// @brief Indirect Indexed with X
+            /// @brief Indirect Indexed with X :: ($LL), X :: X added to contents
             /// @return TODO extra cycles if branch
             uint8_t IZX();
 
-            /// @brief Indirect Indexed with Y
+            /// @brief Indirect Indexed with Y :: ($LL), Y :: Y added to contents
             /// @return TODO extra cycles if branch
             uint8_t IZY();
 
-            /// @brief Relative TODO
+            /// @brief X Indexed Indirect :: ($LL, X) :: X added to address
+            /// @return TODO 1 extra if new page
+            uint8_t XIZ();
+
+            /// @brief Y Indexed Indirect :: ($LL, Y) :: Y added to address
+            /// @return TODO 1 extra if new page
+            uint8_t YIZ();
+
+            /// @brief Relative :: $BB
             /// @return 0 extra cycles
             uint8_t REL();
 
-            /// @brief Zero Page Indexed
+            /// @brief Zero Page Indexed :: $LL
             /// @return 0 extra cycles
             uint8_t ZP0();
 
-            /// @brief Zero Page Indexed with X
+            /// @brief Zero Page Indexed with X :: $LL, X
             /// @return 0 extra cycles
             uint8_t ZPX();
 
-            /// @brief Zero Page Indexed with Y
+            /// @brief Zero Page Indexed with Y :: $LL, Y
             /// @return 0 extra cycles
             uint8_t ZPY();
 
             //OPCODES
-
             uint8_t ADC();  //Add with carry
             uint8_t AND();  //Bitwise and
             uint8_t ASL();  //Arithmetic shift left
@@ -151,16 +160,16 @@ namespace sneslite
             uint8_t BEQ();  //Branch on equal
 
             //FLAG OPCODES
-
             uint8_t CLC();  //Clear carry
             uint8_t SEC();  //Set carry
             uint8_t CLI();  //Clear interrupt
             uint8_t SEI();  //Set interrupt
             uint8_t CLV();  //Clear overflow
+            uint8_t SEV();  //Set overflow
             uint8_t CLD();  //Clear decimal
-            uint8_t SED();  //Set overflow
+            uint8_t SED();  //Set decimal
 
-            //REGISTER INSTRUCTIONS
+            //REGISTER OPCODES
             uint8_t TAX();  //Transfer a to x
             uint8_t TXA();  //Transfer x to a
             uint8_t DEX();  //Decrement x
@@ -170,7 +179,7 @@ namespace sneslite
             uint8_t DEY();  //Decrement y
             uint8_t INY();  //Increment y
 
-            //STACK INSTRUCTIONS
+            //STACK OPCODES
             uint8_t TXS();  //Transfer x to stk ptr
             uint8_t TSX();  //Transfer stk ptr to x
             uint8_t PHA();  //Push accumulator

@@ -1,6 +1,6 @@
 #include "Cpu.h"
 
-namespace sneslite
+namespace neslite
 {
 	Cpu::Cpu()
 	{
@@ -25,7 +25,7 @@ namespace sneslite
 		};
 	}
 
-	Cpu::~Cpu();
+	Cpu::~Cpu() {};
 
 	void Cpu::clock()
 	{
@@ -46,100 +46,741 @@ namespace sneslite
 
 	}
 
+	uint8_t Cpu::GetFlag(FLAGS f)
+	{
+		return ((status & f) > 0) ? 1 : 0;
+	}
+
+	void Cpu::SetFlag(FLAGS f, bool v)
+	{
+		if (v) {
+			status |= f;
+		}
+		else {
+			status &= ~f;
+		}
+	}
+
+	uint8_t Cpu::fetch()
+	{
+		if (instructions[opcode].addrmode != &Cpu::IMP) {
+			fetched = read(addr);
+		}
+		return fetched;
+	}
+
 	// ADDRESSING MODES
 
 	// Absolute
 	uint8_t Cpu::ABS()
 	{
-		uint8_t lo = read(++pc);
-		uint8_t hi = read(++pc);
-		addr_abs = (hi << 8) | lo;
+		uint8_t lo = read(pc++);
+		uint8_t hi = read(pc++);
+		addr = (hi << 8) | lo;
 		return 0;
 	}
 
 	// Absolute indexed with X
 	uint8_t Cpu::ABX()
 	{
-		uint8_t lo = read(++pc);
-		uint8_t hi = read(++pc);
-		addr_abs = ((hi << 8) | lo) + x;
+		uint8_t lo = read(pc++);
+		uint8_t hi = read(pc++);
+		addr = ((hi << 8) | lo) + x;
 		return 0;
 	}
 
 	// Absolute indexed with Y
 	uint8_t Cpu::ABY()
 	{
-		uint8_t lo = read(++pc);
-		uint8_t hi = read(++pc);
-		addr_abs = ((hi << 8) | lo) + y;
+		uint8_t lo = read(pc++);
+		uint8_t hi = read(pc++);
+		addr = ((hi << 8) | lo) + y;
 		return 0;
 	}
 
 	// Immediate
 	uint8_t Cpu::IMM()
 	{
-		addr_abs = ++pc;
+		addr = pc++;
 		return 0;
 	}
 
 	// Implied
 	uint8_t Cpu::IMP()
 	{
-		addr_abs = a;
+		addr = a;
 		return 0;
 	}
 
 	// Indirect
 	uint8_t Cpu::IND()
 	{
-		uint8_t lo = read(++pc);
-		uint8_t hi = read(++pc);
-		addr_abs = (hi << 8) | lo;
+		uint8_t lo = read(pc++);
+		uint8_t hi = read(pc++);
+		addr = read((hi << 8) | lo);
 		return 0;
 	}
 
 	// Indirect indexed with X
 	uint8_t Cpu::IZX()
 	{
-		uint8_t lo = read(++pc);
-		uint8_t hi = read(++pc);
-		addr_abs = ((hi << 8) | lo) + x;
+		addr = read(read(pc++)) + x;
 		return 0;
 	}
 
 	// Indirect indexed with Y
 	uint8_t Cpu::IZY()
 	{
-		uint8_t lo = read(++pc);
-		uint8_t hi = read(++pc);
-		addr_abs = ((hi << 8) | lo) + y;
+		addr = read(read(pc++)) + y;
 		return 0;
 	}
 
-	// Relative TODO
+	//X indexed Indirect
+	uint8_t Cpu::XIZ()
+	{
+		addr = read(read(pc++) + x);
+		return 0;
+	}
+
+	//Y indexed Indirect
+	uint8_t Cpu::YIZ()
+	{
+		addr = read(read(pc++) + y);
+		return 0;
+	}
+
+	// Relative
 	uint8_t Cpu::REL()
 	{
+		addr_rel = pc + read(pc++);
 		return 0;
 	}
 
 	// Zero paged indexed
 	uint8_t Cpu::ZP0()
 	{
-		addr_abs = read(++pc);
+		addr = read(pc++);
 		return 0;
 	}
 
 	// Zero page indexed with X
 	uint8_t Cpu::ZPX()
 	{
-		addr_abs = read(++pc + x);
+		addr = read(pc++) + x;
 		return 0;
 	}
 
 	// Zero page indexed with Y
 	uint8_t Cpu::ZPY()
 	{
-		addr_abs = read(++pc + y);
+		addr = read(pc++) + y;
+		return 0;
+	}
+	// ==============================
+	// ========== OPCODES ==========
+	// ==============================
+
+	//Add with Carry
+	uint8_t Cpu::ADC()
+	{
+		temp = (uint16_t) a + (uint16_t) fetch() + (uint16_t) GetFlag(C);
+		SetFlag(C, temp & 0xff00);
+		SetFlag(N, temp & 0x0080);
+		SetFlag(V, (~((uint16_t) a ^ (uint16_t) fetched) 
+			& ((uint16_t) a ^ (uint16_t) temp)) & 0x0080);
+		SetFlag(Z, (temp & 0x00ff) == 0x0000);
+		a = temp & 0x00ff;
+		return 0;
+	}
+
+	//Bitwise AND
+	uint8_t Cpu::AND()
+	{
+		a = a & fetch();
+		SetFlag(N, a & 0x80);
+		SetFlag(Z, a == 0x00);
+
+		return 0;
+	}
+
+	//Arithmetic Shift Left
+	uint8_t Cpu::ASL()
+	{
+		fetch();
+		
+		temp = (uint16_t) fetched << 1;
+		SetFlag(C, temp & 0xFF00);
+		SetFlag(N, temp & 0x0080);
+		SetFlag(Z, temp == 0x0000);
+
+		if (instructions[opcode].addrmode == &Cpu::IMP) {
+			a = temp & 0x00ff;
+		}
+		else {
+			write(addr, temp & 0x00ff);
+		}
+
+		return 0;
+	}
+
+	//Test Bits
+	uint8_t Cpu::BIT()
+	{
+		temp = a & fetch();
+		SetFlag(V, (1 << 6));
+		SetFlag(N, (1 << 7));
+		SetFlag(Z, temp == 0x000);
+
+		return 0;
+	}
+
+	//Break
+	uint8_t Cpu::BRK()
+	{
+		pc++;
+		return 0;
+	}
+
+	//Compare Accumulator
+	uint8_t Cpu::CMP()
+	{
+		fetch();
+		
+		temp = (uint16_t)a - (uint16_t)fetched;
+
+		SetFlag(C, a >= fetched);
+		SetFlag(N, temp & 0x0080);
+		SetFlag(Z, (temp & 0x00ff) == 0x0000);
+
+		return 0;
+	}
+
+	//Compare X Register
+	uint8_t Cpu::CPX()
+	{
+		fetch();
+		
+		temp = (uint16_t)x - (uint16_t)fetched;
+
+		SetFlag(C, x >= fetched);
+		SetFlag(N, temp & 0x0080);
+		SetFlag(Z, (temp & 0x00ff) == 0x0000);
+
+		return 0;
+	}
+
+	//Compare Y Register
+	uint8_t Cpu::CPY()
+	{
+		fetch();
+		
+		temp = (uint16_t)y - (uint16_t)fetched;
+
+		SetFlag(C, y >= fetched);
+		SetFlag(N, temp & 0x0080);
+		SetFlag(Z, (temp & 0x00ff) == 0x0000);
+
+		return 0;
+	}
+
+	//Decrement Memory
+	uint8_t Cpu::DEC()
+	{
+		fetch();
+		
+		temp = fetched - 1;
+		write(addr, temp & 0x00ff);
+		SetFlag(N, temp & 0x0080);
+		SetFlag(Z, (temp & 0x00ff) == 0x0000);
+
+		return 0;
+	}
+
+	//Bitwise XOR
+	uint8_t Cpu::EOR()
+	{
+		a = a ^ fetch();
+		SetFlag(N, a & 0x80);
+		SetFlag(Z, a == 0x00);
+
+		return 0;
+	}
+
+	//Increment Memory
+	uint8_t Cpu::INC()
+	{
+		temp = fetch() + 1;
+		write(addr, temp);
+		SetFlag(N, temp & 0x0080);
+		SetFlag(Z, (temp & 0x00ff) == 0x0000);
+
+		return 0;
+	}
+
+	//Jump
+	uint8_t Cpu::JMP()
+	{
+		pc = addr;
+		return 0;
+	}
+
+	//Jump to Subroutine
+	uint8_t Cpu::JSR()
+	{
+		pc--;
+
+		//Push current pc to stack then transfer control
+		write(0x0100 + stack--, (pc >> 8) & 0x00ff);
+		write(0x0100 + stack--, pc & 0x00ff);
+
+		pc = addr;
+		return 0;
+	}
+
+	//Load Accumulator
+	uint8_t Cpu::LDA()
+	{
+		a = fetch();
+		SetFlag(N, a & 0x80);
+		SetFlag(Z, a == 0x00);
+		return 0;
+	}
+
+	//Load X Register
+	uint8_t Cpu::LDX()
+	{
+		x = fetch();
+		SetFlag(N, x & 0x80);
+		SetFlag(Z, x == 0x00);
+		return 0;
+	}
+
+	//Load Y Register
+	uint8_t Cpu::LDY()
+	{
+		y = fetch();
+		SetFlag(N, y & 0x80);
+		SetFlag(Z, y == 0x00);
+		return 0;
+	}
+
+	//Logical Shift Right
+	uint8_t Cpu::LSR()
+	{
+		fetch();
+
+		SetFlag(C, fetched & 0x01);
+		fetched = fetched >> 1;
+		SetFlag(N, fetched & 0x80);
+		SetFlag(Z, fetched == 0x00);
+		return 0;
+	}
+
+	//No Operation
+	uint8_t Cpu::NOP()
+	{
+		return 0;
+	}
+
+	//Bitwise OR
+	uint8_t Cpu::ORA()
+	{
+		a = a | fetch();
+		SetFlag(N, a & 0x80);
+		SetFlag(Z, a == 0x00);
+		return 0;
+	}
+
+	//Rotate Left
+	uint8_t Cpu::ROL()
+	{
+		temp = (fetch() << 1) + GetFlag(C);
+		SetFlag(C, temp & 0xff00);
+		SetFlag(N, temp & 0x0080);
+		SetFlag(Z, (temp & 0x00ff) == 0x0000);
+
+		if (instructions[opcode].addrmode == &Cpu::IMP) {
+			a = temp & 0x00ff;
+		}
+		else {
+			write(addr, temp & 0x00ff);
+		}
+
+		return 0;
+	}
+
+	//Rotate Right
+	uint8_t Cpu::ROR()
+	{
+		temp = fetch() << 7;
+		if (GetFlag(C)) {
+			temp = temp | 0x8000;
+		}
+		SetFlag(C, temp & 0x00ff);
+		SetFlag(N, temp & 0x8000);
+		SetFlag(Z, (temp & 0xff00) == 0x0000);
+
+		temp = temp >> 8;
+
+		if (instructions[opcode].addrmode == &Cpu::IMP) {
+			a = temp & 0x00ff;
+		}
+		else {
+			write(addr, temp & 0x00ff);
+		}
+
+		return 0;
+	}
+
+	//Return from Interrupt
+	uint8_t Cpu::RTI()
+	{
+		status = read(0x0100 + stack++);
+		pc = read(0x0100 + stack++);
+		return 0;
+	}
+
+	//Return from Subroutine
+	uint8_t Cpu::RTS()
+	{
+		uint8_t lo = read(0x0100 + stack++);
+		uint8_t hi = read(0x0100 + stack++);
+		pc = ((hi << 8) | lo) + 1;
+		return 0;
+	}
+
+	//Subtract with Carry
+	uint8_t Cpu::SBC()
+	{
+		uint16_t flip = ((uint16_t) fetch()) ^ 0x00ff;
+		temp = (uint16_t) a + flip + (uint16_t) GetFlag(C);
+		SetFlag(C, temp & 0xff00);
+		SetFlag(N, temp & 0x0080);
+		SetFlag(V, (temp ^ (uint16_t)a) & (temp ^ flip) & 0x0080);
+		SetFlag(Z, (temp & 0x00ff) == 0x0000);
+		a = temp & 0x00ff;
+		return 0;
+	}
+
+	//Store Accumulator
+	uint8_t Cpu::STA()
+	{
+		write(addr, a);
+		return 0;
+	}
+
+	//Store X Register
+	uint8_t Cpu::STX()
+	{
+		write(addr, x);
+		return 0;
+	}	
+	//Store Y Register
+	uint8_t Cpu::STY()
+	{
+		write(addr, y);
+		return 0;
+	}
+
+	// ========================================
+	// ========== BRANCH OPCODES ==========
+	// ========================================
+
+	//Branch on Plus
+	uint8_t Cpu::BPL()
+	{
+		if (!GetFlag(N)) {
+			addr = pc + addr_rel;
+			cycles += 1 + ((addr & 0xff00) != (pc & 0xff00));
+			pc = addr;
+		}
+
+		cycles += 2;
+		return 0;
+	}
+
+	//Branch on Minus
+	uint8_t Cpu::BMI()
+	{
+		if (GetFlag(N)) {
+			addr = pc + addr_rel;
+			cycles += 1 + ((addr & 0xff00) != (pc & 0xff00));
+			pc = addr;
+		}
+
+		cycles += 2;
+		return 0;
+	}
+
+	//Branch on Overflow Clear
+	uint8_t Cpu::BVC()
+	{
+		if (!GetFlag(V)) {
+			addr = pc + addr_rel;
+			cycles += 1 + ((addr & 0xff00) != (pc & 0xff00));
+			pc = addr;
+		}
+
+		cycles += 2;
+		return 0;
+	}
+
+	//Branch on Overflow Set
+	uint8_t Cpu::BVS()
+	{
+		if (GetFlag(V)) {
+			addr = pc + addr_rel;
+			cycles += 1 + ((addr & 0xff00) != (pc & 0xff00));
+			pc = addr;
+		}
+
+		cycles += 2;
+		return 0;
+	}
+
+	//Branch on Carry Clear
+	uint8_t Cpu::BCC()
+	{
+		if (!GetFlag(C)) {
+			addr = pc + addr_rel;
+			cycles += 1 + ((addr & 0xff00) != (pc & 0xff00));
+			pc = addr;
+		}
+
+		cycles += 2;
+		return 0;
+	}
+
+	//Branch on Carry Set
+	uint8_t Cpu::BCS()
+	{
+		if (GetFlag(C)) {
+			addr = pc + addr_rel;
+			cycles += 1 + ((addr & 0xff00) != (pc & 0xff00));
+			pc = addr;
+		}
+
+		cycles += 2;
+		return 0;
+	}
+
+	//Branch on Not Equal 
+	uint8_t Cpu::BNE()
+	{
+		if (!GetFlag(Z)) {
+			addr = pc + addr_rel;
+			cycles += 1 + ((addr & 0xff00) != (pc & 0xff00));
+			pc = addr;
+		}
+
+		cycles += 2;
+		return 0;
+	}
+
+	//Branch on Equal
+	uint8_t Cpu::BPL()
+	{
+		if (GetFlag(Z)) {
+			addr = pc + addr_rel;
+			cycles += 1 + ((addr & 0xff00) != (pc & 0xff00));
+			pc = addr;
+		}
+
+		cycles += 2;
+		return 0;
+	}
+
+	// ========================================
+	// ========== FLAG OPCODES ==========
+	// ========================================
+
+	//Clear Carry
+	uint8_t Cpu::CLC()
+	{
+		SetFlag(C, false);
+		return 0;
+	}
+
+	//Set Carry
+	uint8_t Cpu::SEC()
+	{
+		SetFlag(C, true);
+		return 0;
+	}
+
+	//Clear Interrupt
+	uint8_t Cpu::CLI()
+	{
+		SetFlag(I, false);
+		return 0;
+	}
+
+	//Set Interrupt
+	uint8_t Cpu::SEI()
+	{
+		SetFlag(I, true);
+		return 0;
+	}
+
+	//Clear Overflow
+	uint8_t Cpu::CLV()
+	{
+		SetFlag(V, false);
+		return 0;
+	}
+
+	//Set Overflow
+	uint8_t Cpu::SEV()
+	{
+		SetFlag(V, true);
+		return 0;
+	}
+
+	//Clear Decimal
+	uint8_t Cpu::CLD()
+	{
+		SetFlag(D, false);
+		return 0;
+	}
+
+	//Set Decimal
+	uint8_t Cpu::SED()
+	{
+		SetFlag(D, true);
+		return 0;
+	}
+
+	// ========================================
+	// ========== REGISTER OPCODES ==========
+	// ========================================
+
+	//Transfer Accumulator to X
+	uint8_t Cpu::TAX()
+	{
+		x = a;
+		SetFlag(N, x & 0x80);
+		SetFlag(Z, x == 0x00);
+		return 0;
+	}
+
+	//Transfer X to Accumulator
+	uint8_t Cpu::TXA()
+	{
+		a = x;
+		SetFlag(N, a & 0x80);
+		SetFlag(N, a == 0x00);
+		return 0;
+	}
+
+	//Decrement X
+	uint8_t Cpu::DEX()
+	{
+		x--;
+		SetFlag(N, x & 0x80);
+		SetFlag(Z, x == 0x00);
+		return 0;
+	}
+
+	//Increment X
+	uint8_t Cpu::INX()
+	{
+		x++;
+		SetFlag(N, x & 0x80);
+		SetFlag(Z, x == 0x00);
+		return 0;
+	}
+
+	//Transfer Accumulator to Y
+	uint8_t Cpu::TAY()
+	{
+		x = a;
+		SetFlag(N, y & 0x80);
+		SetFlag(Z, y == 0x00);
+		return 0;
+	}
+
+	//Transfer Y to Accumulator
+	uint8_t Cpu::TYA()
+	{
+		a = y;
+		SetFlag(N, a & 0x80);
+		SetFlag(N, a == 0x00);
+		return 0;
+	}
+
+	//Decrement Y
+	uint8_t Cpu::DEY()
+	{
+		x--;
+		SetFlag(N, y & 0x80);
+		SetFlag(Z, y == 0x00);
+		return 0;
+	}
+
+	//Increment Y
+	uint8_t Cpu::INY()
+	{
+		x++;
+		SetFlag(N, y & 0x80);
+		SetFlag(Z, y == 0x00);
+		return 0;
+	}
+
+	// ========================================
+	// ========== STACK OPCODES ==========
+	// ========================================
+
+	//Transfer X to stack
+	uint8_t Cpu::TXS()
+	{
+		stack = x;
+		return 0;
+	}
+
+	//Transfer stack to X
+	uint8_t Cpu::TSX()
+	{
+		x = stack;
+		return 0;
+	}
+
+	//Push Accumulator
+	uint8_t Cpu::PHA()
+	{
+		write(0x0100 + stack--, a);
+		return 0;
+	}
+
+	//Pop Accumulator
+	uint8_t Cpu::PLA()
+	{
+		a = read(0x0100 + stack++);
+		SetFlag(N, a & 0x80);
+		SetFlag(Z, a == 0x00);
+		return 0;
+	}
+
+	//Push Processor Status
+	uint8_t Cpu::PHP()
+	{
+		write(0x0100 + stack--, status | B | U);
+		SetFlag(B, 0);
+		SetFlag(U, 0);
+		return 0;
+	}
+
+	//Pull Processor Status
+	uint8_t Cpu::PLP()
+	{
+		status = read(0x0100 + stack++);
+		SetFlag(U, 1);
+		return 0;
+	}
+
+	//Invalid Opcode
+	uint8_t Cpu::XXX()
+	{
 		return 0;
 	}
 }
+
