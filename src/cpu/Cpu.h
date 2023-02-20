@@ -7,6 +7,7 @@
 namespace sneslite
 {
     class System;
+    class Bus;
 
     class Cpu
     {
@@ -17,6 +18,7 @@ namespace sneslite
 
             void clock();
             void ConnectSystem(System *s);
+            void ConnectBus(Bus *n) { bus = n; }
 
             uint8_t a = 0;
             uint8_t x = 0;
@@ -35,9 +37,15 @@ namespace sneslite
 
         private:
 
+            /*
             System *system = nullptr;
             uint8_t read(uint8_t addr);
             void write(uint8_t addr, uint8_t data);
+            */
+
+            Bus* bus = nullptr;
+	        uint8_t read(uint16_t a);
+	        void write(uint16_t a, uint8_t d);
 
             uint8_t opcode = 0;
             uint8_t cycles = 0;

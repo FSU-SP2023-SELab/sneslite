@@ -1,4 +1,5 @@
 #include "Cpu.h"
+#include "Bus.h"
 
 namespace sneslite
 {
@@ -25,7 +26,20 @@ namespace sneslite
 		};
 	}
 
-	Cpu::~Cpu();
+	Cpu::~Cpu()
+	{
+
+	}
+
+	uint8_t Cpu::read(uint16_t a)
+	{
+		return bus->read(a, false);
+	}
+
+	void Cpu::write(uint16_t a, uint8_t d)
+	{
+		bus->write(a, d);
+	}
 
 	void Cpu::clock()
 	{
