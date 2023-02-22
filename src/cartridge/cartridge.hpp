@@ -30,6 +30,8 @@ namespace sneslite
              * @param path 
              * @return true, if file loaded 
              * @return false, if unable to load file
+             * 
+             * @warning PAL cartridges are currently not supported
              */
             bool load_dump_file(std::string path);
             
@@ -39,6 +41,13 @@ namespace sneslite
              * @return vector<uint8_t> PRG_ROM
              */
             const std::vector<uint8_t>& get_prg_rom();
+
+            /**
+             * @brief Get the start position for program ROM
+             * 
+             * @return uint8_t PRG_ROM_START
+             */
+            const uint8_t get_prg_rom_start();
 
             /**
              * @brief Get character tileset ROM
@@ -73,6 +82,11 @@ namespace sneslite
             std::vector<uint8_t> PRG_ROM;
 
             /**
+             * @brief Points to the start position for PRG_ROM.
+             */
+            uint8_t PRG_ROM_START;
+
+            /**
              * @brief Holds character ROM data.
              */
             std::vector<uint8_t> CHAR_ROM;
@@ -81,6 +95,11 @@ namespace sneslite
              * @brief Holds mapper type.
              */
             uint8_t MAPPER_NUMBER;
+
+            /**
+             * @brief Identifies if ROM uses additional RAM banks
+             */
+            bool EXTENDED_RAM;
 
             /**
              * @brief Three options for NES mirroring.
