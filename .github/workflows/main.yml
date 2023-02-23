@@ -37,4 +37,4 @@ jobs:
       with:
         folder: ./docs/html
         token: ${{ secrets.GITHUB_TOKEN }}
-        target-folder: sneslite
+        #target-folder: sneslite
