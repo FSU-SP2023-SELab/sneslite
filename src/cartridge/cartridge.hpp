@@ -45,9 +45,9 @@ namespace sneslite
             /**
              * @brief Get the start position for program ROM
              * 
-             * @return uint8_t PRG_ROM_START
+             * @return uint16_t PRG_ROM_START
              */
-            const uint8_t get_prg_rom_start();
+            const uint16_t get_prg_rom_start();
 
             /**
              * @brief Get character tileset ROM
@@ -84,7 +84,7 @@ namespace sneslite
             /**
              * @brief Points to the start position for PRG_ROM.
              */
-            uint8_t PRG_ROM_START;
+            uint16_t PRG_ROM_START;
 
             /**
              * @brief Holds character ROM data.
