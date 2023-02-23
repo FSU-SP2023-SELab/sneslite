@@ -7,8 +7,8 @@ name: Doxygen Action
 on:
   push:
     branches: [ main ]
-permissions:
-  contents: write
+  permissions:
+    contents: write
 
 
   
@@ -28,13 +28,14 @@ jobs:
       uses: mattnotmitt/doxygen-action@v1.1.0
       with:
         # Path to Doxyfile
-        doxyfile-path: "docs/doxygen.conf" # default is ./Doxyfile
+        doxyfile-path: "./docs/doxygen.conf" # default is ./Doxyfile
         # Working directory
         working-directory: "." # default is .
     
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@v4
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        folder: docs/html
-        token: ${{ secrets.GITHUB_TOKEN }}
-        target-folder: sneslite
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        # Default Doxyfile build documentation to html directory. 
+        # Change the directory if changes in Doxyfile
+        publish_dir: ./docs/html
