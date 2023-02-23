@@ -7,11 +7,7 @@ name: Doxygen Action
 on:
   push:
     branches: [ main ]
-permissions:
-  contents: write
 
-
-  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -32,10 +28,14 @@ jobs:
         # Working directory
         working-directory: "." # default is .
     
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        # Default Doxyfile build documentation to html directory. 
-        # Change the directory if changes in Doxyfile
-        publish_dir: ./docs/html
+    - name: Push a file to another repository
+    uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+    env:
+      API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+    with:
+      source_file: './docs/html'
+      destination_repo: 'ejbrower/ejbrower.github.io'
+      destination_folder: '.'
+      user_email: 'ejb21f@fsu.edu'
+      user_name: 'ejbrower'
+      commit_message: 'Pushed via Github Actions from sneslite'
