@@ -7,8 +7,8 @@ name: Doxygen Action
 on:
   push:
     branches: [ main ]
-  permissions:
-    contents: write
+permissions:
+  contents: write
 
 
   
