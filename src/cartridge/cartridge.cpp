@@ -3,7 +3,6 @@
 #include<string>
 #include<fstream>
 #include<vector>
-#include<variant>
 
 namespace sneslite
 {
@@ -27,7 +26,7 @@ namespace sneslite
         std::vector<uint8_t> HEADER;
         std::cout << "Reading ROM dump from path: " << path << std::endl;
     
-        // Standard iNES file has a HEADER of 16 bytes
+        // Standard iNES file has a header of 16 bytes
         HEADER.resize(0x10);
         if (!rom_dump.read(reinterpret_cast<char*>(&HEADER[0]), 0x10))
         {
@@ -41,7 +40,7 @@ namespace sneslite
             return false;
         }
 
-        std::cout << "Reading HEADER:" << std::endl;
+        std::cout << "Reading iNES header..." << std::endl;
 
         uint8_t file_prg_rom = HEADER[4];
         if(!file_prg_rom)
@@ -127,6 +126,7 @@ namespace sneslite
             return false;
         }
 
+        // Takes ROM dump and casts program rom to vector of bytes in PRG_ROM
         PRG_ROM.resize(0x4000 * file_prg_rom);
         if (!rom_dump.read(reinterpret_cast<char*>(&PRG_ROM[0]), 0x4000 * file_prg_rom))
         {
@@ -140,6 +140,8 @@ namespace sneslite
             std::cerr << "Unable to read CHAR_ROM." << std::endl;
             return false;
         }
+
+        return true;
     }
 
     const std::vector<uint8_t>& cartridge::get_prg_rom()
@@ -147,7 +149,7 @@ namespace sneslite
         return PRG_ROM;
     }
 
-    const uint8_t cartridge::get_prg_rom_start()
+    const uint16_t cartridge::get_prg_rom_start()
     {
         return PRG_ROM_START;
     }
