@@ -36,8 +36,9 @@ jobs:
         source_file: 'html'
         destination_repo: 'ejbrower/ejbrower.github.io'
         destination_folder: '.'
-        user_email: '${{github.event.pusher.email}}'
-        user_name: '${{github.actor}}'
+        # TODO: Figure out way to allow other pushers
+        user_email: 'ejb21f@fsu.edu'
+        user_name: 'ejbrower'
         commit_message: 'Pushed via Github Actions from sneslite'
 
 #    - name: Push docs to remote
