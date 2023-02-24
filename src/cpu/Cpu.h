@@ -21,16 +21,19 @@ namespace sneslite
             uint8_t a = 0;
             uint8_t x = 0;
             uint8_t y = 0;
-            uint8_t s = 0;
+            uint8_t stack = 0;
+            uint8_t status = 0;
             uint8_t pc = 0;
 
             enum FLAGS {
                 C = (1 << 0),
-                Z = (2 << 0),
-                I = (3 << 0),
-                D = (4 << 0),
-                V = (5 << 0),
-                N = (6 << 0)
+                Z = (1 << 1),
+                I = (1 << 2),
+                D = (1 << 3),
+                B = (1 << 4),
+                U = (1 << 5),
+                V = (1 << 6),
+                N = (1 << 7)
             };
 
         private:
@@ -42,16 +45,15 @@ namespace sneslite
             uint8_t opcode = 0;
             uint8_t cycles = 0;
             uint8_t fetched = 0;
-            uint16_t addr_abs = 0;
+            uint16_t addr = 0;
             uint16_t addr_rel = 0;
-            uint8_t temp = 0;
+            uint16_t temp = 0;
 
             struct Instruction {
                 std::string name;
                 uint8_t (Cpu::*operate)(void) = nullptr;
                 uint8_t (Cpu::*addrmode)(void) = nullptr;
                 uint8_t cycles = 0;
-                uint8_t arguments = 0;
             };
             std::vector<Instruction> instructions;
 
@@ -93,6 +95,14 @@ namespace sneslite
             /// @brief Indirect Indexed with Y
             /// @return TODO extra cycles if branch
             uint8_t IZY();
+
+            /// @brief X Indexed Indirect :: ($LL, X) :: X added to address
+            /// @return TODO 1 extra if new page
+            uint8_t XIZ();
+
+            /// @brief Y Indexed Indirect :: ($LL, Y) :: Y added to address
+            /// @return TODO 1 extra if new page
+            uint8_t YIZ();
 
             /// @brief Relative TODO
             /// @return 0 extra cycles
@@ -158,9 +168,9 @@ namespace sneslite
             uint8_t SEI();  //Set interrupt
             uint8_t CLV();  //Clear overflow
             uint8_t CLD();  //Clear decimal
-            uint8_t SED();  //Set overflow
+            uint8_t SED();  //Set decimal
 
-            //REGISTER INSTRUCTIONS
+            //REGISTER OPCODES
             uint8_t TAX();  //Transfer a to x
             uint8_t TXA();  //Transfer x to a
             uint8_t DEX();  //Decrement x
