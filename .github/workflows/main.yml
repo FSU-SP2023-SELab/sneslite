@@ -20,7 +20,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
       with:
-        token: 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
+        token: ${{ secrets.GH_TOKEN }}
         
     - name: Doxygen Action
       uses: mattnotmitt/doxygen-action@v1.1.0
@@ -33,13 +33,13 @@ jobs:
     - name: Push a file to another repository
       uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
       env:
-        API_TOKEN_GITHUB: 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
+        API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
       with:
         source_file: 'html'
         destination_repo: 'ejbrower/ejbrower.github.io'
         destination_folder: '.'
-        user_email: '41898282+github-actions[bot]@users.noreply.github.com'
-        user_name: 'github-actions[bot]'
+        user_email: '${{github.event.pusher.email}}'
+        user_name: '${{github.event.pusher.name}}'
         commit_message: 'Pushed via Github Actions from sneslite'
 
 #    - name: Push docs to remote
