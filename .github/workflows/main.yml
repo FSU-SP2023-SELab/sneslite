@@ -29,13 +29,13 @@ jobs:
         working-directory: "." # default is .
     
     - name: Push a file to another repository
-    uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
-    env:
-      API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-    with:
-      source_file: './docs/html'
-      destination_repo: 'ejbrower/ejbrower.github.io'
-      destination_folder: '.'
-      user_email: 'ejb21f@fsu.edu'
-      user_name: 'ejbrower'
-      commit_message: 'Pushed via Github Actions from sneslite'
+      uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: './docs/html'
+        destination_repo: 'ejbrower/ejbrower.github.io'
+        destination_folder: '.'
+        user_email: 'ejb21f@fsu.edu'
+        user_name: 'ejbrower'
+        commit_message: 'Pushed via Github Actions from sneslite'
