@@ -28,16 +28,28 @@ jobs:
         # Working directory
         working-directory: "." # default is .
 
-    - name: Push docs to remote
-      run: |
-        pwd
-        ls
-        ls ~
-        cd /home/runner/work/sneslite/sneslite/docs/html
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git init
-        git remote add origin https://github.com/ejbrower/ejbrower.github.io.git
-        git add .
-        git commit -m "Update docs"
-        git push origin main --force
+    - name: Push a file to another repository
+      uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'html'
+        destination_repo: 'ejbrower/ejbrower.github.io'
+        destination_folder: '.'
+        user_email: '41898282+github-actions[bot]@users.noreply.github.com'
+        user_name: 'github-actions[bot]'
+        commit_message: 'Pushed via Github Actions from sneslite'
+
+#    - name: Push docs to remote
+#      run: |
+#        pwd
+#        ls
+#        ls ~
+#        cd html
+#        git config --global user.name "github-actions[bot]"
+#        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+#        git init
+#        git remote add origin https://github.com/ejbrower/ejbrower.github.io.git
+#        git add .
+#        git commit -m "Update docs"
+#        git push origin main --force
