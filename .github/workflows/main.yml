@@ -19,6 +19,8 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      with:
+        token: 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
         
     - name: Doxygen Action
       uses: mattnotmitt/doxygen-action@v1.1.0
@@ -31,7 +33,7 @@ jobs:
     - name: Push a file to another repository
       uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
       env:
-        API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
+        API_TOKEN_GITHUB: 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
       with:
         source_file: 'html'
         destination_repo: 'ejbrower/ejbrower.github.io'
