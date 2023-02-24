@@ -30,6 +30,9 @@ jobs:
 
     - name: Push docs to remote
       run: |
+        pwd
+        ls
+        ls ~
         cd /home/runner/work/sneslite/sneslite/docs/html
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
