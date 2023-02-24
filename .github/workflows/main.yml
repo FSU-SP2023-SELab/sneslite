@@ -31,7 +31,7 @@ jobs:
     - name: Push a file to another repository
       uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
       env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
       with:
         source_file: 'html'
         destination_repo: 'ejbrower/ejbrower.github.io'
