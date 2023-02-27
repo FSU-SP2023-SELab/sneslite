@@ -1,7 +1,7 @@
 #include "Cpu.h"
 #include "Bus.h"
 
-namespace neslite
+namespace sneslite
 {
 	Cpu::Cpu()
 	{
@@ -31,12 +31,12 @@ namespace neslite
 
 	}
 
-	uint8_t Cpu::read(uint16_t a)
+	std::uint8_t Cpu::read(std::uint16_t a)
 	{
 		return bus->read(a, false);
 	}
 
-	void Cpu::write(uint16_t a, uint8_t d)
+	void Cpu::write(std::uint16_t a, std::uint8_t d)
 	{
 		bus->write(a, d);
 	}
@@ -45,14 +45,14 @@ namespace neslite
 	void Cpu::clock()
 	{
 		if (cycles == 0) {
-			opcode = read(pc++);
+			opcode = Cpu::read(pc++);
 
 			cycles = instructions[opcode].cycles;
 
 			//Run address mode and operation functions
 			//Returns any additional cycels we need to wait
-			uint8_t addr_mode_add_cycles = (this->*instructions[opcode].addrmode)();
-			uint8_t operation_add_cycles = (this->*instructions[opcode].operate)();
+			std::uint8_t addr_mode_add_cycles = (this->*instructions[opcode].addrmode)();
+			std::uint8_t operation_add_cycles = (this->*instructions[opcode].operate)();
 
 			cycles += addr_mode_add_cycles + operation_add_cycles;
 		}
@@ -61,7 +61,65 @@ namespace neslite
 
 	}
 
-	uint8_t Cpu::GetFlag(FLAGS f)
+	void Cpu::reset()
+	{
+		std::uint16_t lo = Cpu::read(0xfffc);
+		std::uint16_t hi = Cpu::read(0xfffd);
+
+		pc = (hi << 8) | lo;
+
+		a = 0;
+		x = 0;
+		y = 0;
+		stack = 0xfd;
+		status = 0x00 | U;
+
+		addr = 0x0000;
+		addr_rel = 0x0000;
+		fetched = 0x00;
+
+		cycles = 8;
+	}
+
+	void Cpu::irq()
+	{
+		if (GetFlag(I)) {
+			return;
+		}
+
+		PushStack((pc >> 8) & 0x00ff);
+		PushStack((pc & 0x00ff));
+		
+		SetFlag(B, false);
+		SetFlag(U, true);
+		SetFlag(I, true);
+		PushStack(status);
+
+		uint16_t lo = Cpu::read(0xfffe);
+		uint16_t hi = Cpu::read(0xffff);
+		pc = (hi << 8) | lo;
+
+		cycles = 7;
+	}
+
+	void Cpu::nmi()
+	{
+		PushStack((pc >> 8) & 0x00ff);
+		PushStack((pc & 0x00ff));
+		
+		SetFlag(B, false);
+		SetFlag(U, true);
+		SetFlag(I, true);
+		PushStack(status);
+
+		uint16_t lo = Cpu::read(0xfffa);
+		uint16_t hi = Cpu::read(0xfffb);
+		pc = (hi << 8) | lo;
+
+		cycles = 8;
+	}
+
+	std::uint8_t Cpu::GetFlag(FLAGS f)
 	{
 		return ((status & f) > 0) ? 1 : 0;
 	}
@@ -76,10 +134,20 @@ namespace neslite
 		}
 	}
 
-	uint8_t Cpu::fetch()
+	void Cpu::PushStack(std::uint8_t d)
+	{
+		Cpu::write(0x0100 + stack--, d);
+	}
+
+	std::uint8_t Cpu::PopStack()
+	{
+		return Cpu::read(0x0100 + stack++);
+	}
+
+	std::uint8_t Cpu::fetch()
 	{
 		if (instructions[opcode].addrmode != &Cpu::IMP) {
-			fetched = read(addr);
+			fetched = Cpu::read(addr);
 		}
 		return fetched;
 	}
@@ -87,108 +155,108 @@ namespace neslite
 	// ADDRESSING MODES
 
 	// Absolute
-	uint8_t Cpu::ABS()
+	std::uint8_t Cpu::ABS()
 	{
-		uint8_t lo = read(pc++);
-		uint8_t hi = read(pc++);
+		std::uint8_t lo = Cpu::read(pc++);
+		std::uint8_t hi = Cpu::read(pc++);
 		addr = (hi << 8) | lo;
 		return 0;
 	}
 
 	// Absolute indexed with X
-	uint8_t Cpu::ABX()
+	std::uint8_t Cpu::ABX()
 	{
-		uint8_t lo = read(pc++);
-		uint8_t hi = read(pc++);
+		std::uint8_t lo = Cpu::read(pc++);
+		std::uint8_t hi = Cpu::read(pc++);
 		addr = ((hi << 8) | lo) + x;
 		return 0;
 	}
 
 	// Absolute indexed with Y
-	uint8_t Cpu::ABY()
+	std::uint8_t Cpu::ABY()
 	{
-		uint8_t lo = read(pc++);
-		uint8_t hi = read(pc++);
+		std::uint8_t lo = Cpu::read(pc++);
+		std::uint8_t hi = Cpu::read(pc++);
 		addr = ((hi << 8) | lo) + y;
 		return 0;
 	}
 
 	// Immediate
-	uint8_t Cpu::IMM()
+	std::uint8_t Cpu::IMM()
 	{
 		addr = pc++;
 		return 0;
 	}
 
 	// Implied
-	uint8_t Cpu::IMP()
+	std::uint8_t Cpu::IMP()
 	{
 		addr = a;
 		return 0;
 	}
 
 	// Indirect
-	uint8_t Cpu::IND()
+	std::uint8_t Cpu::IND()
 	{
-		uint8_t lo = read(pc++);
-		uint8_t hi = read(pc++);
-		addr = read((hi << 8) | lo);
+		std::uint8_t lo = Cpu::read(pc++);
+		std::uint8_t hi = Cpu::read(pc++);
+		addr = Cpu::read((hi << 8) | lo);
 		return 0;
 	}
 
 	// Indirect indexed with X
-	uint8_t Cpu::IZX()
+	std::uint8_t Cpu::IZX()
 	{
-		addr = read(read(pc++)) + x;
+		addr = Cpu::read(Cpu::read(pc++)) + x;
 		return 0;
 	}
 
 	// Indirect indexed with Y
-	uint8_t Cpu::IZY()
+	std::uint8_t Cpu::IZY()
 	{
-		addr = read(read(pc++)) + y;
+		addr = Cpu::read(Cpu::read(pc++)) + y;
 		return 0;
 	}
 
 	//X indexed Indirect
-	uint8_t Cpu::XIZ()
+	std::uint8_t Cpu::XIZ()
 	{
-		addr = read(read(pc++) + x);
+		addr = Cpu::read(Cpu::read(pc++) + x);
 		return 0;
 	}
 
 	//Y indexed Indirect
-	uint8_t Cpu::YIZ()
+	std::uint8_t Cpu::YIZ()
 	{
-		addr = read(read(pc++) + y);
+		addr = Cpu::read(Cpu::read(pc++) + y);
 		return 0;
 	}
 
 	// Relative
-	uint8_t Cpu::REL()
+	std::uint8_t Cpu::REL()
 	{
-		addr_rel = pc + read(pc++);
+		addr_rel = pc + Cpu::read(pc++);
 		return 0;
 	}
 
 	// Zero paged indexed
-	uint8_t Cpu::ZP0()
+	std::uint8_t Cpu::ZP0()
 	{
-		addr = read(pc++);
+		addr = Cpu::read(pc++);
 		return 0;
 	}
 
 	// Zero page indexed with X
-	uint8_t Cpu::ZPX()
+	std::uint8_t Cpu::ZPX()
 	{
-		addr = read(pc++) + x;
+		addr = Cpu::read(pc++) + x;
 		return 0;
 	}
 
 	// Zero page indexed with Y
-	uint8_t Cpu::ZPY()
+	std::uint8_t Cpu::ZPY()
 	{
-		addr = read(pc++) + y;
+		addr = Cpu::read(pc++) + y;
 		return 0;
 	}
 	// ==============================
@@ -196,20 +264,20 @@ namespace neslite
 	// ==============================
 
 	//Add with Carry
-	uint8_t Cpu::ADC()
+	std::uint8_t Cpu::ADC()
 	{
-		temp = (uint16_t) a + (uint16_t) fetch() + (uint16_t) GetFlag(C);
+		temp = (std::uint16_t) a + (std::uint16_t) fetch() + (std::uint16_t) GetFlag(C);
 		SetFlag(C, temp & 0xff00);
 		SetFlag(N, temp & 0x0080);
-		SetFlag(V, (~((uint16_t) a ^ (uint16_t) fetched) 
-			& ((uint16_t) a ^ (uint16_t) temp)) & 0x0080);
+		SetFlag(V, (~((std::uint16_t) a ^ (std::uint16_t) fetched) 
+			& ((std::uint16_t) a ^ (std::uint16_t) temp)) & 0x0080);
 		SetFlag(Z, (temp & 0x00ff) == 0x0000);
 		a = temp & 0x00ff;
 		return 0;
 	}
 
 	//Bitwise AND
-	uint8_t Cpu::AND()
+	std::uint8_t Cpu::AND()
 	{
 		a = a & fetch();
 		SetFlag(N, a & 0x80);
@@ -219,11 +287,11 @@ namespace neslite
 	}
 
 	//Arithmetic Shift Left
-	uint8_t Cpu::ASL()
+	std::uint8_t Cpu::ASL()
 	{
 		fetch();
 		
-		temp = (uint16_t) fetched << 1;
+		temp = (std::uint16_t) fetched << 1;
 		SetFlag(C, temp & 0xFF00);
 		SetFlag(N, temp & 0x0080);
 		SetFlag(Z, temp == 0x0000);
@@ -232,14 +300,14 @@ namespace neslite
 			a = temp & 0x00ff;
 		}
 		else {
-			write(addr, temp & 0x00ff);
+			Cpu::write(addr, temp & 0x00ff);
 		}
 
 		return 0;
 	}
 
 	//Test Bits
-	uint8_t Cpu::BIT()
+	std::uint8_t Cpu::BIT()
 	{
 		temp = a & fetch();
 		SetFlag(V, (1 << 6));
@@ -250,18 +318,18 @@ namespace neslite
 	}
 
 	//Break
-	uint8_t Cpu::BRK()
+	std::uint8_t Cpu::BRK()
 	{
 		pc++;
 		return 0;
 	}
 
 	//Compare Accumulator
-	uint8_t Cpu::CMP()
+	std::uint8_t Cpu::CMP()
 	{
 		fetch();
 		
-		temp = (uint16_t)a - (uint16_t)fetched;
+		temp = (std::uint16_t)a - (std::uint16_t)fetched;
 
 		SetFlag(C, a >= fetched);
 		SetFlag(N, temp & 0x0080);
@@ -271,11 +339,11 @@ namespace neslite
 	}
 
 	//Compare X Register
-	uint8_t Cpu::CPX()
+	std::uint8_t Cpu::CPX()
 	{
 		fetch();
 		
-		temp = (uint16_t)x - (uint16_t)fetched;
+		temp = (std::uint16_t)x - (std::uint16_t)fetched;
 
 		SetFlag(C, x >= fetched);
 		SetFlag(N, temp & 0x0080);
@@ -285,11 +353,11 @@ namespace neslite
 	}
 
 	//Compare Y Register
-	uint8_t Cpu::CPY()
+	std::uint8_t Cpu::CPY()
 	{
 		fetch();
 		
-		temp = (uint16_t)y - (uint16_t)fetched;
+		temp = (std::uint16_t)y - (std::uint16_t)fetched;
 
 		SetFlag(C, y >= fetched);
 		SetFlag(N, temp & 0x0080);
@@ -299,12 +367,12 @@ namespace neslite
 	}
 
 	//Decrement Memory
-	uint8_t Cpu::DEC()
+	std::uint8_t Cpu::DEC()
 	{
 		fetch();
 		
 		temp = fetched - 1;
-		write(addr, temp & 0x00ff);
+		Cpu::write(addr, temp & 0x00ff);
 		SetFlag(N, temp & 0x0080);
 		SetFlag(Z, (temp & 0x00ff) == 0x0000);
 
@@ -312,7 +380,7 @@ namespace neslite
 	}
 
 	//Bitwise XOR
-	uint8_t Cpu::EOR()
+	std::uint8_t Cpu::EOR()
 	{
 		a = a ^ fetch();
 		SetFlag(N, a & 0x80);
@@ -322,10 +390,10 @@ namespace neslite
 	}
 
 	//Increment Memory
-	uint8_t Cpu::INC()
+	std::uint8_t Cpu::INC()
 	{
 		temp = fetch() + 1;
-		write(addr, temp);
+		Cpu::write(addr, temp);
 		SetFlag(N, temp & 0x0080);
 		SetFlag(Z, (temp & 0x00ff) == 0x0000);
 
@@ -333,27 +401,26 @@ namespace neslite
 	}
 
 	//Jump
-	uint8_t Cpu::JMP()
+	std::uint8_t Cpu::JMP()
 	{
 		pc = addr;
 		return 0;
 	}
 
 	//Jump to Subroutine
-	uint8_t Cpu::JSR()
+	std::uint8_t Cpu::JSR()
 	{
 		pc--;
 
-		//Push current pc to stack then transfer control
-		write(0x0100 + stack--, (pc >> 8) & 0x00ff);
-		write(0x0100 + stack--, pc & 0x00ff);
+		PushStack((pc >> 8) & 0x00ff);
+		PushStack(pc & 0x00ff);
 
 		pc = addr;
 		return 0;
 	}
 
 	//Load Accumulator
-	uint8_t Cpu::LDA()
+	std::uint8_t Cpu::LDA()
 	{
 		a = fetch();
 		SetFlag(N, a & 0x80);
@@ -362,7 +429,7 @@ namespace neslite
 	}
 
 	//Load X Register
-	uint8_t Cpu::LDX()
+	std::uint8_t Cpu::LDX()
 	{
 		x = fetch();
 		SetFlag(N, x & 0x80);
@@ -371,7 +438,7 @@ namespace neslite
 	}
 
 	//Load Y Register
-	uint8_t Cpu::LDY()
+	std::uint8_t Cpu::LDY()
 	{
 		y = fetch();
 		SetFlag(N, y & 0x80);
@@ -380,7 +447,7 @@ namespace neslite
 	}
 
 	//Logical Shift Right
-	uint8_t Cpu::LSR()
+	std::uint8_t Cpu::LSR()
 	{
 		fetch();
 
@@ -392,13 +459,13 @@ namespace neslite
 	}
 
 	//No Operation
-	uint8_t Cpu::NOP()
+	std::uint8_t Cpu::NOP()
 	{
 		return 0;
 	}
 
 	//Bitwise OR
-	uint8_t Cpu::ORA()
+	std::uint8_t Cpu::ORA()
 	{
 		a = a | fetch();
 		SetFlag(N, a & 0x80);
@@ -407,7 +474,7 @@ namespace neslite
 	}
 
 	//Rotate Left
-	uint8_t Cpu::ROL()
+	std::uint8_t Cpu::ROL()
 	{
 		temp = (fetch() << 1) + GetFlag(C);
 		SetFlag(C, temp & 0xff00);
@@ -418,14 +485,14 @@ namespace neslite
 			a = temp & 0x00ff;
 		}
 		else {
-			write(addr, temp & 0x00ff);
+			Cpu::write(addr, temp & 0x00ff);
 		}
 
 		return 0;
 	}
 
 	//Rotate Right
-	uint8_t Cpu::ROR()
+	std::uint8_t Cpu::ROR()
 	{
 		temp = fetch() << 7;
 		if (GetFlag(C)) {
@@ -441,59 +508,59 @@ namespace neslite
 			a = temp & 0x00ff;
 		}
 		else {
-			write(addr, temp & 0x00ff);
+			Cpu::write(addr, temp & 0x00ff);
 		}
 
 		return 0;
 	}
 
 	//Return from Interrupt
-	uint8_t Cpu::RTI()
+	std::uint8_t Cpu::RTI()
 	{
-		status = read(0x0100 + stack++);
-		pc = read(0x0100 + stack++);
+		status = PopStack();
+		pc = PopStack();
 		return 0;
 	}
 
 	//Return from Subroutine
-	uint8_t Cpu::RTS()
+	std::uint8_t Cpu::RTS()
 	{
-		uint8_t lo = read(0x0100 + stack++);
-		uint8_t hi = read(0x0100 + stack++);
+		std::uint8_t lo = PopStack();
+		std::uint8_t hi = PopStack();
 		pc = ((hi << 8) | lo) + 1;
 		return 0;
 	}
 
 	//Subtract with Carry
-	uint8_t Cpu::SBC()
+	std::uint8_t Cpu::SBC()
 	{
-		uint16_t flip = ((uint16_t) fetch()) ^ 0x00ff;
-		temp = (uint16_t) a + flip + (uint16_t) GetFlag(C);
+		std::uint16_t flip = ((std::uint16_t) fetch()) ^ 0x00ff;
+		temp = (std::uint16_t) a + flip + (std::uint16_t) GetFlag(C);
 		SetFlag(C, temp & 0xff00);
 		SetFlag(N, temp & 0x0080);
-		SetFlag(V, (temp ^ (uint16_t)a) & (temp ^ flip) & 0x0080);
+		SetFlag(V, (temp ^ (std::uint16_t)a) & (temp ^ flip) & 0x0080);
 		SetFlag(Z, (temp & 0x00ff) == 0x0000);
 		a = temp & 0x00ff;
 		return 0;
 	}
 
 	//Store Accumulator
-	uint8_t Cpu::STA()
+	std::uint8_t Cpu::STA()
 	{
-		write(addr, a);
+		Cpu::write(addr, a);
 		return 0;
 	}
 
 	//Store X Register
-	uint8_t Cpu::STX()
+	std::uint8_t Cpu::STX()
 	{
-		write(addr, x);
+		Cpu::write(addr, x);
 		return 0;
 	}	
 	//Store Y Register
-	uint8_t Cpu::STY()
+	std::uint8_t Cpu::STY()
 	{
-		write(addr, y);
+		Cpu::write(addr, y);
 		return 0;
 	}
 
@@ -502,7 +569,7 @@ namespace neslite
 	// ========================================
 
 	//Branch on Plus
-	uint8_t Cpu::BPL()
+	std::uint8_t Cpu::BPL()
 	{
 		if (!GetFlag(N)) {
 			addr = pc + addr_rel;
@@ -515,7 +582,7 @@ namespace neslite
 	}
 
 	//Branch on Minus
-	uint8_t Cpu::BMI()
+	std::uint8_t Cpu::BMI()
 	{
 		if (GetFlag(N)) {
 			addr = pc + addr_rel;
@@ -528,7 +595,7 @@ namespace neslite
 	}
 
 	//Branch on Overflow Clear
-	uint8_t Cpu::BVC()
+	std::uint8_t Cpu::BVC()
 	{
 		if (!GetFlag(V)) {
 			addr = pc + addr_rel;
@@ -541,7 +608,7 @@ namespace neslite
 	}
 
 	//Branch on Overflow Set
-	uint8_t Cpu::BVS()
+	std::uint8_t Cpu::BVS()
 	{
 		if (GetFlag(V)) {
 			addr = pc + addr_rel;
@@ -554,7 +621,7 @@ namespace neslite
 	}
 
 	//Branch on Carry Clear
-	uint8_t Cpu::BCC()
+	std::uint8_t Cpu::BCC()
 	{
 		if (!GetFlag(C)) {
 			addr = pc + addr_rel;
@@ -567,7 +634,7 @@ namespace neslite
 	}
 
 	//Branch on Carry Set
-	uint8_t Cpu::BCS()
+	std::uint8_t Cpu::BCS()
 	{
 		if (GetFlag(C)) {
 			addr = pc + addr_rel;
@@ -580,7 +647,7 @@ namespace neslite
 	}
 
 	//Branch on Not Equal 
-	uint8_t Cpu::BNE()
+	std::uint8_t Cpu::BNE()
 	{
 		if (!GetFlag(Z)) {
 			addr = pc + addr_rel;
@@ -593,7 +660,7 @@ namespace neslite
 	}
 
 	//Branch on Equal
-	uint8_t Cpu::BPL()
+	std::uint8_t Cpu::BPL()
 	{
 		if (GetFlag(Z)) {
 			addr = pc + addr_rel;
@@ -610,56 +677,56 @@ namespace neslite
 	// ========================================
 
 	//Clear Carry
-	uint8_t Cpu::CLC()
+	std::uint8_t Cpu::CLC()
 	{
 		SetFlag(C, false);
 		return 0;
 	}
 
 	//Set Carry
-	uint8_t Cpu::SEC()
+	std::uint8_t Cpu::SEC()
 	{
 		SetFlag(C, true);
 		return 0;
 	}
 
 	//Clear Interrupt
-	uint8_t Cpu::CLI()
+	std::uint8_t Cpu::CLI()
 	{
 		SetFlag(I, false);
 		return 0;
 	}
 
 	//Set Interrupt
-	uint8_t Cpu::SEI()
+	std::uint8_t Cpu::SEI()
 	{
 		SetFlag(I, true);
 		return 0;
 	}
 
 	//Clear Overflow
-	uint8_t Cpu::CLV()
+	std::uint8_t Cpu::CLV()
 	{
 		SetFlag(V, false);
 		return 0;
 	}
 
 	//Set Overflow
-	uint8_t Cpu::SEV()
+	std::uint8_t Cpu::SEV()
 	{
 		SetFlag(V, true);
 		return 0;
 	}
 
 	//Clear Decimal
-	uint8_t Cpu::CLD()
+	std::uint8_t Cpu::CLD()
 	{
 		SetFlag(D, false);
 		return 0;
 	}
 
 	//Set Decimal
-	uint8_t Cpu::SED()
+	std::uint8_t Cpu::SED()
 	{
 		SetFlag(D, true);
 		return 0;
@@ -670,7 +737,7 @@ namespace neslite
 	// ========================================
 
 	//Transfer Accumulator to X
-	uint8_t Cpu::TAX()
+	std::uint8_t Cpu::TAX()
 	{
 		x = a;
 		SetFlag(N, x & 0x80);
@@ -679,7 +746,7 @@ namespace neslite
 	}
 
 	//Transfer X to Accumulator
-	uint8_t Cpu::TXA()
+	std::uint8_t Cpu::TXA()
 	{
 		a = x;
 		SetFlag(N, a & 0x80);
@@ -688,7 +755,7 @@ namespace neslite
 	}
 
 	//Decrement X
-	uint8_t Cpu::DEX()
+	std::uint8_t Cpu::DEX()
 	{
 		x--;
 		SetFlag(N, x & 0x80);
@@ -697,7 +764,7 @@ namespace neslite
 	}
 
 	//Increment X
-	uint8_t Cpu::INX()
+	std::uint8_t Cpu::INX()
 	{
 		x++;
 		SetFlag(N, x & 0x80);
@@ -706,7 +773,7 @@ namespace neslite
 	}
 
 	//Transfer Accumulator to Y
-	uint8_t Cpu::TAY()
+	std::uint8_t Cpu::TAY()
 	{
 		x = a;
 		SetFlag(N, y & 0x80);
@@ -715,7 +782,7 @@ namespace neslite
 	}
 
 	//Transfer Y to Accumulator
-	uint8_t Cpu::TYA()
+	std::uint8_t Cpu::TYA()
 	{
 		a = y;
 		SetFlag(N, a & 0x80);
@@ -724,7 +791,7 @@ namespace neslite
 	}
 
 	//Decrement Y
-	uint8_t Cpu::DEY()
+	std::uint8_t Cpu::DEY()
 	{
 		x--;
 		SetFlag(N, y & 0x80);
@@ -733,7 +800,7 @@ namespace neslite
 	}
 
 	//Increment Y
-	uint8_t Cpu::INY()
+	std::uint8_t Cpu::INY()
 	{
 		x++;
 		SetFlag(N, y & 0x80);
@@ -746,54 +813,54 @@ namespace neslite
 	// ========================================
 
 	//Transfer X to stack
-	uint8_t Cpu::TXS()
+	std::uint8_t Cpu::TXS()
 	{
 		stack = x;
 		return 0;
 	}
 
 	//Transfer stack to X
-	uint8_t Cpu::TSX()
+	std::uint8_t Cpu::TSX()
 	{
 		x = stack;
 		return 0;
 	}
 
 	//Push Accumulator
-	uint8_t Cpu::PHA()
+	std::uint8_t Cpu::PHA()
 	{
-		write(0x0100 + stack--, a);
+		PushStack(a);
 		return 0;
 	}
 
 	//Pop Accumulator
-	uint8_t Cpu::PLA()
+	std::uint8_t Cpu::PLA()
 	{
-		a = read(0x0100 + stack++);
+		a = PopStack();
 		SetFlag(N, a & 0x80);
 		SetFlag(Z, a == 0x00);
 		return 0;
 	}
 
 	//Push Processor Status
-	uint8_t Cpu::PHP()
+	std::uint8_t Cpu::PHP()
 	{
-		write(0x0100 + stack--, status | B | U);
+		PushStack(status | B | U);
 		SetFlag(B, 0);
 		SetFlag(U, 0);
 		return 0;
 	}
 
-	//Pull Processor Status
-	uint8_t Cpu::PLP()
+	//Pop Processor Status
+	std::uint8_t Cpu::PLP()
 	{
-		status = read(0x0100 + stack++);
+		status = PopStack();
 		SetFlag(U, 1);
 		return 0;
 	}
 
 	//Invalid Opcode
-	uint8_t Cpu::XXX()
+	std::uint8_t Cpu::XXX()
 	{
 		return 0;
 	}
