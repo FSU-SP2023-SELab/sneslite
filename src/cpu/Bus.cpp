@@ -31,4 +31,10 @@ namespace sneslite
 
 	    return 0x00;
     }
+
+    void Bus::SetSampleFrequency(uint32_t sample_rate)
+    {
+        AudioTimeSample = 1.0 / (double)sample_rate;
+        AudioTimeNESClock = 1.0 / 5369318.0;
+    }
 }

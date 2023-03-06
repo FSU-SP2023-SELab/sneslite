@@ -1,5 +1,10 @@
 #pragma once
+
 #include "Cpu.h"
+#include "Apu.h"
+#include "ppu.hpp"
+#include "cartridge.hpp"
+
 #include <cstdint>
 #include <array>
 
@@ -13,10 +18,25 @@ namespace sneslite
 	    ~Bus();
 
 	    /**
-	     * @brief Devices on the Bus
+	     * @brief Central processing unit on the Bus
 	     * 
 	     */
         Cpu cpu;
+		/**
+		 * @brief Picture processing unit on the Bus 
+		 * 
+		 */
+		ppu ppu;
+		/**
+		 * @brief Audio processing unit on the Bus
+		 * 
+		 */
+		Apu apu;
+		/**
+		 * @brief Cartidge on the bus
+		 * 
+		 */
+		cartridge cartridge;
 
 	    /**
 	     * @brief TEMP fake RAM
@@ -40,6 +60,22 @@ namespace sneslite
          * @return uint8_t 
          */
 	    uint8_t read(uint16_t addr, bool bReadOnly = false);
+
+		/**
+		 * @brief Set the Sample Frequency
+		 * 
+		 * @param sample_rate 
+		 */
+		void SetSampleFrequency(uint32_t sample_rate);
+
+		double Sample = 0.0;
+
+	private:
+
+		double AudioTime = 0.0;
+		double AudioGlobalTime = 0.0;
+		double AudioTimeNESClock = 0.0;
+		double AudioTimeSample = 0.0f;
 
     };
 }
