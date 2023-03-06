@@ -70,6 +70,19 @@ namespace sneslite
              */
             const uint8_t get_mirror_type();
 
+            /**
+             * @brief Three options for NES mirroring.
+             * 
+             * @warning Currently does not support single-screen mirroring, which is available
+             * on certain cartridge chipsets.
+             */
+            enum mirroring
+            {
+                FOUR_SCREEN = 0,
+                VERTICAL = 1,
+                HORIZONTAL = 2
+            };
+
         private:
             /**
              * @brief String representation of the iNES file header.
@@ -100,19 +113,6 @@ namespace sneslite
              * @brief Identifies if ROM uses additional RAM banks
              */
             bool EXTENDED_RAM;
-
-            /**
-             * @brief Three options for NES mirroring.
-             * 
-             * @warning Currently does not support single-screen mirroring, which is available
-             * on certain cartridge chipsets.
-             */
-            enum mirroring
-            {
-                FOUR_SCREEN = 0,
-                VERTICAL = 1,
-                HORIZONTAL = 2
-            };
 
             /**
              * @brief Holds mirror type.
