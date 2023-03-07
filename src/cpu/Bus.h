@@ -69,13 +69,27 @@ namespace sneslite
 		void SetSampleFrequency(uint32_t sample_rate);
 
 		double Sample = 0.0;
+		
+		/**
+		 * @brief For resets
+		 * 
+		 */
+		void reset();
+
+		/**
+		 * @brief For calculating the clock
+		 * 
+		 * @return true 
+		 * @return false 
+		 */
+		bool clock();
 
 	private:
 
 		double AudioTime = 0.0;
-		double AudioGlobalTime = 0.0;
 		double AudioTimeNESClock = 0.0;
 		double AudioTimeSample = 0.0f;
+		uint32_t Clockcount = 0;
 
     };
 }

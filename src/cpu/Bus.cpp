@@ -37,4 +37,15 @@ namespace sneslite
         AudioTimeSample = 1.0 / (double)sample_rate;
         AudioTimeNESClock = 1.0 / 5369318.0;
     }
+
+    void Bus::reset()
+    {
+        cpu.reset();
+        Clockcount = 0;
+    }
+
+    bool Bus::clock()
+    {
+        Clockcount++;
+    }
 }
