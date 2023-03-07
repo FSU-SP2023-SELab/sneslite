@@ -16,11 +16,7 @@ namespace sneslite
              */
             ppu();
 
-            void insertCart(const std::shared_ptr<cartridge>& newcart);
-
         private:
-
-            std::shared_ptr<cartridge> cart;
 
             /**
              * @brief Character ROM, as read from cartridge

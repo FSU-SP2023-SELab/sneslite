@@ -84,8 +84,6 @@ namespace sneslite
 		 */
 		bool clock();
 
-		void insertCart(const std::shared_ptr<cartridge>& cart);
-
 	private:
 
 		double AudioTime = 0.0;

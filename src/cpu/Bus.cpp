@@ -49,8 +49,4 @@ namespace sneslite
         Clockcount++;
     }
 
-    void Bus::insertCart(const std::shared_ptr<cartridge>& cart)
-    {
-        ppu.insertCart(cart);
-    }
 }
