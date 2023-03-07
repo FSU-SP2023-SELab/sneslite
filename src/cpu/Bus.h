@@ -36,7 +36,7 @@ namespace sneslite
 		 * @brief Cartidge on the bus
 		 * 
 		 */
-		cartridge cartridge;
+		cartridge cart;
 
 	    /**
 	     * @brief TEMP fake RAM
@@ -83,6 +83,8 @@ namespace sneslite
 		 * @return false 
 		 */
 		bool clock();
+
+		void insertCart(const std::shared_ptr<cartridge>& cart);
 
 	private:
 
