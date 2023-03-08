@@ -15,4 +15,8 @@ namespace sneslite
             {0}, {0}, {0}
         }
     {}
+
+    address_register::address_register() :
+        ar { {0}, false }
+    {}
 }
