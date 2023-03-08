@@ -9,14 +9,15 @@ namespace sneslite
     extern cartridge cart;
 
     ppu::ppu() :
-        d {
+        pd
+        {
             cart.get_char_rom(),
             static_cast<cartridge::mirroring>( cart.get_mirror_type() ),
             {0}, {0}, {0}
         }
     {}
 
-    address_register::address_register() :
+    ppu::address_register::address_register() :
         ar { {0}, false }
     {}
 }

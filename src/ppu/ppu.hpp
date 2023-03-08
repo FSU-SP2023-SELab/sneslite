@@ -7,8 +7,17 @@
 
 namespace sneslite
 {
+    /**
+     * @brief PPU rendering
+     * 
+     * TODO 
+     * 
+     * Source: https://www.nesdev.org/wiki/PPU
+     */
     class ppu
     {
+        class address_register;
+
         public:
             /**
             * @brief Data storage for PPU
@@ -57,13 +66,10 @@ namespace sneslite
             /**
              * @brief PPU data
              */
-            _data d;
+            _data pd;
     };
 
-    /**
-    * @ingroup ppu
-    */
-    class address_register : public ppu
+    class ppu::address_register : public ppu
     {
         public:
             /**
@@ -127,8 +133,8 @@ namespace sneslite
             ppu *p_ppu;
 
             /**
-             * @brief Address register data
-             */
+            * @brief Address register data
+            */
             _data ar;
     };
 }
