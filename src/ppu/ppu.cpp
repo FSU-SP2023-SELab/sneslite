@@ -1,10 +1,18 @@
+#include<algorithm>
+
+#include "Bus.h"
 #include "ppu.hpp"
 
 namespace sneslite
 {
-    ppu::ppu() :
-        char_rom( cart.get_char_rom() ),
-        mirror_type(cartridge.get_mirror_type())
-    {}
+    // As cart is defined in bus, attempt to locate
+    extern cartridge cart;
 
+    ppu::ppu() :
+        d {
+            cart.get_char_rom(),
+            static_cast<cartridge::mirroring>( cart.get_mirror_type() ),
+            {0}, {0}, {0}
+        }
+    {}
 }
