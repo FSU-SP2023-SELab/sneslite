@@ -88,15 +88,36 @@ namespace sneslite
             * @brief Construct a new address register object
             */
             address_register();
-
+            
+            /**
+            * @brief Set the address_register object
+            * 
+            * @param data 
+            */
             void set_addr(uint16_t data);
 
+            /**
+            * @brief Update the address register
+            * 
+            * @param data 
+            */
             void update_addr(uint8_t data);
 
+            /**
+            * @brief Increment the register
+            * 
+            * @param inc 
+            */
             void increment_addr(uint8_t inc);
 
+            /**
+            * @brief Set hi_ptr to true
+            */
             void reset_latch();
 
+            /**
+            * @brief Get the address_register value
+            */
             void get_addr_value();
 
         private:
