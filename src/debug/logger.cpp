@@ -1,14 +1,5 @@
 #include "logger.hpp"
 
-//Macros for logging and CPU tracing
-#define LOG(level) \
-    if (level > sneslite::Logger::instance().getLogLevel()); \
-    else sneslite::Logger::instance().getLogStream() << '[' << __FILE__ << ":" << std::dec << __LINE__ << "] "
-
-#define LOG_CPU \
-    if (sneslite::LogLevel::CpuTrace != sneslite::Logger::instance().getLogLevel()); \
-    else sneslite::Logger::instance().getCpuTraceStream()
-
 namespace sneslite {
 
     Logger::Logger() : _level(LogLevel::Info), logStream(&std::clog), cpuTrace(nullptr) {}
