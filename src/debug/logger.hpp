@@ -1,8 +1,6 @@
 #ifndef SNESLITE_LOGGING_H
 #define SNESLITE_LOGGING_H
 
-#pragma once
-
 #include <iostream>
 #include <string>
 #include <fstream>
