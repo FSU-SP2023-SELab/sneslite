@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../debug/logger.hpp"
+
 #include<vector>
 #include<iostream>
 #include<string>
@@ -40,35 +42,35 @@ namespace sneslite
              * 
              * @return vector<uint8_t> PRG_ROM
              */
-            const std::vector<uint8_t>& get_prg_rom();
+            std::vector<uint8_t>& get_prg_rom();
 
             /**
              * @brief Get the start position for program ROM
              * 
              * @return uint16_t PRG_ROM_START
              */
-            const uint16_t get_prg_rom_start();
+            uint16_t get_prg_rom_start();
 
             /**
              * @brief Get character tileset ROM
              * 
              * @return vector<uint8_t> CHAR_ROM
              */
-            const std::vector<uint8_t>& get_char_rom();
+            std::vector<uint8_t>& get_char_rom();
 
             /**
              * @brief Get mapper number
              * 
              * @return uint8_t MAPPER_NUMBER
              */
-            const uint8_t get_mapper_number();
+            uint8_t get_mapper_number();
 
             /**
              * @brief Get mirror type
              * 
              * @return const uint8_t MIRROR_TYPE
              */
-            const uint8_t get_mirror_type();
+            uint8_t get_mirror_type();
 
             /**
              * @brief Three options for NES mirroring.
