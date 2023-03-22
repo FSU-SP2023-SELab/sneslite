@@ -3423,8 +3423,6 @@ static const unsigned char ROM_TEST[] = {
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-static const unsigned int ROM_TEST_LEN = 40976;
-
 #define IS_TRUE(func, test) { if (!(func)) std::cout << test << " failed on line " << __LINE__ << std::endl; }
 
 int main()
