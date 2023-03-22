@@ -1,6 +1,6 @@
 #include<algorithm>
 
-#include "Bus.h"
+#include "../cpu/Bus.h"
 #include "ppu.hpp"
 
 namespace sneslite
@@ -12,7 +12,7 @@ namespace sneslite
         pd
         {
             cart.get_char_rom(),
-            static_cast<cartridge::mirroring>( cart.get_mirror_type() ),
+            static_cast<mirroring>( cart.get_mirror_type() ),
             {0}, {0}, {0}
         }
     {}

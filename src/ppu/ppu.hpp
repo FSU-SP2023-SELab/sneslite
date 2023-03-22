@@ -34,7 +34,7 @@ namespace sneslite
                 /**
                 * @brief Mirror type, as read from cartridge
                 */
-                cartridge::mirroring mirror_type;
+                mirroring mirror_type;
 
                 /**
                 * @brief Delimited array of sprites and textures as stored in the ROM
