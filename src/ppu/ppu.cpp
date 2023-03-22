@@ -12,7 +12,7 @@ namespace sneslite
         pd
         {
             cart.get_char_rom(),
-            static_cast<mirroring>( cart.get_mirror_type() ),
+            static_cast<cartridge::mirroring>( cart.get_mirror_type() ),
             {0}, {0}, {0}
         }
     {}

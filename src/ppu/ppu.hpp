@@ -3,7 +3,8 @@
 #include<vector>
 #include<cstdint>
 
-#include "../cpu/Bus.h"
+#include "../cpu/Cpu.h"
+#include "../cartridge/cartridge.hpp"
 
 namespace sneslite
 {
@@ -34,7 +35,7 @@ namespace sneslite
                 /**
                 * @brief Mirror type, as read from cartridge
                 */
-                mirroring mirror_type;
+                cartridge::mirroring mirror_type;
 
                 /**
                 * @brief Delimited array of sprites and textures as stored in the ROM

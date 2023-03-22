@@ -10,7 +10,6 @@
 
 namespace sneslite
 {
-
     class Bus
     {
     	public:
