@@ -27,7 +27,7 @@ namespace sneslite
 		 	* @brief Picture processing unit on the Bus 
 		 	* 
 		 	*/
-			ppu ppu;
+			ppu Ppu;
 
 			/**
 		 	* @brief Audio processing unit on the Bus
