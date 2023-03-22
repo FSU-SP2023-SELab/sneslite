@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Cpu.h"
-#include "Apu.h"
-#include "ppu.hpp"
-#include "cartridge.hpp"
+#include "../apu/Apu.h"
+#include "../ppu/ppu.hpp"
+#include "../cartridge/cartridge.hpp"
 
 #include <cstdint>
 #include <array>
