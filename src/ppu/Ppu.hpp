@@ -124,8 +124,10 @@ namespace sneslite
 
             /**
             * @brief Get the address_register value
+            * 
+            * @return uint16_t ar.value
             */
-            void get_addr_value();
+            uint16_t get_addr_value();
 
         private:
             /**
