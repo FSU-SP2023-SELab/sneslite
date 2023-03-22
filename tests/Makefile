@@ -10,19 +10,18 @@ BUILD_DIR := build
 EXECUTABLE := $(BUILD_DIR)/unit_test.o
 
 # Source files
+MAIN_SRC := ./main.cpp
 LOGGER_SRC := $(SRC_DIR)/debug/logger.cpp
 CARTRIDGE_SRC := $(SRC_DIR)/cartridge/cartridge.cpp
 
 # Append new sources here
-OBJECTS := main.cpp $(LOGGER_SRC) $(CARTRIDGE_SRC) 
+OBJECTS := $(MAIN_SRC) $(LOGGER_SRC) $(CARTRIDGE_SRC) 
 
 .PHONY: all clean
 
-all: main.cpp
+all: $(MAIN_SRC)
 	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(OBJECTS)
 
-#$(CXX) -o unit_test.o main.cpp $(CARTRIDGE_SRC) $(LOGGER_SRC)
-
 clean:
-	rm -f $(EXECUTABLE)
+	rm -f $(BUILD_DIR)/
