@@ -1,6 +1,5 @@
 #include<algorithm>
 
-#include "../cpu/Bus.h"
 #include "ppu.hpp"
 
 namespace sneslite
