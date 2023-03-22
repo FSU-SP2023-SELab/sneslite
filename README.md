@@ -6,7 +6,7 @@ Download and run the precompiled binary from releases
 
 TODO: Add release link
 
-### Building from Source
+### Building project from source
 To build from source, run `make` in the root folder.
 
 TODO: Add prerequisites
@@ -14,7 +14,7 @@ TODO: Add prerequisites
 ## Documentation
 Insert link here
 
-### Locally compiling documentation
+### Building documentation from source
 Compiling documentation requires Doxygen.
 
 https://doxygen.nl/download.html
