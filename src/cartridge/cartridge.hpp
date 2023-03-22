@@ -10,19 +10,6 @@
 namespace sneslite
 {
     /**
-     * @brief Three options for NES mirroring.
-     * 
-     * @warning Currently does not support single-screen mirroring, which is available
-     * on certain cartridge chipsets.
-     */
-    enum mirroring
-    {
-        FOUR_SCREEN = 0,
-        VERTICAL = 1,
-        HORIZONTAL = 2
-    };
-    
-    /**
      * Cartridge memory allocation.
      * 
      * A typical NES cartridge contains two ROM banks.
@@ -85,6 +72,18 @@ namespace sneslite
              */
             uint8_t get_mirror_type();
 
+            /**
+             * @brief Three options for NES mirroring.
+             * 
+             * @warning Currently does not support single-screen mirroring, which is available
+             * on certain cartridge chipsets.
+             */
+            enum mirroring
+            {
+                FOUR_SCREEN = 0,
+                VERTICAL = 1,
+                HORIZONTAL = 2
+            };
 
         private:
             /**
