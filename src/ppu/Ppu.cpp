@@ -1,22 +1,22 @@
 #include<algorithm>
 
-#include "ppu.hpp"
+#include "Ppu.hpp"
 
 namespace sneslite
 {
     // As cart is defined in bus, attempt to locate
-    extern cartridge cart;
+    extern Cartridge cart;
 
-    ppu::ppu() :
+    Ppu::Ppu() :
         pd
         {
             cart.get_char_rom(),
-            static_cast<cartridge::mirroring>( cart.get_mirror_type() ),
+            static_cast<Cartridge::mirroring>( cart.get_mirror_type() ),
             {0}, {0}, {0}
         }
     {}
 
-    ppu::address_register::address_register() :
+    Ppu::address_register::address_register() :
         ar { {0}, false }
     {}
 }

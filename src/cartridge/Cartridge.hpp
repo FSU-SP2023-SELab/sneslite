@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../debug/logger.hpp"
+#include "../debug/Logger.hpp"
 
 #include<vector>
 #include<iostream>
@@ -18,13 +18,13 @@ namespace sneslite
      * 
      * Source: https://en.wikibooks.org/wiki/NES_Programming/Memory_Map
      */
-    class cartridge
+    class Cartridge
     {
         public:
             /**
              * @brief Construct a new cartridge object
              */
-            cartridge();
+            Cartridge();
             
             /**
              * @brief Attempt to load a cartridge dump given some path.

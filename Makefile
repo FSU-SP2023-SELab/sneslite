@@ -16,12 +16,12 @@ TEST_SRC	:= $(TEST_DIR)/main.cpp
 
 # Append new sources here
 OBJECTS		:= 	\
-				$(SRC_DIR)/debug/logger.cpp \
-				$(SRC_DIR)/cartridge/cartridge.cpp \
+				$(SRC_DIR)/debug/Logger.cpp \
+				$(SRC_DIR)/cartridge/Cartridge.cpp \
 				$(SRC_DIR)/cpu/Cpu.cpp \
 				$(SRC_DIR)/cpu/Bus.cpp \
 				$(SRC_DIR)/apu/Apu.cpp \
-				$(SRC_DIR)/ppu/ppu.cpp \
+				$(SRC_DIR)/ppu/Ppu.cpp \
 
 .PHONY: all clean
 

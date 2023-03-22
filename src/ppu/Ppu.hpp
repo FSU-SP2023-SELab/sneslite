@@ -4,7 +4,7 @@
 #include<cstdint>
 
 #include "../cpu/Cpu.h"
-#include "../cartridge/cartridge.hpp"
+#include "../cartridge/Cartridge.hpp"
 
 namespace sneslite
 {
@@ -15,7 +15,7 @@ namespace sneslite
      * 
      * Source: https://www.nesdev.org/wiki/PPU
      */
-    class ppu
+    class Ppu
     {
         class address_register;
 
@@ -35,7 +35,7 @@ namespace sneslite
                 /**
                 * @brief Mirror type, as read from cartridge
                 */
-                cartridge::mirroring mirror_type;
+                Cartridge::mirroring mirror_type;
 
                 /**
                 * @brief Delimited array of sprites and textures as stored in the ROM
@@ -54,9 +54,9 @@ namespace sneslite
             };
 
             /**
-            * @brief Construct a new ppu object
+            * @brief Construct a new Ppu object
             */
-            ppu();
+            Ppu();
 
         private:
             /**
@@ -70,7 +70,7 @@ namespace sneslite
             _data pd;
     };
 
-    class ppu::address_register : public ppu
+    class Ppu::address_register : public Ppu
     {
         public:
             /**
@@ -129,9 +129,9 @@ namespace sneslite
 
         private:
             /**
-            * @brief Pointer to ppu object for cross-referencing
+            * @brief Pointer to Ppu object for cross-referencing
             */
-            ppu *p_ppu;
+            Ppu *p_ppu;
 
             /**
             * @brief Address register data

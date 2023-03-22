@@ -2,8 +2,8 @@
 
 #include "Cpu.h"
 #include "../apu/Apu.h"
-#include "../ppu/ppu.hpp"
-#include "../cartridge/cartridge.hpp"
+#include "../ppu/Ppu.hpp"
+#include "../cartridge/Cartridge.hpp"
 
 #include <cstdint>
 #include <array>
@@ -26,7 +26,7 @@ namespace sneslite
 		 	* @brief Picture processing unit on the Bus 
 		 	* 
 		 	*/
-			ppu Ppu;
+			Ppu ppu;
 
 			/**
 		 	* @brief Audio processing unit on the Bus
@@ -38,7 +38,7 @@ namespace sneslite
 		 	* @brief Cartidge on the bus
 		 	* 
 		 	*/
-			cartridge cart;
+			Cartridge cart;
 
 	    	/**
 	     	* @brief TEMP fake RAM

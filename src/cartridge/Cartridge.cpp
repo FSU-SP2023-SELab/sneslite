@@ -1,4 +1,4 @@
-#include "cartridge.hpp"
+#include "Cartridge.hpp"
 
 #include<string>
 #include<fstream>
@@ -6,13 +6,13 @@
 
 namespace sneslite
 {
-    cartridge::cartridge() :
+    Cartridge::Cartridge() :
         MAPPER_NUMBER(0),
         EXTENDED_RAM(0),
         MIRROR_TYPE(FOUR_SCREEN)
     {}
 
-    bool cartridge::load_dump_file(std::string path)
+    bool Cartridge::load_dump_file(std::string path)
     {
         // Attempt to open file
         std::ifstream rom_dump(path, std::ios_base::binary | std::ios_base::in);
@@ -144,27 +144,27 @@ namespace sneslite
         return true;
     }
 
-    std::vector<uint8_t>& cartridge::get_prg_rom()
+    std::vector<uint8_t>& Cartridge::get_prg_rom()
     {
         return PRG_ROM;
     }
 
-    uint16_t cartridge::get_prg_rom_start()
+    uint16_t Cartridge::get_prg_rom_start()
     {
         return PRG_ROM_START;
     }
 
-    std::vector<uint8_t>& cartridge::get_char_rom()
+    std::vector<uint8_t>& Cartridge::get_char_rom()
     {
         return CHAR_ROM;
     }
 
-    uint8_t cartridge::get_mapper_number()
+    uint8_t Cartridge::get_mapper_number()
     {
         return MAPPER_NUMBER;
     }
 
-    uint8_t cartridge::get_mirror_type()
+    uint8_t Cartridge::get_mirror_type()
     {
         return static_cast<uint8_t>(MIRROR_TYPE);
     }
