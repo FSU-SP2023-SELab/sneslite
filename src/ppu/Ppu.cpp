@@ -81,6 +81,7 @@ namespace sneslite
     //
     // Controller register emulation
     //
+    
     Ppu::controller_register::controller_register() :
         cr { 0 }
     {}
