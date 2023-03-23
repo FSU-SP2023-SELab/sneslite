@@ -4,6 +4,10 @@
 
 namespace sneslite
 {
+    //
+    // PPU initialization
+    //
+
     // As cart is defined in bus, attempt to locate
     extern Cartridge cart;
 
@@ -15,6 +19,10 @@ namespace sneslite
             {0}, {0}, {0}
         }
     {}
+
+    //
+    // Address register emulation
+    //
 
     Ppu::address_register::address_register() :
         ar { {0}, false }
@@ -68,5 +76,22 @@ namespace sneslite
     {
         (static_cast<uint16_t>(ar.value[0]) << 8) |
         (static_cast<uint16_t>(ar.value[1]));
+    }
+
+    //
+    // Controller register emulation
+    //
+    Ppu::controller_register::controller_register() :
+        cr { 0 }
+    {}
+
+    uint8_t Ppu::controller_register::increment_vram_addr()
+    {
+        return (cr.value & cr.VRAM_ADD_INCREMENT) ? 32 : 1;
+    }
+
+    void Ppu::controller_register::update_vram_addr(uint8_t data)
+    {
+        cr.value = data;
     }
 }
