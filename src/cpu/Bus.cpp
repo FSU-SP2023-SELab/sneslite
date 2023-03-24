@@ -29,7 +29,6 @@ namespace sneslite
     uint8_t Bus::read(uint16_t addr, bool bReadOnly)
     {
 		return ram[addr];
-
     }
 
     void Bus::SetSampleFrequency(uint32_t sample_rate)
