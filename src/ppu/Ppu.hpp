@@ -3,11 +3,10 @@
 #include<vector>
 #include<cstdint>
 
-#include "../cpu/Cpu.h"
-#include "../cartridge/Cartridge.hpp"
-
 namespace sneslite
 {
+    class Bus;
+
     /**
     * @brief PPU rendering
     * 
@@ -37,7 +36,7 @@ namespace sneslite
                 /**
                 * @brief Mirror type, as read from cartridge
                 */
-                Cartridge::mirroring mirror_type;
+                uint8_t mirror_type;
 
                 /**
                 * @brief Delimited array of sprites and textures as stored in the ROM
@@ -60,7 +59,17 @@ namespace sneslite
             */
             Ppu();
 
+            /**
+            * @brief Set bus pointer variable to bus address
+            */
+            void connect_bus(Bus* n) { p_bus = n; }
+
         private:
+            /**
+             * @brief Pointer to parent bus
+             */
+            Bus *p_bus = nullptr;
+            
             /**
             * @brief Pointer to address_register object for cross-referencing
             */
@@ -123,7 +132,7 @@ namespace sneslite
             * @param inc 
             */
             void increment_addr(uint8_t inc);
-
+ 
             /**
             * @brief Set hi_ptr to true
             */
