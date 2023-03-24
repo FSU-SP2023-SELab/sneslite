@@ -81,8 +81,18 @@ namespace sneslite
 			{ "CMP", &Cpu::CMP, &Cpu::ZPX, 4 }, { "DEC", &Cpu::DEC, &Cpu::ZPX, 6 }, { "???", &Cpu::XXX, &Cpu::IMP, 6 },
 			{ "CLD", &Cpu::CLD, &Cpu::IMP, 2 }, { "CMP", &Cpu::CMP, &Cpu::ABY, 4 }, { "NOP", &Cpu::NOP, &Cpu::IMP, 2 },
 			{ "???", &Cpu::XXX, &Cpu::IMP, 7 }, { "???", &Cpu::NOP, &Cpu::IMP, 4 }, { "CMP", &Cpu::CMP, &Cpu::ABX, 4 },
-			{ "DEC", &Cpu::DEC, &Cpu::ABX, 7 }, { "???", &Cpu::XXX, &Cpu::IMP, 7 }, { "CPX", &Cpu::CPX, &Cpu::IMM, 2 },{ "SBC", &Cpu::SBC, &Cpu::IZX, 6 },{ "???", &Cpu::NOP, &Cpu::IMP, 2 },{ "???", &Cpu::XXX, &Cpu::IMP, 8 },{ "CPX", &Cpu::CPX, &Cpu::ZP0, 3 },{ "SBC", &Cpu::SBC, &Cpu::ZP0, 3 },{ "INC", &Cpu::INC, &Cpu::ZP0, 5 },{ "???", &Cpu::XXX, &Cpu::IMP, 5 },{ "INX", &Cpu::INX, &Cpu::IMP, 2 },{ "SBC", &Cpu::SBC, &Cpu::IMM, 2 },{ "NOP", &Cpu::NOP, &Cpu::IMP, 2 },{ "???", &Cpu::SBC, &Cpu::IMP, 2 },{ "CPX", &Cpu::CPX, &Cpu::ABS, 4 },{ "SBC", &Cpu::SBC, &Cpu::ABS, 4 },{ "INC", &Cpu::INC, &Cpu::ABS, 6 },{ "???", &Cpu::XXX, &Cpu::IMP, 6 },
-			{ "BEQ", &Cpu::BEQ, &Cpu::REL, 2 }, { "SBC", &Cpu::SBC, &Cpu::IZY, 5 }, { "???", &Cpu::XXX, &Cpu::IMP, 2 },{ "???", &Cpu::XXX, &Cpu::IMP, 8 },{ "???", &Cpu::NOP, &Cpu::IMP, 4 },{ "SBC", &Cpu::SBC, &Cpu::ZPX, 4 },{ "INC", &Cpu::INC, &Cpu::ZPX, 6 },{ "???", &Cpu::XXX, &Cpu::IMP, 6 },{ "SED", &Cpu::SED, &Cpu::IMP, 2 },{ "SBC", &Cpu::SBC, &Cpu::ABY, 4 },{ "NOP", &Cpu::NOP, &Cpu::IMP, 2 },{ "???", &Cpu::XXX, &Cpu::IMP, 7 },{ "???", &Cpu::NOP, &Cpu::IMP, 4 },{ "SBC", &Cpu::SBC, &Cpu::ABX, 4 },{ "INC", &Cpu::INC, &Cpu::ABX, 7 },{ "???", &Cpu::XXX, &Cpu::IMP, 7 },
+			{ "DEC", &Cpu::DEC, &Cpu::ABX, 7 }, { "???", &Cpu::XXX, &Cpu::IMP, 7 }, { "CPX", &Cpu::CPX, &Cpu::IMM, 2 },
+			{ "SBC", &Cpu::SBC, &Cpu::IZX, 6 }, { "???", &Cpu::NOP, &Cpu::IMP, 2 }, { "???", &Cpu::XXX, &Cpu::IMP, 8 },
+			{ "CPX", &Cpu::CPX, &Cpu::ZP0, 3 }, { "SBC", &Cpu::SBC, &Cpu::ZP0, 3 }, { "INC", &Cpu::INC, &Cpu::ZP0, 5 },
+			{ "???", &Cpu::XXX, &Cpu::IMP, 5 }, { "INX", &Cpu::INX, &Cpu::IMP, 2 }, { "SBC", &Cpu::SBC, &Cpu::IMM, 2 },
+			{ "NOP", &Cpu::NOP, &Cpu::IMP, 2 }, { "???", &Cpu::SBC, &Cpu::IMP, 2 }, { "CPX", &Cpu::CPX, &Cpu::ABS, 4 },
+			{ "SBC", &Cpu::SBC, &Cpu::ABS, 4 }, { "INC", &Cpu::INC, &Cpu::ABS, 6 }, { "???", &Cpu::XXX, &Cpu::IMP, 6 },
+			{ "BEQ", &Cpu::BEQ, &Cpu::REL, 2 }, { "SBC", &Cpu::SBC, &Cpu::IZY, 5 }, { "???", &Cpu::XXX, &Cpu::IMP, 2 },
+			{ "???", &Cpu::XXX, &Cpu::IMP, 8 },	{ "???", &Cpu::NOP, &Cpu::IMP, 4 }, { "SBC", &Cpu::SBC, &Cpu::ZPX, 4 },
+			{ "INC", &Cpu::INC, &Cpu::ZPX, 6 },	{ "???", &Cpu::XXX, &Cpu::IMP, 6 }, { "SED", &Cpu::SED, &Cpu::IMP, 2 },
+			{ "SBC", &Cpu::SBC, &Cpu::ABY, 4 },	{ "NOP", &Cpu::NOP, &Cpu::IMP, 2 }, { "???", &Cpu::XXX, &Cpu::IMP, 7 },
+			{ "???", &Cpu::NOP, &Cpu::IMP, 4 },	{ "SBC", &Cpu::SBC, &Cpu::ABX, 4 }, { "INC", &Cpu::INC, &Cpu::ABX, 7 },
+			{ "???", &Cpu::XXX, &Cpu::IMP, 7 },
 		};
 	}
 
