@@ -722,7 +722,7 @@ namespace sneslite
 	}
 
 	//Branch on Equal
-	std::uint8_t Cpu::BPL()
+	std::uint8_t Cpu::BEQ()
 	{
 		if (GetFlag(Z)) {
 			addr = pc + addr_rel;

@@ -10,8 +10,5 @@ namespace sneslite
         public:
             Apu();
             ~Apu();
-
-        private:
-
     };
 }

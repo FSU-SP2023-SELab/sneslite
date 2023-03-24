@@ -6,6 +6,10 @@ CXXFLAGS := \
 			-Wextra \
 			-Wfatal-errors \
 			-pedantic \
+SFMLFLAGS := \
+			-lsfml-graphics \
+			-lsfml-system \
+			-lsfml-window
 
 # Directories
 SRC_DIR		:= ./src
@@ -14,6 +18,11 @@ BUILD_DIR	:= ./build
 
 # Executable build location
 EXECUTABLE	:= $(BUILD_DIR)/unit_test.o
+
+# Object build location
+OBJECT		:= $(BUILD_DIR)/main.o
+
+MAIN_EXEC	:= $(BUILD_DIR)/main.x
 
 # Source files
 MAIN_SRC	:= $(SRC_DIR)/main.cpp
@@ -37,6 +46,10 @@ all: $(MAIN_SRC)
 test: $(TEST_SRC)
 	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(TEST_SRC) $(OBJECTS)
+
+wrapper: $(MAIN_SRC)
+	mkdir -p $(BUILD_DIR)
+	$(CXX) $(MAIN_SRC) -o $(MAIN_EXEC)
 
 clean:
 	rm -rf $(BUILD_DIR)/

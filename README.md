@@ -1,6 +1,10 @@
 # sneslite
 TODO: Overview
 
+## Dependencies
+SFML multimedia library
+suto apt install libsfml
+
 ## Installation
 Download and run the precompiled binary from releases
 
