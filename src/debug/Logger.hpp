@@ -20,6 +20,9 @@ namespace sneslite {
 
     //Logger class for managing logging
     class Logger {
+        class DualStreamBuffer;
+        class DualOstream;
+        
     public:
         Logger();
         ~Logger();

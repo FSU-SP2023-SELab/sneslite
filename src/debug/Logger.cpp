@@ -42,7 +42,7 @@ namespace sneslite {
     }
 
     //Stream buffer class to separate buffers into two
-    class DualStreamBuffer : public std::streambuf {
+    class Logger::DualStreamBuffer : public std::streambuf {
     public:
         DualStreamBuffer(std::streambuf* buf1, std::streambuf* buf2) : buf1(buf1), buf2(buf2) {}
 
@@ -63,7 +63,7 @@ namespace sneslite {
         std::streambuf* buf2;
     };
 
-    class DualOstream : public std::ostream {
+    class Logger::DualOstream : public std::ostream {
     public:
         DualOstream(std::ostream& os1, std::ostream& os2) : std::ostream(&buf), buf(os1.rdbuf(), os2.rdbuf()) {}
 
