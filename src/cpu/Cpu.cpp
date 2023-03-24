@@ -305,9 +305,9 @@ namespace sneslite
 	// Relative
 	std::uint8_t Cpu::REL()
 	{
-		uint16_t temp_addr = pc;
-		addr_rel = temp_addr + Cpu::read(pc);
-		pc = temp_addr + 1;
+		//uint16_t temp_addr = pc;
+		addr_rel = pc + Cpu::read(pc++);
+		//pc = temp_addr + 1;
 		return 0;
 	}
 
