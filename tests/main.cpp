@@ -2,8 +2,8 @@
 #include<fstream>
 #include<string>
 
-#include "cartridge.hpp"
-#include "cpu.hpp"
+#include "cartridge.h"
+#include "cpu.h"
 
 static const unsigned char ROM_TEST[] = {
   0x4e, 0x45, 0x53, 0x1a, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
