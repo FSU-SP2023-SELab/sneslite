@@ -11,6 +11,9 @@ namespace sneslite
 
 	    //Connect CPU to communication bus
 	    cpu.ConnectBus(this);
+        
+        // Connect PPU to bus
+        ppu.connect_bus(this);
     }
 
     Bus::~Bus()

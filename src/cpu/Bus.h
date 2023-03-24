@@ -38,7 +38,7 @@ namespace sneslite
 		 	* @brief Cartidge on the bus
 		 	* 
 		 	*/
-			Cartridge cart;
+			Cartridge cartridge;
 
 	    	/**
 	     	* @brief TEMP fake RAM
