@@ -6,6 +6,7 @@ CXXFLAGS := \
 			-Wextra \
 			-Wfatal-errors \
 			-pedantic \
+
 SFMLFLAGS := \
 			-lsfml-graphics \
 			-lsfml-system \
