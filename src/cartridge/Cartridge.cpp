@@ -1,4 +1,5 @@
 #include "Cartridge.hpp"
+#include "../debug/Logger.hpp"
 
 #include<string>
 #include<fstream>

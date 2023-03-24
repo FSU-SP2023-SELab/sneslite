@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../debug/Logger.hpp"
-
 #include<vector>
 #include<iostream>
 #include<string>
@@ -121,4 +119,6 @@ namespace sneslite
              */
             mirroring MIRROR_TYPE;
     };
+
+    Cartridge cartridge;
 }
