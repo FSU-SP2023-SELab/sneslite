@@ -66,8 +66,8 @@ namespace sneslite
 
         private:
             /**
-             * @brief Pointer to parent bus
-             */
+            * @brief Pointer to parent bus
+            */
             Bus *p_bus = nullptr;
             
             /**
