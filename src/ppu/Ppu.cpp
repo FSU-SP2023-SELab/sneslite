@@ -74,14 +74,14 @@ namespace sneslite
 
     uint16_t Ppu::address_register::get_addr_value()
     {
-        (static_cast<uint16_t>(ar.value[0]) << 8) |
-        (static_cast<uint16_t>(ar.value[1]));
+        return (static_cast<uint16_t>(ar.value[0]) << 8) |
+               (static_cast<uint16_t>(ar.value[1]));
     }
 
     //
     // Controller register emulation
     //
-    
+
     Ppu::controller_register::controller_register() :
         cr { 0 }
     {}
