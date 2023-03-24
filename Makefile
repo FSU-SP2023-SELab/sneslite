@@ -39,4 +39,4 @@ test: $(TEST_SRC)
 	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(TEST_SRC) $(OBJECTS)
 
 clean:
-	rm -f $(BUILD_DIR)/
+	rm -rf $(BUILD_DIR)/
