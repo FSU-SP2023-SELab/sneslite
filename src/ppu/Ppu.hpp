@@ -88,12 +88,12 @@ namespace sneslite
             struct _data
             {
                 /**
-                * @brief TODO
+                * @brief Address register data
                 */
                 uint8_t value[2];
 
                 /**
-                * @brief TODO
+                * @brief Bool to indicate which set of bits to access
                 */
                 bool hi_ptr;
             };
