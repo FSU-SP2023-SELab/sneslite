@@ -119,6 +119,4 @@ namespace sneslite
              */
             mirroring MIRROR_TYPE;
     };
-
-    Cartridge cartridge;
 }
