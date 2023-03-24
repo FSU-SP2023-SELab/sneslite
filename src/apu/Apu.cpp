@@ -1,4 +1,5 @@
 #include "Apu.h"
+#include "../cpu/Bus.h"
 
 namespace sneslite
 {
@@ -6,4 +7,6 @@ namespace sneslite
     {
         
     }
+
+    Apu::~Apu() {}
 }

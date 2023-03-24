@@ -3,11 +3,14 @@
 #include<vector>
 #include<cstdint>
 
-#include "../cpu/Cpu.h"
-#include "../cartridge/Cartridge.hpp"
+// #include "../cpu/Cpu.h"
+// #include "../cartridge/Cartridge.hpp"
 
 namespace sneslite
 {
+
+    class Bus;
+
     /**
     * @brief PPU rendering
     * 
@@ -37,7 +40,7 @@ namespace sneslite
                 /**
                 * @brief Mirror type, as read from cartridge
                 */
-                Cartridge::mirroring mirror_type;
+                //Cartridge::mirroring mirror_type;
 
                 /**
                 * @brief Delimited array of sprites and textures as stored in the ROM

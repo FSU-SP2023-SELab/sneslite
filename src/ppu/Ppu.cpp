@@ -1,6 +1,7 @@
 #include<algorithm>
 
 #include "Ppu.hpp"
+#include "../cpu/Bus.h"
 
 namespace sneslite
 {
@@ -11,13 +12,13 @@ namespace sneslite
     // As cart is defined in bus, attempt to locate
     extern Cartridge cart;
 
-    Ppu::Ppu() :
-        pd
-        {
-            cart.get_char_rom(),
-            static_cast<Cartridge::mirroring>( cart.get_mirror_type() ),
-            {0}, {0}, {0}
-        }
+    Ppu::Ppu()
+        // pd
+        // {
+        //     cart.get_char_rom(),
+        //     static_cast<Cartridge::mirroring>( cart.get_mirror_type() ),
+        //     {0}, {0}, {0}
+        // }
     {}
 
     //
