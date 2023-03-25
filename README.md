@@ -3,7 +3,7 @@ TODO: Overview
 
 ## Dependencies
 SFML multimedia library
-suto apt install libsfml
+suto apt install libsfml-dev
 
 ## Installation
 Download and run the precompiled binary from releases

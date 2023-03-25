@@ -1,7 +1,7 @@
 # Compiler and flags
 CXX := g++
 CXXFLAGS := -Wall -Wextra -pedantic -std=c++20
-SFML_FLAGS := -lsfml-graphics -lsfml-system -lsfml-window
+SFMLFLAGS := -lsfml-graphics -lsfml-system -lsfml-window
 
 # Directories
 SRC_DIR		:= ./src
@@ -41,7 +41,7 @@ test: $(TEST_SRC)
 
 wrapper: $(MAIN_SRC)
 	mkdir -p $(BUILD_DIR)
-	$(CXX) $(MAIN_SRC) -o $(MAIN_EXEC)
+	$(CXX) $(MAIN_SRC) -o $(MAIN_EXEC) $(SFMLFLAGS)
 
 clean:
 	rm -fr $(BUILD_DIR)/
