@@ -45,6 +45,11 @@ namespace sneslite
 
     bool Bus::clock()
     {
+        //Used for when PPU is introduced
+        if (Clockcount % 3 == 0)
+        {
+            cpu.clock();
+        }
         Clockcount++;
     }
 
