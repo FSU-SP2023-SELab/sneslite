@@ -63,6 +63,30 @@ namespace sneslite
             * @brief Set bus pointer variable to bus address
             */
             void connect_bus(Bus* n) { p_bus = n; }
+            
+            /**
+            * @brief Read data into registers
+            */
+            uint8_t read_data();
+            
+            /**
+            * @brief Expose address register
+            *
+            * @param data Data to send to the address register
+            */
+            void write_to_ar(uint8_t data);
+            
+            /**
+            * @brief Expose control bus
+            *
+            * @param data Data to send to the control bus
+            */
+            void write_to_control(uint8_t data);
+            
+            /**
+            * @brief Expose increment
+            */
+            void increment_vram_addr();
 
         private:
             /**
@@ -231,7 +255,7 @@ namespace sneslite
             uint8_t increment_vram_addr();
 
             /**
-            * @brief 
+            * @brief Update VRAM control register data
             */
            void update_vram_addr(uint8_t data);
 
