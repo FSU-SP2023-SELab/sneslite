@@ -17,6 +17,26 @@ namespace sneslite
             {0}, {0}, {0}
         }
     {}
+    
+    uint8_t Ppu::read_data()
+    {
+    
+    }
+    
+    void Ppu::write_to_ar(uint8_t data)
+    {
+        p_ar->update_addr(data);
+    }
+    
+    void Ppu::write_to_control(uint8_t data)
+    {
+        p_cr->update_vram_addr(data);
+    }
+    
+    void Ppu::increment_vram_addr()
+    {
+        p_cr->increment_vram_addr();
+    }
 
     //
     // Address register emulation

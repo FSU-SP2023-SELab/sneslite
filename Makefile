@@ -50,7 +50,7 @@ test: $(TEST_SRC)
 
 wrapper: $(MAIN_SRC)
 	mkdir -p $(BUILD_DIR)
-	$(CXX) $(MAIN_SRC) -o $(MAIN_EXEC)
+	$(CXX) $(MAIN_SRC) -o $(MAIN_EXEC) $(SFMLFLAGS)
 
 clean:
 	rm -rf $(BUILD_DIR)/
