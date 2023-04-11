@@ -34,7 +34,7 @@ namespace sneslite
                 LOG(Info) << ("Read VRAM data from cartridge");
                 break;
             case 0x3000 ... 0x3EFF:
-                LOG(Error) << ("Address region 0x3000..0x3EFF is not expected to be used, requested = " + std::to_string(addr));
+                LOG(Error) << ("Address region 0x3000..0x3EFF is not expected to be used, requested " + std::to_string(addr));
                 raise(SIGTERM);
                 break;
             case 0x3F00 ... 0x3FFF:
