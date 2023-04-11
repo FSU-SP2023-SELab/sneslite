@@ -1,7 +1,9 @@
 #include<algorithm>
+#include<csignal>
 
 #include "Ppu.hpp"
 #include "../cpu/Bus.h"
+#include "../debug/Logger.hpp"
 
 namespace sneslite
 {
@@ -20,7 +22,29 @@ namespace sneslite
     
     uint8_t Ppu::read_data()
     {
-    
+        auto addr = p_ar->get_addr_value();
+        increment_vram_addr();
+
+        switch (addr)
+        {
+            case 0x0000 ... 0x1FFF:
+                LOG(Info) << ("Read VRAM data from cartridge CHAR_ROM");
+                break;
+            case 0x2000 ... 0x2FFF:
+                LOG(Info) << ("Read VRAM data from cartridge");
+                break;
+            case 0x3000 ... 0x3EFF:
+                LOG(Error) << ("Address region 0x3000..0x3EFF is not expected to be used, requested = " + std::to_string(addr));
+                raise(SIGTERM);
+                break;
+            case 0x3F00 ... 0x3FFF:
+                return pd.palette_table[(addr - 0x3F00)];
+                break;
+            default:
+                LOG(Error) << ("Unexpected access to mirrored space " + std::to_string(addr));
+                raise(SIGTERM);
+                break;
+        }
     }
     
     void Ppu::write_to_ar(uint8_t data)
