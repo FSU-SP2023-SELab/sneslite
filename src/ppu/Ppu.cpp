@@ -20,30 +20,40 @@ namespace sneslite
         }
     {}
     
-    uint8_t Ppu::read_data()
-    {
-        auto addr = p_ar->get_addr_value();
+    uint8_t Ppu::read_data() {
+        uint16_t addr = p_ar->get_addr_value();
+
         increment_vram_addr();
 
-        switch (addr)
+        if (addr <= 0x1fff)
         {
-            case 0x0000 ... 0x1FFF:
-                LOG(Info) << ("Read VRAM data from cartridge CHAR_ROM");
-                break;
-            case 0x2000 ... 0x2FFF:
-                LOG(Info) << ("Read VRAM data from cartridge");
-                break;
-            case 0x3000 ... 0x3EFF:
-                LOG(Error) << ("Address region 0x3000..0x3EFF is not expected to be used, requested " + std::to_string(addr));
-                raise(SIGTERM);
-                break;
-            case 0x3F00 ... 0x3FFF:
-                return pd.palette_table[(addr - 0x3F00)];
-                break;
-            default:
-                LOG(Error) << ("Unexpected access to mirrored space " + std::to_string(addr));
-                raise(SIGTERM);
-                break;
+            uint8_t result = pd.internal_data_buffer;
+            pd.internal_data_buffer = pd.char_rom[addr];
+            return result;
+        }
+        else if (addr >= 0x2000 && addr <= 0x2fff)
+        {
+            uint8_t result = pd.internal_data_buffer;
+            pd.internal_data_buffer = pd.vram[mirror_vram_addr(addr)];
+            return result;
+        }
+        else if (addr >= 0x3000 && addr <= 0x3eff)
+        {
+            LOG(Info) << "Address " + std::to_string(addr) + " shouldn't be used";
+        }
+        else if (addr == 0x3f10 || addr == 0x3f14 || addr == 0x3f18 || addr == 0x3f1c)
+        {
+            uint16_t add_mirror = addr - 0x10;
+            return pd.palette_table[(add_mirror - 0x3f00)];
+        }
+        else if (addr >= 0x3f00 && addr <= 0x3fff)
+        {
+            return pd.palette_table[(addr - 0x3f00)];
+        }
+        else
+        {
+            LOG(Error) << "Unexpected access to mirrored space " + std::to_string(addr);
+            raise(SIGTERM);
         }
     }
     
@@ -60,6 +70,33 @@ namespace sneslite
     void Ppu::increment_vram_addr()
     {
         p_cr->increment_vram_addr();
+    }
+
+    // TODO: Check for proper mapping
+    uint16_t Ppu::mirror_vram_addr(uint16_t addr)
+    {
+        uint16_t mirrored_vram = addr & 0b10111111111111;
+        uint16_t vram_index = mirrored_vram - 0x2000;
+        uint8_t name_table = vram_index / 0x400;
+
+        if ((pd.mirror_type == Cartridge::mirroring::VERTICAL && name_table == 2) ||
+            (pd.mirror_type == Cartridge::mirroring::VERTICAL && name_table == 3))
+        {
+            return vram_index - 0x800;
+        }
+        else if ((pd.mirror_type == Cartridge::mirroring::HORIZONTAL && name_table == 2) ||
+                 (pd.mirror_type == Cartridge::mirroring::HORIZONTAL && name_table == 1))
+        {
+            return vram_index - 0x400;
+        }
+        else if (pd.mirror_type == Cartridge::mirroring::HORIZONTAL && name_table == 3)
+        {
+            return vram_index - 0x800;
+        }
+        else
+        {
+            return vram_index;
+        }
     }
 
     //

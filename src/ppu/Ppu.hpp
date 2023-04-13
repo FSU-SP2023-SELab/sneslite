@@ -52,6 +52,11 @@ namespace sneslite
                 * @brief Current status of on-screen sprites
                 */
                 uint8_t oam_data[256];
+
+                /**
+                * @brief Temporary data buffer
+                */
+                uint8_t internal_data_buffer;
             };
 
             /**
@@ -87,6 +92,13 @@ namespace sneslite
             * @brief Expose increment
             */
             void increment_vram_addr();
+
+            /**
+            * @brief Implementation of screenspace mirroring
+            * 
+            * @param addr Address to mirror
+            */
+            uint16_t mirror_vram_addr(uint16_t addr);
 
         private:
             /**
