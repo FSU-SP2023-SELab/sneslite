@@ -112,10 +112,20 @@ namespace sneslite
             {
                 if(p_cr->generate_vblank_nmi())
                 {
-
+                    p_sr->set_vblank_status(true);
+                    LOG(Info) << "Pending NMI interrupt...";
                 }
             }
+
+            if(pd.scanline >= 262)
+            {
+                pd.scanline = 0;
+                p_sr->reset_vblank_status();
+                return true;
+            }
         }
+
+        return false;
     }
 
     //
