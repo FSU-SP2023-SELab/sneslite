@@ -20,6 +20,8 @@ namespace sneslite
 
         class controller_register;
 
+        class status_register;
+
         public:
             /**
             * @brief Data storage for PPU
@@ -57,6 +59,16 @@ namespace sneslite
                 * @brief Temporary data buffer
                 */
                 uint8_t internal_data_buffer;
+
+                /**
+                * @brief Scanline to draw
+                */
+                uint16_t scanline;
+
+                /**
+                * @brief Cycle tracking
+                */
+                size_t cycles;
             };
 
             /**
@@ -100,6 +112,15 @@ namespace sneslite
             */
             uint16_t mirror_vram_addr(uint16_t addr);
 
+            /**
+            * @brief Ticks through PPU 
+            * 
+            * @param cycles 
+            * @return true, if cycles >= 262
+            * @return false, if cycles < 341 
+             */
+            bool tick(uint8_t cycles);
+
         private:
             /**
             * @brief Pointer to parent bus
@@ -115,6 +136,11 @@ namespace sneslite
             * @brief Pointer to controller_register object for cross-referencing
             */
             controller_register *p_cr;
+
+            /**
+            * @brief Pointer to status_register object
+            */
+            status_register *p_sr;
 
             /**
             * @brief PPU data
@@ -193,6 +219,11 @@ namespace sneslite
             controller_register *p_cr;
 
             /**
+            * @brief Pointer to status_register object
+            */
+            status_register *p_sr;
+
+            /**
             * @brief Address register data
             */
             _data ar;
@@ -269,8 +300,40 @@ namespace sneslite
             /**
             * @brief Update VRAM control register data
             */
-           void update_vram_addr(uint8_t data);
+            void update_vram_addr(uint8_t data);
 
+            /**
+            * @brief TODO
+            * 
+            * @internal
+            */
+            bool _contains(uint8_t flag) const;
+
+            /**
+            * @brief TODO
+            */
+            uint16_t sprt_pattern_addr() const;
+            
+            /**
+            * @brief TODO
+            */
+            uint16_t bknd_pattern_addr() const;
+            
+            /**
+            * @brief TODO
+            */
+            uint8_t sprite_size() const;
+            
+            /**
+            * @brief TODO
+            */
+            uint8_t master_slave_select() const;
+            
+            /**
+            * @brief TODO
+            */
+            bool generate_vblank_nmi() const;
+            
         private:
             /**
             * @brief Pointer to Ppu object for cross-referencing
@@ -283,8 +346,126 @@ namespace sneslite
             address_register *p_ar;
 
             /**
+            * @brief Pointer to status_register object
+            */
+            status_register *p_sr;
+
+            /**
             * @brief Controller register data
             */
             _data cr;
+    };
+
+    class Ppu::status_register : public Ppu
+    {
+        public:
+            struct _data {
+                /**
+                * @brief TODO
+                */
+                uint8_t value;
+
+                /**
+                * @brief TODO
+                */
+                static const uint8_t NOTUSED          = 0b00000001;
+                
+                /**
+                * @brief TODO
+                */
+                static const uint8_t NOTUSED2         = 0b00000010;
+                
+                /**
+                * @brief TODO
+                */
+                static const uint8_t NOTUSED3         = 0b00000100;
+                
+                /**
+                * @brief TODO
+                */
+                static const uint8_t NOTUSED4         = 0b00001000;
+                
+                /**
+                * @brief TODO
+                */
+                static const uint8_t NOTUSED5         = 0b00010000;
+                
+                /**
+                * @brief TODO
+                */
+                static const uint8_t SPRITE_OVERFLOW  = 0b00100000;
+                
+                /**
+                * @brief TODO
+                */
+                static const uint8_t SPRITE_ZERO_HIT  = 0b01000000;
+                
+                /**
+                * @brief TODO
+                */
+                static const uint8_t VBLANK_STARTED   = 0b10000000;
+            };
+
+            /**
+            * @brief Construct a new status register object
+            */
+            status_register();
+
+            /**
+            * @brief TODO
+            * 
+            * @param flag 
+            * @param status 
+            */
+            void _set(uint8_t flag, bool status);
+
+            /**
+            * @brief TODO
+            * 
+            * @param flag 
+            */
+            void _remove(uint8_t flag);
+
+            /**
+            * @brief TODO
+            * 
+            * @param flag 
+            * @return true 
+            * @return false 
+            */
+            bool _contains(uint8_t flag) const;
+
+            void set_vblank_status(bool status);
+            
+            void set_sprite_zero_hit(bool status);
+            
+            void set_sprite_overflow(bool status);
+            
+            void reset_vblank_status();
+            
+            bool is_in_vblank() const;
+
+            uint8_t snapshot() const;
+
+        private:
+            /**
+            * @brief TODO
+            */
+            _data sr;
+
+            /**
+            * @brief Pointer to Ppu object for cross-referencing
+            */
+            Ppu *p_ppu;
+
+            /**
+            * @brief Pointer to address_register object for cross-referencing
+            */
+            address_register *p_ar;
+
+            /**
+            * @brief Pointer to controller_register object for cross-referencing
+            */
+            controller_register *p_cr;
     };
 }

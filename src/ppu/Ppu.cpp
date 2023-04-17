@@ -99,6 +99,25 @@ namespace sneslite
         }
     }
 
+    bool Ppu::tick(uint8_t cycles)
+    {
+        pd.cycles += cycles;
+
+        if(pd.cycles >= 341)
+        {
+            pd.cycles = pd.cycles - 341;
+            pd.scanline += 1;
+
+            if(pd.scanline == 241)
+            {
+                if(p_cr->generate_vblank_nmi())
+                {
+
+                }
+            }
+        }
+    }
+
     //
     // Address register emulation
     //
@@ -165,6 +184,10 @@ namespace sneslite
         cr { 0 }
     {}
 
+    bool Ppu::controller_register::_contains(uint8_t flag) const {
+        return (cr.value & flag) != 0;
+    }
+
     uint8_t Ppu::controller_register::increment_vram_addr()
     {
         return (cr.value & cr.VRAM_ADD_INCREMENT) ? 32 : 1;
@@ -173,5 +196,89 @@ namespace sneslite
     void Ppu::controller_register::update_vram_addr(uint8_t data)
     {
         cr.value = data;
+    }
+
+    uint16_t Ppu::controller_register::sprt_pattern_addr() const 
+    {
+        return _contains(cr.SPRITE_PATTERN_ADDR) ? 0x1000 : 0;
+    }
+
+    uint16_t Ppu::controller_register::bknd_pattern_addr() const 
+    {
+        return _contains(cr.BACKROUND_PATTERN_ADDR) ? 0x1000 : 0;
+    }
+
+    uint8_t Ppu::controller_register::sprite_size() const 
+    {
+        return _contains(cr.SPRITE_SIZE) ? 16 : 8;
+    }
+
+    uint8_t Ppu::controller_register::master_slave_select() const 
+    {
+        return _contains(cr.MASTER_SLAVE_SELECT) ? 1 : 0;
+    }
+
+    bool Ppu::controller_register::generate_vblank_nmi() const 
+    {
+        return _contains(cr.GENERATE_NMI);
+    }
+
+    //
+    // Status register emulation
+    //
+    Ppu::status_register::status_register() :
+        sr
+        {
+            0b00000000
+        }
+    {}
+
+    void Ppu::status_register::_set(uint8_t flag, bool status)
+    {
+        if (status) {
+            sr.value |= flag;
+        } else {
+            sr.value &= ~flag;
+        }
+    }
+
+    void Ppu::status_register::_remove(uint8_t flag)
+    {
+        sr.value &= ~flag;
+    }
+
+    bool Ppu::status_register::_contains(uint8_t flag) const
+    {
+        return (sr.value & flag) != 0;
+    }
+
+    void Ppu::status_register::set_vblank_status(bool status)
+    {
+        _set(sr.VBLANK_STARTED, status);
+    }
+
+    void Ppu::status_register::set_sprite_zero_hit(bool status)
+    {
+        _set(sr.SPRITE_ZERO_HIT, status);
+    }
+
+    void Ppu::status_register::set_sprite_overflow(bool status)
+    {
+        _set(sr.SPRITE_OVERFLOW, status);
+    }
+
+    void Ppu::status_register::reset_vblank_status()
+    {
+        _remove(sr.VBLANK_STARTED);
+    }
+
+    bool Ppu::status_register::is_in_vblank() const
+    {
+        return _contains(sr.VBLANK_STARTED);
+    }
+
+    uint8_t Ppu::status_register::snapshot() const
+    {
+        return sr.value;
     }
 }
