@@ -52,5 +52,8 @@ wrapper: $(MAIN_SRC)
 	mkdir -p $(BUILD_DIR)
 	$(CXX) $(MAIN_SRC) -o $(MAIN_EXEC) $(SFMLFLAGS)
 
+docs: ./docs/doxygen.conf
+	echo "Not yet implemented"
+
 clean:
 	rm -rf $(BUILD_DIR)/
