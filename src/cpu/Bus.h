@@ -93,5 +93,11 @@ namespace sneslite
 			double AudioTimeSample = 0.0f;
 			uint32_t Clockcount = 0;
 
+			uint8_t dma_page = 0x00;
+			uint8_t dma_addr = 0x00;
+			uint8_t dma_data = 0x00;
+			bool dma_dummy = true;
+			bool dma_transfer = false;
+
     };
 }
