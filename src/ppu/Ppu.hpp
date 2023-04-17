@@ -22,6 +22,8 @@ namespace sneslite
 
         class status_register;
 
+        class frame;
+
         public:
             /**
             * @brief Data storage for PPU
@@ -143,6 +145,11 @@ namespace sneslite
             status_register *p_sr;
 
             /**
+            * @brief TODO
+            */
+            frame *p_f;
+
+            /**
             * @brief PPU data
             */
             _data pd;
@@ -208,21 +215,6 @@ namespace sneslite
             uint16_t get_addr_value();
 
         private:
-            /**
-            * @brief Pointer to Ppu object for cross-referencing
-            */
-            Ppu *p_ppu;
-
-            /**
-             * @brief Pointer to controller_register object for cross-referencing
-             */
-            controller_register *p_cr;
-
-            /**
-            * @brief Pointer to status_register object
-            */
-            status_register *p_sr;
-
             /**
             * @brief Address register data
             */
@@ -336,21 +328,6 @@ namespace sneslite
             
         private:
             /**
-            * @brief Pointer to Ppu object for cross-referencing
-            */
-            Ppu *p_ppu;
-
-            /**
-            * @brief Pointer to address_register object for cross-referencing
-            */
-            address_register *p_ar;
-
-            /**
-            * @brief Pointer to status_register object
-            */
-            status_register *p_sr;
-
-            /**
             * @brief Controller register data
             */
             _data cr;
@@ -435,16 +412,34 @@ namespace sneslite
             */
             bool _contains(uint8_t flag) const;
 
+            /**
+            * @brief TODO
+            */
             void set_vblank_status(bool status);
             
+            /**
+            * @brief TODO
+            */
             void set_sprite_zero_hit(bool status);
             
+            /**
+            * @brief TODO
+            */
             void set_sprite_overflow(bool status);
             
+            /**
+            * @brief TODO
+            */
             void reset_vblank_status();
             
+            /**
+            * @brief TODO
+            */
             bool is_in_vblank() const;
 
+            /**
+            * @brief TODO
+            */
             uint8_t snapshot() const;
 
         private:
@@ -467,5 +462,40 @@ namespace sneslite
             * @brief Pointer to controller_register object for cross-referencing
             */
             controller_register *p_cr;
+    };
+
+    class Ppu::frame : public Ppu
+    {
+        public:
+
+            struct _data
+            {
+                /**
+                * @brief TODO
+                */
+                std::vector<uint8_t> value;
+                
+                /**
+                * @brief TODO
+                */
+                const uint8_t WIDTH  = 256;
+                
+                /**
+                * @brief TODO
+                */
+                const uint8_t HEIGHT = 240;
+            };
+
+            frame();
+
+            void set_pixel(size_t x, size_t y, std::tuple<uint8_t, uint8_t, uint8_t> rgb);
+
+            std::vector<uint8_t> show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n);
+        
+        private:
+            /**
+            * @brief TODO
+            */
+            _data fd;
     };
 }
