@@ -26,6 +26,26 @@ namespace sneslite
 
         public:
             /**
+            * @brief Pointer to address_register object for cross-referencing
+            */
+            address_register *p_ar;
+
+            /**
+            * @brief Pointer to controller_register object for cross-referencing
+            */
+            controller_register *p_cr;
+
+            /**
+            * @brief Pointer to status_register object
+            */
+            status_register *p_sr;
+
+            /**
+            * @brief Pointer to frame object
+            */
+            frame *p_f;
+
+            /**
             * @brief Data storage for PPU
             * 
             * @warning This struct is for internal use only!
@@ -129,26 +149,6 @@ namespace sneslite
             */
             Bus *p_bus = nullptr;
             
-            /**
-            * @brief Pointer to address_register object for cross-referencing
-            */
-            address_register *p_ar;
-
-            /**
-            * @brief Pointer to controller_register object for cross-referencing
-            */
-            controller_register *p_cr;
-
-            /**
-            * @brief Pointer to status_register object
-            */
-            status_register *p_sr;
-
-            /**
-            * @brief TODO
-            */
-            frame *p_f;
-
             /**
             * @brief PPU data
             */
@@ -486,11 +486,25 @@ namespace sneslite
                 const uint8_t HEIGHT = 240;
             };
 
+            /**
+            * @brief TODO
+            */
             frame();
 
+            /**
+            * @brief TODO
+            */
             void set_pixel(size_t x, size_t y, std::tuple<uint8_t, uint8_t, uint8_t> rgb);
 
+            /**
+            * @brief TODO
+            */
             std::vector<uint8_t> show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n);
+
+            /**
+            * @brief TODO
+            */
+            std::vector<uint8_t> get_frame_data();
         
         private:
             /**

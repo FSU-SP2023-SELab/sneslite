@@ -1,5 +1,6 @@
 #include<algorithm>
 #include<csignal>
+#include<cassert>
 
 #include "Ppu.hpp"
 #include "../cpu/Bus.h"
@@ -332,6 +333,50 @@ namespace sneslite
 
     std::vector<uint8_t> Ppu::frame::show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n)
     {
-        // TODO
+        assert(bank <= 1);
+
+        frame ppu_frame;
+        size_t bank_offset = bank * 0x1000;
+
+        const uint8_t *tile = &char_rom[bank_offset + tile_n * 16];
+
+        for (size_t y = 0; y <= 7; ++y) {
+            uint8_t upper = tile[y];
+            uint8_t lower = tile[y + 8];
+
+            for (int x = 7; x >= 0; --x) {
+                uint8_t value = (1 & upper) << 1 | (1 & lower);
+                upper = upper >> 1;
+                lower = lower >> 1;
+                std::tuple<uint8_t, uint8_t, uint8_t> rgb;
+                switch (value) {
+                    case 0:
+                        rgb = SYSTEM_PALLETE[0x01];
+                        break;
+                    case 1:
+                        rgb = SYSTEM_PALLETE[0x23];
+                        break;
+                    case 2:
+                        rgb = SYSTEM_PALLETE[0x27];
+                        break;
+                    case 3:
+                        rgb = SYSTEM_PALLETE[0x30];
+                        break;
+                    default:
+                        LOG(Error) << "Invalid pallete: " << value;
+                        raise(SIGTERM);
+                        break;
+                }
+            
+                ppu_frame.set_pixel(x, y, rgb);
+            }
+        }
+
+        return ppu_frame.fd.value;
+    }
+
+    std::vector<uint8_t> Ppu::frame::get_frame_data()
+    {
+        return fd.value;
     }
 }
