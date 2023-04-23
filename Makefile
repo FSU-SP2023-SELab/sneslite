@@ -35,8 +35,8 @@ OBJECTS		:= 	\
 				$(SRC_DIR)/cartridge/Cartridge.cpp \
 				$(SRC_DIR)/cpu/Cpu.cpp \
 				$(SRC_DIR)/cpu/Bus.cpp \
-				$(SRC_DIR)/apu/Apu.cpp \
 				$(SRC_DIR)/ppu/Ppu.cpp \
+				$(SRC_DIR)/apu/Apu.cpp \
 
 .PHONY: all clean
 
@@ -46,7 +46,7 @@ all: $(MAIN_SRC)
 
 test: $(TEST_SRC)
 	mkdir -p $(BUILD_DIR)
-	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(TEST_SRC) $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(TEST_SRC) $(OBJECTS) $(SFMLFLAGS)
 
 wrapper: $(MAIN_SRC)
 	mkdir -p $(BUILD_DIR)
