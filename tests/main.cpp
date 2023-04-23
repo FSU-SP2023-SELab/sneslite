@@ -4,6 +4,9 @@
 
 #include "cartridge.h"
 #include "cpu.h"
+#include "ppu.h"
+
+#include "../src/cpu/Bus.h"
 
 static const unsigned char ROM_TEST[] = {
   0x4e, 0x45, 0x53, 0x1a, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -3427,6 +3430,8 @@ static const unsigned char ROM_TEST[] = {
 
 int main()
 {
+    sneslite::Bus bus;
+
     // Build ROM from embedded source
     std::string rom = "./build/romtest.nes";
     {
@@ -3435,6 +3440,9 @@ int main()
     }
 
     IS_TRUE(test_cartridge(rom), "Cartridge");
+    bus.cartridge.load_dump_file(rom);
 
-    IS_TRUE(test_cpu(), "CPU")
+    IS_TRUE(test_cpu(), "CPU");
+
+    IS_TRUE(test_ppu(rom, bus), "PPU");
 }
