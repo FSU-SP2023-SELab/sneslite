@@ -46,7 +46,7 @@ all: $(MAIN_SRC)
 
 test: $(TEST_SRC)
 	mkdir -p $(BUILD_DIR)
-	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(TEST_SRC) $(OBJECTS) $(SFMLFLAGS)
+	$(CXX) $(CXXFLAGS) -g -o $(EXECUTABLE) $(TEST_SRC) $(OBJECTS) $(SFMLFLAGS)
 
 wrapper: $(MAIN_SRC)
 	mkdir -p $(BUILD_DIR)
