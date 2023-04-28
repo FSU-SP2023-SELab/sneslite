@@ -7,6 +7,7 @@
 #include "ppu.h"
 
 #include "../src/cpu/Bus.h"
+#include "../src/debug/Logger.hpp"
 
 static const unsigned char ROM_TEST[] = {
   0x4e, 0x45, 0x53, 0x1a, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -3430,7 +3431,6 @@ static const unsigned char ROM_TEST[] = {
 
 int main()
 {
-    sneslite::Bus bus;
 
     // Build ROM from embedded source
     std::string rom = "./build/romtest.nes";
@@ -3438,9 +3438,14 @@ int main()
         std::ofstream ostrm(rom, std::ios::binary);
         ostrm.write(reinterpret_cast<const char*>(&ROM_TEST), sizeof ROM_TEST);
     }
+    
+    sneslite::Bus bus;
 
     IS_TRUE(test_cartridge(rom), "Cartridge");
-    bus.cartridge.load_dump_file(rom);
+
+    LOG(2) << "Cartridge Test Complete" << std::endl;
+
+    bus.begin(rom);
 
     IS_TRUE(test_cpu(), "CPU");
 
