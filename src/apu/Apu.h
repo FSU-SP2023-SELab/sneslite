@@ -17,7 +17,7 @@ namespace sneslite
 
             double GetSample();
 
-            static uint8_t length_table[];
+            std::vector<uint8_t> length_table;
 
         private:
 
