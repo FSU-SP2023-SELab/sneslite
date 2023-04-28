@@ -295,34 +295,34 @@ namespace sneslite
             void update_vram_addr(uint8_t data);
 
             /**
-            * @brief TODO
+            * @brief Check if bit contains flag
             * 
             * @internal
             */
             bool _contains(uint8_t flag) const;
 
             /**
-            * @brief TODO
+            * @brief Return sprite pattern address
             */
             uint16_t sprt_pattern_addr() const;
             
             /**
-            * @brief TODO
+            * @brief Return background pattern address
             */
             uint16_t bknd_pattern_addr() const;
             
             /**
-            * @brief TODO
+            * @brief Return sprite size
             */
             uint8_t sprite_size() const;
             
             /**
-            * @brief TODO
+            * @brief Return master/slave bitflag
             */
             uint8_t master_slave_select() const;
             
             /**
-            * @brief TODO
+            * @brief Set vblank bitflag for next frame
             */
             bool generate_vblank_nmi() const;
             
@@ -338,47 +338,47 @@ namespace sneslite
         public:
             struct _data {
                 /**
-                * @brief TODO
+                * @brief Status register value
                 */
                 uint8_t value;
 
                 /**
-                * @brief TODO
+                * @brief Unused bit
                 */
                 static const uint8_t NOTUSED          = 0b00000001;
                 
                 /**
-                * @brief TODO
+                * @brief Unused bit
                 */
                 static const uint8_t NOTUSED2         = 0b00000010;
                 
                 /**
-                * @brief TODO
+                * @brief Unused bit
                 */
                 static const uint8_t NOTUSED3         = 0b00000100;
                 
                 /**
-                * @brief TODO
+                * @brief Unused bit
                 */
                 static const uint8_t NOTUSED4         = 0b00001000;
                 
                 /**
-                * @brief TODO
+                * @brief Unused bit
                 */
                 static const uint8_t NOTUSED5         = 0b00010000;
                 
                 /**
-                * @brief TODO
+                * @brief Bitflag for sprite overflow
                 */
                 static const uint8_t SPRITE_OVERFLOW  = 0b00100000;
                 
                 /**
-                * @brief TODO
+                * @brief Bitflag for zero hit
                 */
                 static const uint8_t SPRITE_ZERO_HIT  = 0b01000000;
                 
                 /**
-                * @brief TODO
+                * @brief Bitflag for vblank
                 */
                 static const uint8_t VBLANK_STARTED   = 0b10000000;
             };
@@ -389,7 +389,7 @@ namespace sneslite
             status_register();
 
             /**
-            * @brief TODO
+            * @brief Set status register
             * 
             * @param flag 
             * @param status 
@@ -397,14 +397,14 @@ namespace sneslite
             void _set(uint8_t flag, bool status);
 
             /**
-            * @brief TODO
+            * @brief Remove bitflag
             * 
             * @param flag 
             */
             void _remove(uint8_t flag);
 
             /**
-            * @brief TODO
+            * @brief Check if bitflag contains other bit
             * 
             * @param flag 
             * @return true 
@@ -413,32 +413,42 @@ namespace sneslite
             bool _contains(uint8_t flag) const;
 
             /**
-            * @brief TODO
+            * @brief Set vblank bitflag
+            * 
+            * @param status
             */
             void set_vblank_status(bool status);
             
             /**
-            * @brief TODO
+            * @brief Set zero hit bitflag
+            * 
+            * @param status
             */
             void set_sprite_zero_hit(bool status);
             
             /**
-            * @brief TODO
+            * @brief Set sprite overflow bitflag
+            * 
+            * @param status
             */
             void set_sprite_overflow(bool status);
             
             /**
-            * @brief TODO
+            * @brief Set vblank to zero
             */
             void reset_vblank_status();
             
             /**
-            * @brief TODO
+            * @brief Check if PPU is in vblank
+            * 
+            * @return true, if in vblank
             */
             bool is_in_vblank() const;
 
             /**
-            * @brief TODO
+            * @brief Return status register value
+            * 
+            * @return uint8_t sr.value
             */
             uint8_t snapshot() const;
 
@@ -471,38 +481,48 @@ namespace sneslite
             struct _data
             {
                 /**
-                * @brief TODO
+                * @brief Container for all pixels on frame
                 */
                 std::vector<uint8_t> value;
                 
                 /**
-                * @brief TODO
+                * @brief Width of frame
                 */
-                const uint8_t WIDTH  = 256;
+                const uint16_t WIDTH  = 256;
                 
                 /**
-                * @brief TODO
+                * @brief Height of frame
                 */
-                const uint8_t HEIGHT = 240;
+                const uint16_t HEIGHT = 240;
             };
 
             /**
-            * @brief TODO
+            * @brief Frame object constructor 
             */
             frame();
 
             /**
-            * @brief TODO
+            * @brief Setter for frame data value
+            * 
+            * @param x x position
+            * @param y y position
+            * @param rgb Color data for pixel
             */
             void set_pixel(size_t x, size_t y, std::tuple<uint8_t, uint8_t, uint8_t> rgb);
 
             /**
-            * @brief TODO
+            * @brief Getter for frame data value, sequentially
+            * 
+            * @param char_rom Cartridge character ROM
+            * @param bank Memory bank location
+            * @param tile_n Tile number to fetch
+            * 
+            * @return _data.value vector
             */
             std::vector<uint8_t> show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n);
 
             /**
-            * @brief TODO
+            * @brief Getter for frame data value, without returning whole tile
             */
             std::vector<uint8_t> get_frame_data();
         

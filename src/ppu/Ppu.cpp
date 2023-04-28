@@ -34,7 +34,7 @@ namespace sneslite
         {
             p_bus->cartridge.get_char_rom(),
             p_bus->cartridge.get_mirror_type(),
-            {0}, {0}, {0}
+            {0}, {0}, {0}, 0, 0, 0
         }
     {}
     
