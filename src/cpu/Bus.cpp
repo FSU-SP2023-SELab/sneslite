@@ -77,6 +77,7 @@ namespace sneslite
 
     bool Bus::clock()
     {
+        ppu.tick(Clockcount);
         apu.clock();
         if (Clockcount % 3 == 0)
         {
