@@ -5,6 +5,8 @@
 #include<fstream>
 #include<vector>
 #include<SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
 
 bool test_ppu(std::string file, sneslite::Bus bus)
 {

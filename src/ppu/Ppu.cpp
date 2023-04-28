@@ -35,10 +35,6 @@ namespace sneslite
 
     Ppu::~Ppu()
     {
-        delete p_cr;
-        delete p_ar;
-        delete p_sr;
-        delete p_f;
     }
 
     void Ppu::initialize_ppu()

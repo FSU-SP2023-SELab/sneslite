@@ -1,5 +1,6 @@
 #include "Bus.h"
 #include "Cpu.h"
+#include "../debug/Logger.hpp"
 
 namespace sneslite
 {
@@ -8,12 +9,15 @@ namespace sneslite
     {
 	    //Clear RAM contents
 	    for (auto& i : ram) i = 0x00;
+        LOG(Info) << "RAM cleared";
 
 	    //Connect CPU to communication bus
 	    cpu.ConnectBus(this);
+        LOG(Info) << "CPU connected to bus";
         
         // Connect PPU to bus
         ppu.connect_bus(this);
+        LOG(Info) << "PPU connected to bus";
     }
 
     Bus::~Bus()
@@ -26,21 +30,24 @@ namespace sneslite
         if (path == "") return;
 
         if (!cartridge.load_dump_file(path)) return;
+        LOG(Info) << "Cartridge loaded";
 
         ppu.initialize_ppu();
+        LOG(Info) << "PPU Initialized";
 
         time_t start = time(0);
 
-        while (true) {
-            if (time(0) - start == 1/60) {
-                clock();
-                start += 1/60;
-            }
-        }
+        // while (true) {
+            // if (time(0) - start >= 1/60) {
+                // clock();
+                // start += 1/60;
+            // }
+        // }
     }
 
     void Bus::write(uint16_t addr, uint8_t data)
     {
+        LOG(Info) << "Writing data to bus";
         if(addr >= 0x0000 && addr <= 0x1FFF)
         {
             ram[addr & 0x07FF] = data;
