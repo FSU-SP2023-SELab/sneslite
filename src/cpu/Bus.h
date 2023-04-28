@@ -16,12 +16,20 @@ namespace sneslite
 	    	Bus();
 	    	~Bus();
 
+			void begin(std::string path);
+
+			/**
+		 	* @brief Cartidge on the bus
+		 	* 
+		 	*/
+			Cartridge cartridge;
+
 	    	/**
 	     	* @brief Central processing unit on the Bus
 	     	* 
 	     	*/
-		
         	Cpu cpu;
+
 			/**
 		 	* @brief Picture processing unit on the Bus 
 		 	* 
@@ -33,12 +41,6 @@ namespace sneslite
 		 	* 
 		 	*/
 			Apu apu;
-
-			/**
-		 	* @brief Cartidge on the bus
-		 	* 
-		 	*/
-			Cartridge cartridge;
 
 	    	/**
 	     	* @brief TEMP fake RAM

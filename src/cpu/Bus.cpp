@@ -21,6 +21,24 @@ namespace sneslite
 
     }
 
+    void Bus::begin(std::string path)
+    {
+        if (path == "") return;
+
+        if (!cartridge.load_dump_file(path)) return;
+
+        ppu.initialize_ppu();
+
+        time_t start = time(0);
+
+        while (true) {
+            if (time(0) - start == 1/60) {
+                clock();
+                start += 1/60;
+            }
+        }
+    }
+
     void Bus::write(uint16_t addr, uint8_t data)
     {
         if(addr >= 0x0000 && addr <= 0x1FFF)
