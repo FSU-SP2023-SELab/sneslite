@@ -8,7 +8,10 @@ namespace sneslite
         
     }
 
-    Apu::~Apu() {}
+    Apu::~Apu() 
+    {
+
+    }
 
     void Apu::Write(uint16_t addr, uint8_t data)
     {
@@ -266,10 +269,6 @@ namespace sneslite
 
     double Apu::GetSample()
     {
-        /*
-        return ((1.0 * pulse1_output) - 0.8) * 0.1 +
-			((1.0 * pulse2_output) - 0.8) * 0.1 +
-			((2.0 * (noise_output - 0.5))) * 0.1;
-        */
+		return ((1.0 * pulse1_output) - 0.8) * 0.1 + ((1.0 * pulse2_output) - 0.8) * 0.1 + ((2.0 * (noise_output - 0.5))) * 0.1;
     }
 }
