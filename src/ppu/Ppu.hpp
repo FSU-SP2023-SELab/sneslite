@@ -2,6 +2,7 @@
 
 #include<vector>
 #include<cstdint>
+#include<memory>
 
 namespace sneslite
 {
@@ -28,11 +29,13 @@ namespace sneslite
             /**
             * @brief Pointer to address_register object for cross-referencing
             */
+            //address_register *p_ar = new sneslite::Ppu::address_register();
             address_register *p_ar;
 
             /**
             * @brief Pointer to controller_register object for cross-referencing
             */
+            //controller_register *p_cr = new sneslite::Ppu::controller_register();
             controller_register *p_cr;
 
             /**
@@ -60,43 +63,44 @@ namespace sneslite
                 /**
                 * @brief Mirror type, as read from cartridge
                 */
-                uint8_t mirror_type;
+                uint8_t mirror_type = 0;
 
                 /**
                 * @brief Delimited array of sprites and textures as stored in the ROM
                 */
-                uint8_t palette_table[32];
+                uint8_t palette_table[32] = {0};
 
                 /**
                 * @brief Current VRAM data
                 */
-                uint8_t vram[2048];
+                uint8_t vram[2048] = {0};
 
                 /**
                 * @brief Current status of on-screen sprites
                 */
-                uint8_t oam_data[256];
+                uint8_t oam_data[256] = {0};
 
                 /**
                 * @brief Temporary data buffer
                 */
-                uint8_t internal_data_buffer;
+                uint8_t internal_data_buffer = 0;
 
                 /**
                 * @brief Scanline to draw
                 */
-                uint16_t scanline;
+                uint16_t scanline = 0;
 
                 /**
                 * @brief Cycle tracking
                 */
-                size_t cycles;
+                size_t cycles = 0;
             };
 
-            /**
-            * @brief Construct a new Ppu object
-            */
             Ppu();
+
+            ~Ppu();
+
+            void initialize_ppu();
 
             /**
             * @brief Set bus pointer variable to bus address
@@ -457,21 +461,6 @@ namespace sneslite
             * @brief TODO
             */
             _data sr;
-
-            /**
-            * @brief Pointer to Ppu object for cross-referencing
-            */
-            Ppu *p_ppu;
-
-            /**
-            * @brief Pointer to address_register object for cross-referencing
-            */
-            address_register *p_ar;
-
-            /**
-            * @brief Pointer to controller_register object for cross-referencing
-            */
-            controller_register *p_cr;
     };
 
     class Ppu::frame : public Ppu

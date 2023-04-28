@@ -29,14 +29,27 @@ namespace sneslite
     // PPU initialization
     //
 
-    Ppu::Ppu() :
-        pd
-        {
-            p_bus->cartridge.get_char_rom(),
-            p_bus->cartridge.get_mirror_type(),
-            {0}, {0}, {0}, 0, 0, 0
-        }
-    {}
+    Ppu::Ppu()
+    {
+    }
+
+    Ppu::~Ppu()
+    {
+        delete p_cr;
+        delete p_ar;
+        delete p_sr;
+        delete p_f;
+    }
+
+    void Ppu::initialize_ppu()
+    {
+        p_ar = new sneslite::Ppu::address_register();
+        p_cr = new sneslite::Ppu::controller_register();
+        p_sr = new sneslite::Ppu::status_register();
+        p_f  = new sneslite::Ppu::frame();
+        pd.char_rom = p_bus->cartridge.get_char_rom();
+        pd.mirror_type = p_bus->cartridge.get_mirror_type();
+    }
     
     uint8_t Ppu::read_data() {
         uint16_t addr = p_ar->get_addr_value();
@@ -46,7 +59,7 @@ namespace sneslite
         if (addr <= 0x1fff)
         {
             uint8_t result = pd.internal_data_buffer;
-            pd.internal_data_buffer = pd.char_rom[addr];
+            pd.internal_data_buffer = pd.char_rom.at(addr);
             return result;
         }
         else if (addr >= 0x2000 && addr <= 0x2fff)
@@ -228,27 +241,27 @@ namespace sneslite
 
     uint16_t Ppu::controller_register::sprt_pattern_addr() const 
     {
-        return _contains(cr.SPRITE_PATTERN_ADDR) ? 0x1000 : 0;
+        return p_cr->_contains(cr.SPRITE_PATTERN_ADDR) ? 0x1000 : 0;
     }
 
     uint16_t Ppu::controller_register::bknd_pattern_addr() const 
     {
-        return _contains(cr.BACKROUND_PATTERN_ADDR) ? 0x1000 : 0;
+        return p_cr->_contains(cr.BACKROUND_PATTERN_ADDR) ? 0x1000 : 0;
     }
 
     uint8_t Ppu::controller_register::sprite_size() const 
     {
-        return _contains(cr.SPRITE_SIZE) ? 16 : 8;
+        return p_cr->_contains(cr.SPRITE_SIZE) ? 16 : 8;
     }
 
     uint8_t Ppu::controller_register::master_slave_select() const 
     {
-        return _contains(cr.MASTER_SLAVE_SELECT) ? 1 : 0;
+        return p_cr->_contains(cr.MASTER_SLAVE_SELECT) ? 1 : 0;
     }
 
     bool Ppu::controller_register::generate_vblank_nmi() const 
     {
-        return _contains(cr.GENERATE_NMI);
+        return p_cr->_contains(cr.GENERATE_NMI);
     }
 
     //
