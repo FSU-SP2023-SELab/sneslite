@@ -67,6 +67,7 @@ namespace sneslite
         else if (addr >= 0x3000 && addr <= 0x3eff)
         {
             LOG(Info) << "Address " + std::to_string(addr) + " shouldn't be used";
+            return -1;
         }
         else if (addr == 0x3f10 || addr == 0x3f14 || addr == 0x3f18 || addr == 0x3f1c)
         {
@@ -80,8 +81,10 @@ namespace sneslite
         else
         {
             LOG(Error) << "Unexpected access to mirrored space " + std::to_string(addr);
-            raise(SIGTERM);
+            raise(SIGTERM);            
         }
+
+        return -1;
     }
     
     void Ppu::write_to_ar(uint8_t data)

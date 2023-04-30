@@ -269,17 +269,17 @@ namespace sneslite
                 /**
                 * @brief Size of sprite (0: 8x8, 1: 16x16)
                 */
-                static const uint8_t SPRITE_SIZE             = 0b00100000;
+                uint8_t SPRITE_SIZE             = 0b00100000;
 
                 /**
                 * @brief Master/slave select
                 */
-                static const uint8_t MASTER_SLAVE_SELECT     = 0b01000000;
+                int8_t MASTER_SLAVE_SELECT     = 0b01000000;
 
                 /**
                 * @brief Generate non-maskable interrupt (0: off, 1: on)
                 */
-                static const uint8_t GENERATE_NMI            = 0b10000000;
+                uint8_t GENERATE_NMI            = 0b10000000;
             };
 
             /**
@@ -512,7 +512,7 @@ namespace sneslite
             std::vector<uint8_t> show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n);
 
             /**
-            * @brief TODO
+            * @brief Render abstraction
             */
             void render();
 
@@ -523,7 +523,7 @@ namespace sneslite
         
         private:
             /**
-            * @brief TODO
+            * @brief Frame data variable
             */
             _data fd;
     };
