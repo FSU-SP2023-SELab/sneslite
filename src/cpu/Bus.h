@@ -4,6 +4,7 @@
 #include "../apu/Apu.h"
 #include "../ppu/Ppu.hpp"
 #include "../cartridge/Cartridge.hpp"
+#include "../joypads/joypad.hpp"
 
 #include <cstdint>
 #include <array>
@@ -16,7 +17,7 @@ namespace sneslite
 	    	Bus();
 	    	~Bus();
 
-			void begin(std::string path);
+			void initialize(std::string path);
 
 			/**
 		 	* @brief Cartidge on the bus
@@ -41,6 +42,11 @@ namespace sneslite
 		 	* 
 		 	*/
 			Apu apu;
+
+			/**
+			 * @brief Controller
+			*/
+			JoyPad joypad;
 
 	    	/**
 	     	* @brief TEMP fake RAM

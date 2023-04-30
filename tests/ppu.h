@@ -1,10 +1,10 @@
 #include "../src/ppu/Ppu.hpp"
 #include "../src/cpu/Bus.h"
 
-#include<string>
-#include<fstream>
-#include<vector>
-#include<SFML/Graphics.hpp>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 
