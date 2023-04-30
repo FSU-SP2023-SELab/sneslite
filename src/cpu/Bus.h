@@ -7,13 +7,15 @@
 
 #include <cstdint>
 #include <array>
+#include <functional>
 
 namespace sneslite
 {
     class Bus
     {
     	public:
-	    	Bus();
+			template<typename T>
+	    	Bus(T&& gameloop_callback);
 	    	~Bus();
 
 			void begin(std::string path);
@@ -101,5 +103,6 @@ namespace sneslite
 			bool dma_dummy = true;
 			bool dma_transfer = false;
 
+			std::function<void(const Ppu&)> gameloop_callback;
     };
 }
