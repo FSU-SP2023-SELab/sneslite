@@ -67,6 +67,7 @@ namespace sneslite
         else if (addr >= 0x3000 && addr <= 0x3eff)
         {
             LOG(Info) << "Address " + std::to_string(addr) + " shouldn't be used";
+            return -1;
         }
         else if (addr == 0x3f10 || addr == 0x3f14 || addr == 0x3f18 || addr == 0x3f1c)
         {
@@ -80,8 +81,10 @@ namespace sneslite
         else
         {
             LOG(Error) << "Unexpected access to mirrored space " + std::to_string(addr);
-            raise(SIGTERM);
+            raise(SIGTERM);            
         }
+
+        return -1;
     }
     
     void Ppu::write_to_ar(uint8_t data)
@@ -382,6 +385,57 @@ namespace sneslite
         }
 
         return ppu_frame.fd.value;
+    }
+
+    void Ppu::frame::render()
+    {
+        auto bank = p_cr->bknd_pattern_addr();
+
+        for(auto i = 0x0; i <= 0x03C0; i++)
+        {
+            auto tile   = pd.vram[i];
+            auto tile_x = i % 32;
+            auto tile_y = i / 32;
+
+            std::vector<uint8_t> tile_vec(pd.char_rom[static_cast<size_t>(bank + tile * 16)],
+                                          pd.char_rom[static_cast<size_t>(bank + tile * 16 + 15) + 1]);
+
+            for(auto y = 0; y <= 7; y++)
+            {
+                uint8_t upper = tile_vec.at(y);
+                uint8_t lower = tile_vec.at(y + 8);
+
+                for(int x = 0; x <= 7; x++)
+                {
+                    auto value = (1 & upper) << 1 | (1 & lower);
+                    upper = upper >> 1;
+                    lower = lower >> 1;
+
+                    std::tuple<uint8_t, uint8_t, uint8_t> rgb;
+                    switch(value)
+                    {
+                        case 0:
+                            rgb = SYSTEM_PALLETE[0x01];
+                            break;
+                        case 1:
+                            rgb = SYSTEM_PALLETE[0x23];
+                            break;
+                        case 2:
+                            rgb = SYSTEM_PALLETE[0x27];
+                            break;
+                        case 3:
+                            rgb = SYSTEM_PALLETE[0x30];
+                            break;
+                        default:
+                            LOG(Error) << "Invalid RGB match value: " << value;
+                            raise(SIGTERM);
+                            break;
+                    }
+
+                    p_f->set_pixel(tile_x * 8 + x, tile_y * 8 + y, rgb);
+                }
+            }
+        }
     }
 
     std::vector<uint8_t> Ppu::frame::get_frame_data()

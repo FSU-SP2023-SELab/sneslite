@@ -8,6 +8,7 @@
 
 #include <cstdint>
 #include <array>
+#include <functional>
 
 namespace sneslite
 {
@@ -15,7 +16,6 @@ namespace sneslite
     {
     	public:
 	    	Bus();
-	    	~Bus();
 
 			void initialize(std::string path);
 
@@ -107,5 +107,6 @@ namespace sneslite
 			bool dma_dummy = true;
 			bool dma_transfer = false;
 
+			std::function<void(const Ppu&)> gameloop_callback;
     };
 }

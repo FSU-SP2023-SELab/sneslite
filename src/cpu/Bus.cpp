@@ -4,7 +4,6 @@
 
 namespace sneslite
 {
-
     Bus::Bus()
     {
 	    //Clear RAM contents
@@ -26,6 +25,7 @@ namespace sneslite
     }
 
     void Bus::initialize(std::string path)
+
     {
         if (path == "") {
             LOG(Info) << "Must provide path";
@@ -107,7 +107,15 @@ namespace sneslite
 
     bool Bus::clock()
     {
+        auto nmi_before = ppu.p_sr->is_in_vblank();
         ppu.tick(Clockcount);
+        auto nmi_after = ppu.p_sr->is_in_vblank();
+
+        if(!nmi_before && nmi_after)
+        {
+            gameloop_callback(ppu);
+        }
+
         apu.clock();
         if (Clockcount % 3 == 0)
         {

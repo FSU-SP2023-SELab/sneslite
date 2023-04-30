@@ -5,10 +5,12 @@
 #include "cartridge.h"
 #include "cpu.h"
 #include "ppu.h"
+#include "test_rom.h"
 
 #include "../src/cpu/Bus.h"
 #include "../src/debug/Logger.hpp"
 #include "test_rom.hpp"
+
 
 #define IS_TRUE(func, test) { if (!(func)) std::cout << test << " failed on line " << __LINE__ << std::endl; }
 

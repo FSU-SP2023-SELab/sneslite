@@ -29,13 +29,11 @@ namespace sneslite
             /**
             * @brief Pointer to address_register object for cross-referencing
             */
-            //address_register *p_ar = new sneslite::Ppu::address_register();
             address_register *p_ar;
 
             /**
             * @brief Pointer to controller_register object for cross-referencing
             */
-            //controller_register *p_cr = new sneslite::Ppu::controller_register();
             controller_register *p_cr;
 
             /**
@@ -100,6 +98,9 @@ namespace sneslite
 
             ~Ppu();
 
+            /**
+            * @brief Called by the bus when prior modules have been loaded
+            */
             void initialize_ppu();
 
             /**
@@ -144,7 +145,7 @@ namespace sneslite
             * @param cycles 
             * @return true, if cycles >= 262
             * @return false, if cycles < 341 
-             */
+            */
             bool tick(uint8_t cycles);
 
         private:
@@ -268,17 +269,17 @@ namespace sneslite
                 /**
                 * @brief Size of sprite (0: 8x8, 1: 16x16)
                 */
-                static const uint8_t SPRITE_SIZE             = 0b00100000;
+                uint8_t SPRITE_SIZE             = 0b00100000;
 
                 /**
                 * @brief Master/slave select
                 */
-                static const uint8_t MASTER_SLAVE_SELECT     = 0b01000000;
+                int8_t MASTER_SLAVE_SELECT     = 0b01000000;
 
                 /**
                 * @brief Generate non-maskable interrupt (0: off, 1: on)
                 */
-                static const uint8_t GENERATE_NMI            = 0b10000000;
+                uint8_t GENERATE_NMI            = 0b10000000;
             };
 
             /**
@@ -511,13 +512,18 @@ namespace sneslite
             std::vector<uint8_t> show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n);
 
             /**
+            * @brief Render abstraction
+            */
+            void render();
+
+            /**
             * @brief Getter for frame data value, without returning whole tile
             */
             std::vector<uint8_t> get_frame_data();
         
         private:
             /**
-            * @brief TODO
+            * @brief Frame data variable
             */
             _data fd;
     };
