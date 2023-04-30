@@ -4,9 +4,7 @@
 
 namespace sneslite
 {
-
-    template<typename T>
-    Bus::Bus(T&& gameloop_callback)
+    Bus::Bus()
     {
 	    //Clear RAM contents
 	    for (auto& i : ram) i = 0x00;
@@ -19,13 +17,6 @@ namespace sneslite
         // Connect PPU to bus
         ppu.connect_bus(this);
         LOG(Info) << "PPU connected to bus";
-
-        gameloop_callback(std::forward<T>(gameloop_callback));
-    }
-
-    Bus::~Bus()
-    {
-
     }
 
     void Bus::begin(std::string path)
