@@ -14,9 +14,7 @@ namespace sneslite
     class Bus
     {
     	public:
-			template<typename T>
-	    	Bus(T&& gameloop_callback);
-	    	~Bus();
+	    	Bus();
 
 			void begin(std::string path);
 
