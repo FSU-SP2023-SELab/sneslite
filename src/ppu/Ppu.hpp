@@ -29,13 +29,11 @@ namespace sneslite
             /**
             * @brief Pointer to address_register object for cross-referencing
             */
-            //address_register *p_ar = new sneslite::Ppu::address_register();
             address_register *p_ar;
 
             /**
             * @brief Pointer to controller_register object for cross-referencing
             */
-            //controller_register *p_cr = new sneslite::Ppu::controller_register();
             controller_register *p_cr;
 
             /**
@@ -100,6 +98,9 @@ namespace sneslite
 
             ~Ppu();
 
+            /**
+            * @brief Called by the bus when prior modules have been loaded
+            */
             void initialize_ppu();
 
             /**
@@ -144,7 +145,7 @@ namespace sneslite
             * @param cycles 
             * @return true, if cycles >= 262
             * @return false, if cycles < 341 
-             */
+            */
             bool tick(uint8_t cycles);
 
         private:
@@ -509,6 +510,11 @@ namespace sneslite
             * @return _data.value vector
             */
             std::vector<uint8_t> show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n);
+
+            /**
+            * @brief TODO
+            */
+            void render();
 
             /**
             * @brief Getter for frame data value, without returning whole tile
