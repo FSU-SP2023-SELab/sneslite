@@ -9,6 +9,8 @@
 
 #include "../src/cpu/Bus.h"
 #include "../src/debug/Logger.hpp"
+#include "test_rom.hpp"
+
 
 #define IS_TRUE(func, test) { if (!(func)) std::cout << test << " failed on line " << __LINE__ << std::endl; }
 
@@ -28,7 +30,7 @@ int main()
 
     LOG(2) << "Cartridge Test Complete" << std::endl;
 
-    bus.begin(rom);
+    bus.initialize(rom);
 
     IS_TRUE(test_cpu(), "CPU");
 

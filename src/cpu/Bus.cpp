@@ -19,24 +19,27 @@ namespace sneslite
         LOG(Info) << "PPU connected to bus";
     }
 
-    void Bus::begin(std::string path)
+    Bus::~Bus()
     {
-        if (path == "") return;
 
-        if (!cartridge.load_dump_file(path)) return;
+    }
+
+    void Bus::initialize(std::string path)
+
+    {
+        if (path == "") {
+            LOG(Info) << "Must provide path";
+            return;
+        }
+
+        if (!cartridge.load_dump_file(path)) {
+            LOG(Info) << "Unable to open file at path";  
+            return;
+        }
         LOG(Info) << "Cartridge loaded";
 
         ppu.initialize_ppu();
         LOG(Info) << "PPU Initialized";
-
-        time_t start = time(0);
-
-        // while (true) {
-            // if (time(0) - start >= 1/60) {
-                // clock();
-                // start += 1/60;
-            // }
-        // }
     }
 
     void Bus::write(uint16_t addr, uint8_t data)
@@ -60,6 +63,10 @@ namespace sneslite
             dma_addr = 0x00;
             dma_transfer = true;
         }
+        else if (addr == 0x4016 || addr == 0x4017)
+        {
+            joypad.write(data);
+        }
     }
 
     uint8_t Bus::read(uint16_t addr, bool bReadOnly)
@@ -77,6 +84,10 @@ namespace sneslite
         else if(addr == 0x4015)
         {
             data = apu.Read(addr);
+        }
+        else if (addr == 0x4016 || addr == 0x4017)
+        {
+            data = joypad.read();
         }
 
 		return data;
