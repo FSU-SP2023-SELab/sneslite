@@ -1,4 +1,8 @@
-# sneslite
+<p align="center">
+<img width="200" src="./docs/sneslite.png">
+</p>
+
+<h1 align="center"> sneslite </h1>
 sneslite is a simple abstraction of the Nintendo Entertainment System. The backend has been totally recreated, with the front-end missing some features that would make this emulator totally functioning to an end user.
 
 ## Dependencies
