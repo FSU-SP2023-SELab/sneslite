@@ -20,7 +20,7 @@ Insert link here after compiled and uploaded to external source
 ### Building documentation from source
 Compiling documentation requires [Doxygen](https://doxygen.nl/download.html).
 
-Doxygen can be comiled from the project root directory like so:
+Doxygen can be compiled from the project root directory like so:
 
 ```
 cd ./docs
