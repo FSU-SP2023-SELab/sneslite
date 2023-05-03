@@ -12,7 +12,7 @@
 #define FRAMERATE   60
 #define WIDTH       256
 #define HEIGHT      240
-#define DEBUG       1
+#define DEBUG       0
 
 int main()
 {
@@ -52,7 +52,7 @@ int main()
         // Clock system once
         nes.clock();
 
-        debug << "Frame # " << frameCount << std::endl;
+        if (DEBUG) debug << "Frame # " << frameCount << std::endl;
 
         // Handle Inputs
 
