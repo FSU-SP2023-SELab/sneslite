@@ -7,7 +7,7 @@
 #include <SFML/System.hpp>
 
 #include "bus/Bus.hpp"
-#include "../tests/test_rom.hpp"
+#include "../tests/test_rom.h"
 
 #define FRAMERATE   60
 #define WIDTH       256
@@ -21,7 +21,7 @@ int main()
 
 
     // Build rom
-    std::string rom  = "./build/romtest.nes";
+    std::string rom  = "romtest.nes";
     {
         std::ofstream output(rom, std::ios::binary);
         output.write(reinterpret_cast<const char*>(&ROM_TEST), sizeof(ROM_TEST));
