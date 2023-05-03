@@ -1,4 +1,4 @@
-#include "../src/cpu/Cpu.h"
+#include "../src/cpu/Cpu.hpp"
 
 #include<iostream>
 #include<string>

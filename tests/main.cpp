@@ -8,7 +8,7 @@
 
 #include "../src/bus/Bus.hpp"
 #include "../src/debug/Logger.hpp"
-#include "test_rom.hpp"
+#include "test_rom.h"
 
 
 #define IS_TRUE(func, test) { if (!(func)) std::cout << test << " failed on line " << __LINE__ << std::endl; }
