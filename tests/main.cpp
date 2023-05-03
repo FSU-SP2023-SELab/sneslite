@@ -17,7 +17,7 @@ int main()
 {
 
     // Build ROM from embedded source
-    std::string rom = "./build/romtest.nes";
+    std::string rom = "romtest.nes";
     {
         std::ofstream ostrm(rom, std::ios::binary);
         ostrm.write(reinterpret_cast<const char*>(&ROM_TEST), sizeof ROM_TEST);
