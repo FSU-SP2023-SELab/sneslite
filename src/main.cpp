@@ -57,34 +57,35 @@ int main()
         // Handle Inputs
 
         // A
-        b_a = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
-        nes.joypad.set_button_status(sneslite::JoyPadButton::BUTTON_A, b_a);
+        // b_a = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
+        // nes.joypad.set_button_status(sneslite::JoyPadButton::BUTTON_A, b_a);
 
-        // B
-        b_b = sf::Keyboard::isKeyPressed(sf::Keyboard::LControl);
-        nes.joypad.set_button_status(sneslite::JoyPadButton::BUTTON_B, b_b);
+        // // B
+        // b_b = sf::Keyboard::isKeyPressed(sf::Keyboard::LControl);
+        // nes.joypad.set_button_status(sneslite::JoyPadButton::BUTTON_B, b_b);
 
-        // Select
-        b_select = sf::Keyboard::isKeyPressed(sf::Keyboard::RShift);
-        nes.joypad.set_button_status(sneslite::JoyPadButton::SELECT, b_select);
+        // // Select
+        // b_select = sf::Keyboard::isKeyPressed(sf::Keyboard::RShift);
+        // nes.joypad.set_button_status(sneslite::JoyPadButton::SELECT, b_select);
 
-        // Start
-        b_start = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
-        nes.joypad.set_button_status(sneslite::JoyPadButton::START, b_start);
+        // // Start
+        // b_start = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
+        // nes.joypad.set_button_status(sneslite::JoyPadButton::START, b_start);
 
-        // Up and Down are mutually exclusive
-        b_up = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
-        b_down = sf::Keyboard::isKeyPressed(sf::Keyboard::Down) & !b_up;
-        nes.joypad.set_button_status(sneslite::JoyPadButton::UP, b_up);
-        nes.joypad.set_button_status(sneslite::JoyPadButton::DOWN, b_down);
+        // // Up and Down are mutually exclusive
+        // b_up = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
+        // b_down = sf::Keyboard::isKeyPressed(sf::Keyboard::Down) & !b_up;
+        // nes.joypad.set_button_status(sneslite::JoyPadButton::UP, b_up);
+        // nes.joypad.set_button_status(sneslite::JoyPadButton::DOWN, b_down);
 
-        // Left and Right are mutually exclusive
-        b_left = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
-        b_right = sf::Keyboard::isKeyPressed(sf::Keyboard::Right) & !b_left;
-        nes.joypad.set_button_status(sneslite::JoyPadButton::LEFT, b_left);
-        nes.joypad.set_button_status(sneslite::JoyPadButton::RIGHT, b_right);
+        // // Left and Right are mutually exclusive
+        // b_left = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+        // b_right = sf::Keyboard::isKeyPressed(sf::Keyboard::Right) & !b_left;
+        // nes.joypad.set_button_status(sneslite::JoyPadButton::LEFT, b_left);
+        // nes.joypad.set_button_status(sneslite::JoyPadButton::RIGHT, b_right);
         
         // Prepare frame
+        nes.ppu.p_f->render();
         const uint8_t* pixels = nes.ppu.p_f->get_frame_data().data();
         texture.update(pixels, WIDTH, HEIGHT, 0, 0);
         sprite.setTexture(texture);

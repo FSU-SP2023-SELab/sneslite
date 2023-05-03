@@ -25,7 +25,6 @@ namespace sneslite
     }
 
     void Bus::initialize(std::string path)
-
     {
         if (path == "") {
             LOG(Info) << "Must provide path";
