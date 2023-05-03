@@ -8,15 +8,15 @@ namespace sneslite
     {
 	    //Clear RAM contents
 	    for (auto& i : ram) i = 0x00;
-        LOG(Info) << "RAM cleared";
+        LOG(Info) << "RAM cleared" << std::endl;
 
 	    //Connect CPU to communication bus
 	    cpu.ConnectBus(this);
-        LOG(Info) << "CPU connected to bus";
+        LOG(Info) << "CPU connected to bus" << std::endl;
         
         // Connect PPU to bus
         ppu.connect_bus(this);
-        LOG(Info) << "PPU connected to bus";
+        LOG(Info) << "PPU connected to bus" << std::endl;
     }
 
     Bus::~Bus()
@@ -27,23 +27,22 @@ namespace sneslite
     void Bus::initialize(std::string path)
     {
         if (path == "") {
-            LOG(Info) << "Must provide path";
+            LOG(Info) << "Must provide path" << std::endl;
             return;
         }
 
         if (!cartridge.load_dump_file(path)) {
-            LOG(Info) << "Unable to open file at path";  
+            LOG(Info) << "Unable to open file at path" << std::endl;  
             return;
         }
-        LOG(Info) << "Cartridge loaded";
+        LOG(Info) << "Cartridge loaded" << std::endl;
 
         ppu.initialize_ppu();
-        LOG(Info) << "PPU Initialized";
+        LOG(Info) << "PPU Initialized" << std::endl;
     }
 
     void Bus::write(uint16_t addr, uint8_t data)
     {
-        LOG(Info) << "Writing data to bus";
         if(addr >= 0x0000 && addr <= 0x1FFF)
         {
             ram[addr & 0x07FF] = data;
