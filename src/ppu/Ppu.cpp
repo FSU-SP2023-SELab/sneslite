@@ -1,6 +1,7 @@
 #include<algorithm>
 #include<csignal>
 #include<cassert>
+#include<bitset>
 
 #include "Ppu.hpp"
 #include "../bus/Bus.hpp"
@@ -389,7 +390,9 @@ namespace sneslite
 
     void Ppu::render()
     {
+        LOG(Info) << "Render called" << std::endl;
         auto bank = bknd_pattern_addr();
+        std::string tileset_str;
 
         for(auto i = 0x0; i <= 0x03C0; i++)
         {
@@ -399,12 +402,11 @@ namespace sneslite
 
             std::vector<uint8_t> tile_vec;
 
-            //tile_vec.push_back(pd.char_rom[static_cast<size_t>(bank + tile * 16)]);
-            //tile_vec.push_back(pd.char_rom[static_cast<size_t>(bank + tile * 16 + 15) + 1]);
-
             for(auto i = 0; i < 16; i++)
             {
                 tile_vec.push_back(pd.char_rom[bank + tile * 16 + i]);
+
+                tileset_str += std::bitset<4>(i).to_string();
             }
 
             for(auto y = 0; y <= 7; y++)
@@ -443,6 +445,8 @@ namespace sneslite
                 }
             }
         }
+        
+        //LOG(Info) << tileset_str << std::endl;
     }
 
     std::vector<uint8_t> Ppu::get_frame_data()
