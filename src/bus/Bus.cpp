@@ -1,5 +1,5 @@
-#include "Bus.h"
-#include "Cpu.h"
+#include "../bus/Bus.hpp"
+#include "../cpu/Cpu.hpp"
 #include "../debug/Logger.hpp"
 
 namespace sneslite
@@ -53,7 +53,7 @@ namespace sneslite
         {
             ppu.write_to_ar(data);
         }
-        else if((addr >= 0x4000 && addr <= 0x4013) || addr == 0x4015 || addr == 0x4017)
+        else if((addr >= 0x4000 && addr <= 0x4013) || addr == 0x4015)
         {
             apu.Write(addr, data);
         }
@@ -63,7 +63,7 @@ namespace sneslite
             dma_addr = 0x00;
             dma_transfer = true;
         }
-        else if (addr == 0x4016 || addr == 0x4017)
+        else if (addr == 0x4016)
         {
             joypad.write(data);
         }
@@ -85,7 +85,7 @@ namespace sneslite
         {
             data = apu.Read(addr);
         }
-        else if (addr == 0x4016 || addr == 0x4017)
+        else if (addr == 0x4016)
         {
             data = joypad.read();
         }

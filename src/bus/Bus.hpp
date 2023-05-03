@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Cpu.h"
+#include "../cpu/Cpu.hpp"
 #include "../apu/Apu.h"
 #include "../ppu/Ppu.hpp"
 #include "../cartridge/Cartridge.hpp"
-#include "../joypads/joypad.hpp"
+#include "../joypad/JoyPad.hpp"
 
 #include <cstdint>
 #include <array>
@@ -16,6 +16,7 @@ namespace sneslite
     {
     	public:
 	    	Bus();
+			~Bus();
 
 			void initialize(std::string path);
 

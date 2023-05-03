@@ -1,6 +1,5 @@
 #include <cstdint>
 
-
 namespace sneslite
 {
     enum JoyPadButton : uint8_t {

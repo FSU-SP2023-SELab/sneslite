@@ -34,15 +34,16 @@ OBJECTS		:= 	\
 				$(SRC_DIR)/debug/Logger.cpp \
 				$(SRC_DIR)/cartridge/Cartridge.cpp \
 				$(SRC_DIR)/cpu/Cpu.cpp \
-				$(SRC_DIR)/cpu/Bus.cpp \
+				$(SRC_DIR)/bus/Bus.cpp \
 				$(SRC_DIR)/ppu/Ppu.cpp \
 				$(SRC_DIR)/apu/Apu.cpp \
+				$(SRC_DIR)/joypad/JoyPad.cpp \
 
 .PHONY: all clean
 
 all: $(MAIN_SRC)
 	mkdir -p $(BUILD_DIR)
-	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN_SRC) $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(MAIN_EXEC) $(MAIN_SRC) $(OBJECTS) $(SFMLFLAGS)
 
 test: $(TEST_SRC)
 	mkdir -p $(BUILD_DIR)
