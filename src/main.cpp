@@ -37,7 +37,6 @@ int main()
 
     // Loop variables
     std::vector<uint8_t> frame_data;
-    uint8_t* pixels;
     sf::Sprite sprite;
     sf::Texture texture;
     texture.create(WIDTH, HEIGHT);
