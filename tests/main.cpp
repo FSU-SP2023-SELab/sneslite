@@ -5,9 +5,8 @@
 #include "cartridge.h"
 #include "cpu.h"
 #include "ppu.h"
-#include "test_rom.h"
 
-#include "../src/cpu/Bus.h"
+#include "../src/bus/Bus.hpp"
 #include "../src/debug/Logger.hpp"
 #include "test_rom.hpp"
 

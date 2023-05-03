@@ -3,7 +3,7 @@
 #include<cassert>
 
 #include "Ppu.hpp"
-#include "../cpu/Bus.h"
+#include "../bus/Bus.hpp"
 #include "../debug/Logger.hpp"
 
 namespace sneslite

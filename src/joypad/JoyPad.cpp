@@ -1,9 +1,11 @@
 #include <cstdint>
-#include "joypad.hpp"
+#include "JoyPad.hpp"
 
 namespace sneslite
 {
     JoyPad::JoyPad() : strobe(false), button_index(0), button_status(static_cast<JoyPadButton>(0)) {}
+
+    JoyPad::~JoyPad() {}
 
     void JoyPad::write(uint8_t data) {
         strobe = (data & 1) == 1;

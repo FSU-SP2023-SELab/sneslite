@@ -1,5 +1,5 @@
 #include "../src/ppu/Ppu.hpp"
-#include "../src/cpu/Bus.h"
+#include "../src/bus/Bus.hpp"
 
 #include <string>
 #include <fstream>

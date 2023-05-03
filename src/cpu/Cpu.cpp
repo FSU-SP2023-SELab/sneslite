@@ -1,5 +1,5 @@
-#include "Cpu.h"
-#include "Bus.h"
+#include "Cpu.hpp"
+#include "../bus/Bus.hpp"
 
 namespace sneslite
 {
