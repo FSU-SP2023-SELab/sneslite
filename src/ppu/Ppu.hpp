@@ -23,28 +23,22 @@ namespace sneslite
 
         class status_register;
 
-        class frame;
 
         public:
             /**
             * @brief Pointer to address_register object for cross-referencing
             */
-            address_register *p_ar;
+            std::shared_ptr<address_register> p_ar;
 
             /**
             * @brief Pointer to controller_register object for cross-referencing
             */
-            controller_register *p_cr;
+            std::shared_ptr<controller_register> p_cr;
 
             /**
             * @brief Pointer to status_register object
             */
-            status_register *p_sr;
-
-            /**
-            * @brief Pointer to frame object
-            */
-            frame *p_f;
+            std::shared_ptr<status_register> p_sr;
 
             /**
             * @brief Data storage for PPU
@@ -148,6 +142,62 @@ namespace sneslite
             */
             bool tick(uint8_t cycles);
 
+            struct _framedata
+            {
+                /**
+                * @brief Container for all pixels on frame
+                */
+                std::vector<uint8_t> value;
+                
+                /**
+                * @brief Width of frame
+                */
+                const uint16_t WIDTH  = 256;
+                
+                /**
+                * @brief Height of frame
+                */
+                const uint16_t HEIGHT = 240;
+            };
+
+            //
+            // FRAME
+            //
+
+            /**
+            * @brief Frame object constructor 
+            */
+            void frame_init();
+
+            /**
+            * @brief Setter for frame data value
+            * 
+            * @param x x position
+            * @param y y position
+            * @param rgb Color data for pixel
+            */
+            void set_pixel(size_t x, size_t y, std::tuple<uint8_t, uint8_t, uint8_t> rgb);
+
+            /**
+            * @brief Getter for frame data value, sequentially
+            * 
+            * @param char_rom Cartridge character ROM
+            * @param bank Memory bank location
+            * @param tile_n Tile number to fetch
+            * 
+            * @return _data.value vector
+            */
+            std::vector<uint8_t> show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n);
+
+            /**
+            * @brief Render abstraction
+            */
+            void render();
+
+            /**
+            * @brief Getter for frame data value, without returning whole tile
+            */
+            std::vector<uint8_t> get_frame_data();
         private:
             /**
             * @brief Pointer to parent bus
@@ -158,6 +208,11 @@ namespace sneslite
             * @brief PPU data
             */
             _data pd;
+
+            /**
+            * @brief Frame data variable
+            */
+            _framedata fd;
     };
 
     class Ppu::address_register : public Ppu
@@ -462,69 +517,5 @@ namespace sneslite
             * @brief TODO
             */
             _data sr;
-    };
-
-    class Ppu::frame : public Ppu
-    {
-        public:
-
-            struct _data
-            {
-                /**
-                * @brief Container for all pixels on frame
-                */
-                std::vector<uint8_t> value;
-                
-                /**
-                * @brief Width of frame
-                */
-                const uint16_t WIDTH  = 256;
-                
-                /**
-                * @brief Height of frame
-                */
-                const uint16_t HEIGHT = 240;
-            };
-
-            /**
-            * @brief Frame object constructor 
-            */
-            frame();
-
-            /**
-            * @brief Setter for frame data value
-            * 
-            * @param x x position
-            * @param y y position
-            * @param rgb Color data for pixel
-            */
-            void set_pixel(size_t x, size_t y, std::tuple<uint8_t, uint8_t, uint8_t> rgb);
-
-            /**
-            * @brief Getter for frame data value, sequentially
-            * 
-            * @param char_rom Cartridge character ROM
-            * @param bank Memory bank location
-            * @param tile_n Tile number to fetch
-            * 
-            * @return _data.value vector
-            */
-            std::vector<uint8_t> show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n);
-
-            /**
-            * @brief Render abstraction
-            */
-            void render();
-
-            /**
-            * @brief Getter for frame data value, without returning whole tile
-            */
-            std::vector<uint8_t> get_frame_data();
-        
-        private:
-            /**
-            * @brief Frame data variable
-            */
-            _data fd;
     };
 }

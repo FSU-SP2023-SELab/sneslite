@@ -39,12 +39,14 @@ namespace sneslite
 
     void Ppu::initialize_ppu()
     {
-        p_ar = new sneslite::Ppu::address_register();
-        p_cr = new sneslite::Ppu::controller_register();
-        p_sr = new sneslite::Ppu::status_register();
-        p_f  = new sneslite::Ppu::frame();
+        p_ar = std::make_shared<address_register>();
+        p_cr = std::make_shared<controller_register>();
+        p_sr = std::make_shared<status_register>();
+
         pd.char_rom = p_bus->cartridge.get_char_rom();
         pd.mirror_type = p_bus->cartridge.get_mirror_type();
+
+        frame_init();
     }
     
     uint8_t Ppu::read_data() {
@@ -325,13 +327,13 @@ namespace sneslite
     //
     // Frame rendering abstraction
     //
-    Ppu::frame::frame()
+    void Ppu::frame_init()
     {
         fd.value.push_back(fd.WIDTH * fd.HEIGHT * 3);
         fd.value.push_back(0);
     }
 
-    void Ppu::frame::set_pixel(size_t x, size_t y, std::tuple<uint8_t, uint8_t, uint8_t> rgb)
+    void Ppu::set_pixel(size_t x, size_t y, std::tuple<uint8_t, uint8_t, uint8_t> rgb)
     {
         auto base = y * 3 * fd.WIDTH + x * 3;
 
@@ -343,11 +345,10 @@ namespace sneslite
         }
     }
 
-    std::vector<uint8_t> Ppu::frame::show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n)
+    std::vector<uint8_t> Ppu::show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n)
     {
         assert(bank <= 1);
 
-        frame ppu_frame;
         size_t bank_offset = bank * 0x1000;
 
         const uint8_t *tile = &char_rom[bank_offset + tile_n * 16];
@@ -380,29 +381,36 @@ namespace sneslite
                         break;
                 }
             
-                ppu_frame.set_pixel(x, y, rgb);
+                set_pixel(x, y, rgb);
             }
         }
 
-        return ppu_frame.fd.value;
+        return fd.value;
     }
 
-    void Ppu::frame::render()
+    void Ppu::render()
     {
+        std::cout << "1" << std::endl;
         auto bank = p_cr->bknd_pattern_addr();
 
+        std::cout << "2" << std::endl;
         for(auto i = 0x0; i <= 0x03C0; i++)
         {
+            std::cout << "3" << std::endl;
             auto tile   = pd.vram[i];
             auto tile_x = i % 32;
             auto tile_y = i / 32;
 
+            std::cout << "4" << std::endl;
             std::vector<uint8_t> tile_vec(pd.char_rom[static_cast<size_t>(bank + tile * 16)],
                                           pd.char_rom[static_cast<size_t>(bank + tile * 16 + 15) + 1]);
 
+            std::cout << "5" << std::endl;
             for(auto y = 0; y <= 7; y++)
             {
+                std::cout << "6" << std::endl;
                 uint8_t upper = tile_vec.at(y);
+                std::cout << "7" << std::endl;
                 uint8_t lower = tile_vec.at(y + 8);
 
                 for(int x = 0; x <= 7; x++)
@@ -432,13 +440,14 @@ namespace sneslite
                             break;
                     }
 
-                    p_f->set_pixel(tile_x * 8 + x, tile_y * 8 + y, rgb);
+                    std::cout << "8" << std::endl;
+                    set_pixel(tile_x * 8 + x, tile_y * 8 + y, rgb);
                 }
             }
         }
     }
 
-    std::vector<uint8_t> Ppu::frame::get_frame_data()
+    std::vector<uint8_t> Ppu::get_frame_data()
     {
         return fd.value;
     }

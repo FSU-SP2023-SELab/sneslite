@@ -3,3 +3,4 @@ docs/html/
 build/
 *.o
 debug
+*.nes
