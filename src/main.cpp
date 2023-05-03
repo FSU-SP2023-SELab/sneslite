@@ -23,7 +23,7 @@ int main()
     // Build rom
     std::string rom  = "romtest.nes";
     {
-        std::ofstream output(rom, std::ios::binary);
+        std::ofstream output("build/romtest.nes", std::ios::binary);
         output.write(reinterpret_cast<const char*>(&ROM_TEST), sizeof(ROM_TEST));
     }
 

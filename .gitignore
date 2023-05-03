@@ -1,6 +1,5 @@
 .vscode
 docs/html/
 build/
-build/romtest.nes
 *.o
 debug
