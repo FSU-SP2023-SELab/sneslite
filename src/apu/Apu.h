@@ -5,6 +5,9 @@
 
 namespace sneslite
 {
+
+    class Bus;
+
     class Apu
     {
         public:
@@ -14,12 +17,15 @@ namespace sneslite
             void Write(uint16_t addr, uint8_t data);
             uint8_t Read(uint16_t addr);
             void clock();
+            void ConnectBus(Bus* n) { bus = n; }
 
             double GetSample();
 
             std::vector<uint8_t> length_table;
 
         private:
+
+        Bus* bus = nullptr;
 
         uint32_t Clockcount = 0;
         uint32_t FrameClockcount = 0;
