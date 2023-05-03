@@ -105,9 +105,9 @@ namespace sneslite
 
     bool Bus::clock()
     {
-        auto nmi_before = ppu.p_sr->is_in_vblank();
+        auto nmi_before = ppu.is_in_vblank();
         ppu.tick(Clockcount);
-        auto nmi_after = ppu.p_sr->is_in_vblank();
+        auto nmi_after = ppu.is_in_vblank();
 
         if(!nmi_before && nmi_after)
         {

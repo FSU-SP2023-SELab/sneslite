@@ -39,12 +39,14 @@ namespace sneslite
 
     void Ppu::initialize_ppu()
     {
-        p_ar = new sneslite::Ppu::address_register();
-        p_cr = new sneslite::Ppu::controller_register();
-        p_sr = new sneslite::Ppu::status_register();
-        p_f  = new sneslite::Ppu::frame();
+        p_ar = std::make_shared<address_register>();
+
         pd.char_rom = p_bus->cartridge.get_char_rom();
         pd.mirror_type = p_bus->cartridge.get_mirror_type();
+
+        frame_init();
+        status_register_init();
+        controller_register_init();
     }
     
     uint8_t Ppu::read_data() {
@@ -94,12 +96,12 @@ namespace sneslite
     
     void Ppu::write_to_control(uint8_t data)
     {
-        p_cr->update_vram_addr(data);
+        update_vram_addr(data);
     }
     
     void Ppu::increment_vram_addr()
     {
-        p_cr->increment_vram_addr();
+        cr_increment_vram_addr();
     }
 
     // TODO: Check for proper mapping
@@ -140,9 +142,9 @@ namespace sneslite
 
             if(pd.scanline == 241)
             {
-                if(p_cr->generate_vblank_nmi())
+                if(generate_vblank_nmi())
                 {
-                    p_sr->set_vblank_status(true);
+                    set_vblank_status(true);
                     LOG(Info) << "Pending NMI interrupt...";
                 }
             }
@@ -150,7 +152,7 @@ namespace sneslite
             if(pd.scanline >= 262)
             {
                 pd.scanline = 0;
-                p_sr->reset_vblank_status();
+                reset_vblank_status();
                 return true;
             }
         }
@@ -220,60 +222,59 @@ namespace sneslite
     // Controller register emulation
     //
 
-    Ppu::controller_register::controller_register() :
-        cr { 0 }
-    {}
+    void Ppu::controller_register_init()
+    {
+        cr.value = 0;
+    }
 
-    bool Ppu::controller_register::_contains(uint8_t flag) const {
+    bool Ppu::_contains(uint8_t flag) const {
         return (cr.value & flag) != 0;
     }
 
-    uint8_t Ppu::controller_register::increment_vram_addr()
+    uint8_t Ppu::cr_increment_vram_addr()
     {
         return (cr.value & cr.VRAM_ADD_INCREMENT) ? 32 : 1;
     }
 
-    void Ppu::controller_register::update_vram_addr(uint8_t data)
+    void Ppu::update_vram_addr(uint8_t data)
     {
         cr.value = data;
     }
 
-    uint16_t Ppu::controller_register::sprt_pattern_addr() const 
+    uint16_t Ppu::sprt_pattern_addr() const 
     {
-        return p_cr->_contains(cr.SPRITE_PATTERN_ADDR) ? 0x1000 : 0;
+        return _contains(cr.SPRITE_PATTERN_ADDR) ? 0x1000 : 0;
     }
 
-    uint16_t Ppu::controller_register::bknd_pattern_addr() const 
+    uint16_t Ppu::bknd_pattern_addr() const 
     {
-        return p_cr->_contains(cr.BACKROUND_PATTERN_ADDR) ? 0x1000 : 0;
+        return _contains(cr.BACKROUND_PATTERN_ADDR) ? 0x1000 : 0;
     }
 
-    uint8_t Ppu::controller_register::sprite_size() const 
+    uint8_t Ppu::sprite_size() const 
     {
-        return p_cr->_contains(cr.SPRITE_SIZE) ? 16 : 8;
+        return _contains(cr.SPRITE_SIZE) ? 16 : 8;
     }
 
-    uint8_t Ppu::controller_register::master_slave_select() const 
+    uint8_t Ppu::master_slave_select() const 
     {
-        return p_cr->_contains(cr.MASTER_SLAVE_SELECT) ? 1 : 0;
+        return _contains(cr.MASTER_SLAVE_SELECT) ? 1 : 0;
     }
 
-    bool Ppu::controller_register::generate_vblank_nmi() const 
+    bool Ppu::generate_vblank_nmi() const 
     {
-        return p_cr->_contains(cr.GENERATE_NMI);
+        return _contains(cr.GENERATE_NMI);
     }
 
     //
     // Status register emulation
     //
-    Ppu::status_register::status_register() :
-        sr
-        {
-            0b00000000
-        }
-    {}
+    void Ppu::status_register_init()
+    {
+        sr.value = 0b00000000;
+    }
 
-    void Ppu::status_register::_set(uint8_t flag, bool status)
+    void Ppu::_sr_set(uint8_t flag, bool status)
     {
         if (status) {
             sr.value |= flag;
@@ -282,42 +283,42 @@ namespace sneslite
         }
     }
 
-    void Ppu::status_register::_remove(uint8_t flag)
+    void Ppu::_sr_remove(uint8_t flag)
     {
         sr.value &= ~flag;
     }
 
-    bool Ppu::status_register::_contains(uint8_t flag) const
+    bool Ppu::_sr_contains(uint8_t flag) const
     {
         return (sr.value & flag) != 0;
     }
 
-    void Ppu::status_register::set_vblank_status(bool status)
+    void Ppu::set_vblank_status(bool status)
     {
-        _set(sr.VBLANK_STARTED, status);
+        _sr_set(sr.VBLANK_STARTED, status);
     }
 
-    void Ppu::status_register::set_sprite_zero_hit(bool status)
+    void Ppu::set_sprite_zero_hit(bool status)
     {
-        _set(sr.SPRITE_ZERO_HIT, status);
+        _sr_set(sr.SPRITE_ZERO_HIT, status);
     }
 
-    void Ppu::status_register::set_sprite_overflow(bool status)
+    void Ppu::set_sprite_overflow(bool status)
     {
-        _set(sr.SPRITE_OVERFLOW, status);
+        _sr_set(sr.SPRITE_OVERFLOW, status);
     }
 
-    void Ppu::status_register::reset_vblank_status()
+    void Ppu::reset_vblank_status()
     {
-        _remove(sr.VBLANK_STARTED);
+        _sr_remove(sr.VBLANK_STARTED);
     }
 
-    bool Ppu::status_register::is_in_vblank() const
+    bool Ppu::is_in_vblank() const
     {
-        return _contains(sr.VBLANK_STARTED);
+        return _sr_contains(sr.VBLANK_STARTED);
     }
 
-    uint8_t Ppu::status_register::snapshot() const
+    uint8_t Ppu::snapshot() const
     {
         return sr.value;
     }
@@ -325,13 +326,13 @@ namespace sneslite
     //
     // Frame rendering abstraction
     //
-    Ppu::frame::frame()
+    void Ppu::frame_init()
     {
         fd.value.push_back(fd.WIDTH * fd.HEIGHT * 3);
         fd.value.push_back(0);
     }
 
-    void Ppu::frame::set_pixel(size_t x, size_t y, std::tuple<uint8_t, uint8_t, uint8_t> rgb)
+    void Ppu::set_pixel(size_t x, size_t y, std::tuple<uint8_t, uint8_t, uint8_t> rgb)
     {
         auto base = y * 3 * fd.WIDTH + x * 3;
 
@@ -343,11 +344,10 @@ namespace sneslite
         }
     }
 
-    std::vector<uint8_t> Ppu::frame::show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n)
+    std::vector<uint8_t> Ppu::show_tile(std::vector<uint8_t> &char_rom, size_t bank, size_t tile_n)
     {
         assert(bank <= 1);
 
-        frame ppu_frame;
         size_t bank_offset = bank * 0x1000;
 
         const uint8_t *tile = &char_rom[bank_offset + tile_n * 16];
@@ -380,16 +380,16 @@ namespace sneslite
                         break;
                 }
             
-                ppu_frame.set_pixel(x, y, rgb);
+                set_pixel(x, y, rgb);
             }
         }
 
-        return ppu_frame.fd.value;
+        return fd.value;
     }
 
-    void Ppu::frame::render()
+    void Ppu::render()
     {
-        auto bank = p_cr->bknd_pattern_addr();
+        auto bank = bknd_pattern_addr();
 
         for(auto i = 0x0; i <= 0x03C0; i++)
         {
@@ -397,8 +397,15 @@ namespace sneslite
             auto tile_x = i % 32;
             auto tile_y = i / 32;
 
-            std::vector<uint8_t> tile_vec(pd.char_rom[static_cast<size_t>(bank + tile * 16)],
-                                          pd.char_rom[static_cast<size_t>(bank + tile * 16 + 15) + 1]);
+            std::vector<uint8_t> tile_vec;
+
+            //tile_vec.push_back(pd.char_rom[static_cast<size_t>(bank + tile * 16)]);
+            //tile_vec.push_back(pd.char_rom[static_cast<size_t>(bank + tile * 16 + 15) + 1]);
+
+            for(auto i = 0; i < 16; i++)
+            {
+                tile_vec.push_back(pd.char_rom[bank + tile * 16 + i]);
+            }
 
             for(auto y = 0; y <= 7; y++)
             {
@@ -432,13 +439,13 @@ namespace sneslite
                             break;
                     }
 
-                    p_f->set_pixel(tile_x * 8 + x, tile_y * 8 + y, rgb);
+                    set_pixel(tile_x * 8 + x, tile_y * 8 + y, rgb);
                 }
             }
         }
     }
 
-    std::vector<uint8_t> Ppu::frame::get_frame_data()
+    std::vector<uint8_t> Ppu::get_frame_data()
     {
         return fd.value;
     }

@@ -85,8 +85,8 @@ int main()
         nes.joypad.set_button_status(sneslite::JoyPadButton::RIGHT, b_right);
         
         // Prepare frame
-        nes.ppu.p_f->render();
-        const uint8_t* pixels = nes.ppu.p_f->get_frame_data().data();
+        nes.ppu.render();
+        const uint8_t* pixels = nes.ppu.get_frame_data().data();
         texture.update(pixels, WIDTH, HEIGHT, 0, 0);
         sprite.setTexture(texture);
         sprite.setPosition(0, 0);
