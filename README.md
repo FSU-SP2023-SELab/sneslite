@@ -9,10 +9,7 @@ sneslite is a simple abstraction of the Nintendo Entertainment System. The backe
 This project requires the [SFML multimedia library](https://www.sfml-dev.org/). This can be installed on Ubuntu-based systems with `apt install libsfml-dev`.
 
 ## Installation
-Download and run the precompiled binary from releases.
-
-### Building project from source
-To build from source, run `make` in the root folder.
+To build from source, run `make all` in the root folder.
 
 ## Documentation
 Insert link here after compiled and uploaded to external source
